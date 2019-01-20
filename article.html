@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>首页</title>
+
+    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+    <link rel="stylesheet" href="material/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="material/material.font.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<!-- FAB button with ripple -->
+<!--<button class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-js-ripple-effect">-->
+<!--<i class="material-icons">search</i>-->
+<!--</button>-->
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout  ">
+
+    <div class="main-header color-btn-primary translation-all-3">
+        <div role="button" class="mdl-layout__drawer-button ">
+            <i class="material-icons color-btn-primary">menu</i>
+        </div>
+        <!-- Title -->
+        <span class="mdl-layout-title mdl-cell--hide-phone
+        mdl-cell--hide-tablet mdl-cell--hide-desktop">
+            杨友林's Blog
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                      mdl-textfield--floating-label mdl-textfield--align-right">
+            <label class="mdl-button mdl-js-button mdl-button--icon"
+                   for="waterfall-exp">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample"
+                       id="waterfall-exp"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-layout__drawer">
+        <div class="nav-header" style="background-image: url('./image/header.jpg');">
+            <img src="https://avatars2.githubusercontent.com/u/25523208?s=460&v=4"/>
+            <div class="author">
+                xxyangyoulin
+            </div>
+            <div class="desc">
+                离歌且莫翻新阕，一曲能教肠寸结。
+            </div>
+        </div>
+
+        <div class="menu-list">
+            <ul>
+                <li><a href="index.html"><i class="material-icons">home</i>首页</a></li>
+                <hr class="menu-divider"/>
+                <li><a href="#"><i class="material-icons">sms</i>留言</a></li>
+                <li><a href="#"><i class="material-icons">group</i>友情链接</a></li>
+                <li><a href="#"><i class="material-icons">person</i>关于</a></li>
+                <hr class="menu-divider"/>
+                <li><a href="#">登录</a></li>
+                <li><a href="#">退出</a></li>
+                <li><a href="#">文章RSS</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="page-content mdl-grid">
+
+            <div class="post-card mdl-card mdl-cell mdl-shadow--2dp
+             mdl-cell--9-col mdl-cell--6-col-tablet">
+                <div class="card-head-img has-image"
+                     style="background-image: url('./image/left.jpg')">
+                </div>
+                <div class="mdl-card__title color-text-block-primary">
+                    <h2 class="mdl-card__title-text">
+                        <a class="color-text-block-primary a-none" href="#">文章标题模拟试试哈哈</a>
+                    </h2>
+                </div>
+                <div class="article-create-time color-text-block-second">2019/01/12</div>
+                <div class="mdl-card__supporting-text color-text-block-primary">
+                    <div class="article-content">
+                        <blockquote><p><strong>“ 天下共享的信念，连接起每个人”</strong></p></blockquote>
+                        <p>由于在下的笔记本行性能有限，运行Android studio明显感到力不从心。<br>再加上偶尔还同时运行模拟器，词典软件，笔记软件，浏览器。。本本的8g内存还加了固态，但是Windows还是略卡。<br>听网上的人都说搞安卓开发要用Linux，Linux逼格高。<br>于是开始入坑Ubuntu，没想到安装好系统之后就是各种折腾......
+                        </p>
+                        <p>&lt;input type=&quot;text&quot; placeholder=&quot;input&quot;&gt; </p>
+                        <h2>一、Ubuntu介绍</h2>
+                        <ol>
+                            <li>Ubuntu（乌班图）：</li>
+                        </ol>
+                        <blockquote><p>是一个以桌面应用为主的开源<strong>GNU/Linux</strong>操作系统，Ubuntu 是由全球化的专业开发团队（Canonical
+                            Ltd）打造的。</p></blockquote>
+                        <ol>
+                            <li>名称由来和含义：</li>
+                        </ol>
+                        <blockquote><p>其名称来自非洲南部祖鲁语或豪萨语的“ubuntu”一词，类似儒家“ <strong>仁爱</strong> ”的思想，意思是“人性”、“<strong>我的存在是因为大家的存在</strong>”。<br>第一位黑人圣公会和南非圣公会省的大主教(Desmond
+                            Tutu)认为Ubuntu的内涵是“** 自己乃是属于一个更大的整体，当他人受到伤害或死去时，当他人受到折磨或压迫时，这个整体就会消失。 ”</p></blockquote>
+                        <ol>
+                            <li>Ubuntu特点：</li>
+                        </ol>
+                        <blockquote><p>Ubuntu相较于其他大部分的类Linux系统而言，算是对初学者，尤其是用习惯了Windows的用户来说是一个很好的Linux入门操作系统。<br>软件方面，Ubuntu拥有很多强大的开源社区，Ubuntu
+                            项目完全遵从<strong>开源软件开发的原则</strong>，全球众多Ubuntu爱好者为Ubuntu的软件开发做着无偿的努力。 Ubuntu 目前是并将<strong>永远是免费的</strong>。<br>Ubuntu被冠以“<strong>LTS</strong>”(Long-Term
+                            Support)的版本将会被长期支持，长时间内会保持系统的修复软件更新。 <br>Ubuntu 的版本号是根据发布版本的日期而定。</p></blockquote>
+                        <h2>二、Ubuntu安装</h2>
+                        <p>Ubuntu的安装网上有很多教程，基本都大同小异。只要是亲手安装过windows系统的同学，我相信再来安装Ubuntu也是轻而易举的事。</p>
+                        <h3>第一步：安装准备</h3><h4><strong>Ubuntu镜像和工具下载：</strong></h4>
+                        <p>推荐下载地址：<a href="http://cn.ubuntu.com/download/">cn.ubuntu.com/download</a> <br><img
+                                src="http://upload-images.jianshu.io/upload_images/2516147-c215c0a88f16b964.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800"
+                                alt="2017-03-16 14-01-57屏幕截图.png" title="2017-03-16 14-01-57屏幕截图.png"></p>
+                        <p>U盘启动器制作工具软碟通： 下载地址：<a href="https://pan.baidu.com/s/1qXUrM3M">网盘</a> 密码: 63ua</p>
+                        <p><strong>U盘启动器的制作：</strong></p>
+                        <p>ISO镜像和制作工具都下载好后，打开UitralSo软碟通软件。插上一个至少4G内存容量的U盘，按照如下步骤，很简单就可以制作U盘启动器了。</p>
+
+                    </div>
+                </div>
+                <div class="tag-wrapper">
+                    <a href="#" class="tag-item color-text-block-second a-none translation-all-3">学习</a>
+                    <a href="#" class="tag-item color-text-block-second a-none translation-all-3">笔记</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border" style="background: whitesmoke;">
+
+                    <div class="page-navigator ">
+                        <a href="#">
+                            <i class="material-icons">arrow_back</i>
+                            <div>
+                                描述前一篇文章标题描述前一篇文章标题描述前一篇文章标题描述前一篇文章标题
+                            </div>
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+
+                        <a href="#" class="right">
+                            <i class="material-icons">arrow_forward</i>
+                            <div>描述前一篇文章标题</div>
+                        </a>
+                    </div><!--page-navigator-->
+
+                    <h4 class="" style="margin-top: 32px;">
+                        2条评论
+                    </h4><!--comment title-->
+
+
+                    <form class="comment-input-form" method="post"
+                          action="#"
+                          id="comment-form" role="form">
+
+                        <div class="input-group input-group-3">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" name="author"
+                                       id="author">
+                                <label class="mdl-textfield__label" for="author">名字*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="email" name="mail"
+                                       id="mail">
+                                <label class="mdl-textfield__label" for="mail">邮箱*</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="url" name="url"
+                                       id="url">
+                                <label class="mdl-textfield__label" for="url">网站</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label"
+                                  style="width: 100%;margin-right: 8px">
+                                 <input class="mdl-textfield__input" type="text" name="text"
+                                        id="comment-user-text">
+                                 <label class="mdl-textfield__label" for="comment-user-text">评论</label>
+                             </div>-->
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                 style="width: 100%;margin-right: 8px">
+                                <textarea class="mdl-textfield__input" type="text" name="text" style="resize: none;"
+                                          rows="3" id="comment-user-text"></textarea>
+                                <label class="mdl-textfield__label" for="comment-user-text">评论*</label>
+                            </div>
+
+                            <!-- Mini FAB button -->
+                            <button class="mdl-button mdl-js-button mdl-button--fab
+                             mdl-button--mini-fab">
+                                <i class="material-icons">check</i>
+                            </button>
+                        </div>
+                    </form><!--comment-input-form-->
+                </div><!--mdl-card__actions-->
+            </div>
+
+
+            <div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
+            mdl-cell--2-col-tablet">
+                <div class="article-title-list">
+
+                </div>
+            </div><!--article-title-list-->
+        </div>
+
+        <footer>
+            <div class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <div class="mdl-logo">Title</div>
+                    <ul class="mdl-mini-footer--link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <button class="mdl-mini-footer--social-btn"></button>
+                    <button class="mdl-mini-footer--social-btn"></button>
+                    <button class="mdl-mini-footer--social-btn"></button>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+
+<i class="icon-menu"></i>
+<script src="js/jquery.min.js"></script>
+<script src="material/material.min.js"></script>
+<script src="js/base.js"></script>
+<!--<script src="js/smoothscroll.js" async=""></script>-->
+<script>
+</script>
+</html>
