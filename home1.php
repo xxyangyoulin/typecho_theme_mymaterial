@@ -9,10 +9,7 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->need('header.php');
 ?>
-
-<?php //debug_print($this->getCurrentPage()) ?>
 
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
@@ -22,8 +19,9 @@ $this->need('header.php');
     <div class="head-card-left translation-all-3 mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
             mdl-cell--8-col mdl-cell--5-col-tablet menu-dialog-visible">
         <div class="has-image mdl-card__title"
-             style="background-image: url('<?php $this->options->themeUrl('image/left.jpg'); ?>') ">
-            <div class="card-text-wrapper">
+             style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">
+
+        <div class="card-text-wrapper">
 
                 <h2 class="mdl-card__title-text color-text-white-primary">
                     <?php $this->options->title() ?>
@@ -86,8 +84,7 @@ $this->need('header.php');
     <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
             mdl-cell--3-col-tablet menu-dialog-visible mdl-cell--hide-phone mdl-js-ripple-effect">
         <div class="mdl-card__title"
-             style="background-image: url('<?php $this->options->themeUrl('image/right.jpg'); ?>');">
-            <!--<h2 class="mdl-card__title-text">Welcome</h2>-->
+             style="background-image: url('<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>'">
         </div>
 
         <div class="mdl-card__actions">
@@ -168,48 +165,7 @@ $this->need('header.php');
     </div>
 <?php endif; ?>
 
-<?php while ($this->next()): ?>
-    <div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp">
+<?php $this->need('postCard.php') ?>
 
-        <div class="mdl-card__title">
-            <!--
-            style="background-image: url('<?php /*$this->options->themeUrl('image/left.jpg'); */ ?>') "-->
-            <div class="card-text-wrapper">
-                <h2 class="mdl-card__title-text mdl-typography--font-bold">
-                    <a class="a-none anim-line "
-                       href="<?php $this->permalink() ?>"><?php $this->title() ?>
-                    </a>
-                </h2>
-                <time
-                        datetime="<?php $this->date('c'); ?>" itemprop="datePublished">
-                    <?php $this->date('Y/m/d'); ?>
-                </time>
-            </div>
-        </div>
+<?php $this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
 
-        <div class="mdl-card__supporting-text">
-            <div class="article-content">
-                <?php $this->content(); ?>
-            </div>
-        </div>
-
-        <div class="mdl-card__actions mdl-card--border">
-            <div class="action-wrapper mdl-color-text--primary inner-a-color-inherit a-none">
-                <a href="<?php $this->permalink() ?>">
-                    <span>继续阅读</span>
-                </a>
-                <div class="mdl-layout-spacer"></div>
-                <?php $this->category(','); ?>
-
-                <a itemprop="discussionUrl"
-                   href="<?php $this->permalink() ?>#comments">
-                    <?php $this->commentsNum('评论', '1 评论', '%d 评论'); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-<?php endwhile; ?>
-<?php $this->pageNav('<i class="material-icons">navigate_before</i>',
-    '<i class="material-icons">navigate_next</i>'); ?>
-
-<?php $this->need('footer.php'); ?>

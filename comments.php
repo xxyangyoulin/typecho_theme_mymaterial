@@ -25,22 +25,25 @@
     ?>">
         <div id="<?php $comments->theId(); ?>">
             <div class="comment-author">
-                <?php $comments->gravatar('40', ''); ?>
+                <a target="_blank" class="ds-avatar" href="<?php $comments->url(); ?>">
+                    <?php $comments->gravatar('40', ''); ?>
+                </a>
                 <div class="author-time-w">
-                    <span class="fn inner-a-color-inherit a-none anim-line-inner-a " style="color: #616161;font-style: normal">
+                    <span class="fn inner-a-color-inherit a-none anim-line-inner-a mdl-color-text--black">
                         <?php $comments->author(); ?>
                         <?php CommentApprove_Plugin::identify($comments->mail); ?>
-                        <?php UserAgent_Plugin::render($comments->agent); ?>
+<!--                        --><?php //UserAgent_Plugin::render($comments->agent);
+                        ?>
                     </span>
                     <span class="comment-time" style="color: #616161">
-                        <a href="<?php $comments->permalink(); ?>"><?php $comments->date('Y-n-j H:i'); ?></a>
+                        <a class="no-pjax" href="<?php $comments->permalink(); ?>"><?php $comments->dateWord(); ?></a>
                     </span>
                 </div>
 
             </div>
 
-
             <div class="comment-content ">
+                <?php getCommentReply($comments->parent) ?>
                 <?php $comments->content(); ?>
 
                 <?php if ('waiting' == $comments->status) { ?>
@@ -55,11 +58,9 @@
                 <?php } ?>
             </div>
 
-            <div class="comment-meta">
-                <span class="comment-reply mdl-button least-button mdl-button--raised mdl-js-ripple-effect a-none">
+            <span class="comment-reply  a-none inner-a-color-inherit mdl-color-text--grey-600">
                     <?php $comments->reply(); ?>
                 </span>
-            </div>
         </div>
 
     </li>
@@ -89,19 +90,20 @@
         <div id="<?php $this->respondId(); ?>" class="respond" style="width: 100%">
             <div class="comment-form-title-w">
                 <h4 id="response"><?php _e('新评论'); ?></h4>
-                <div class="cancel-comment-reply mdl-button least-button mdl-button--raised mdl-js-ripple-effect a-none">
+                <div class="cancel-comment-reply a-none inner-a-color-inherit mdl-color-text--grey-600">
                     <?php $comments->cancelReply(); ?>
                 </div>
             </div>
 
             <form class="comment-input-form" method="post" action="<?php $this->commentUrl() ?>" id="comment-form"
                   role="form">
+                <div class="avator-bg"></div>
                 <?php if ($this->user->hasLogin()): ?>
                     <p>
                         <?php _e('登录身份: '); ?>
-                        <a class="anim-line"
+                        <a class="anim-line no-pjax"
                            href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>.
-                        <a class="anim-line" href="<?php $this->options->logoutUrl(); ?>"
+                        <a class="anim-line no-pjax" href="<?php $this->options->logoutUrl(); ?>"
                            title="Logout"> <?php _e('退出'); ?> </a>
                     </p>
                 <?php else: ?>
@@ -109,12 +111,12 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="text" name="author"
                                    id="author" value="<?php $this->remember('author'); ?>">
-                            <label class="mdl-textfield__label" for="author"><?php _e('名字'); ?></label>
+                            <label class="mdl-textfield__label" for="author"><?php _e('名字*'); ?></label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="email" name="mail"
                                    id="mail" value="<?php $this->remember('mail'); ?>">
-                            <label class="mdl-textfield__label" for="mail"><?php _e('Email'); ?></label>
+                            <label class="mdl-textfield__label" for="mail"><?php _e('Email*'); ?></label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -139,7 +141,7 @@
                          style="width: 100%;margin-right: 8px">
                                 <textarea class="mdl-textfield__input" type="text" name="text" style="resize: none;"
                                           rows="3" id="comment-user-text"><?php $this->remember('text'); ?></textarea>
-                        <label class="mdl-textfield__label" for="comment-user-text"><?php _e('内容'); ?></label>
+                        <label class="mdl-textfield__label" for="comment-user-text"><?php _e('内容*'); ?></label>
                     </div>
 
                     <button type="submit" class="submit mdl-button mdl-js-button mdl-button--fab hover--margin-top-1px hover-shadow--6dp

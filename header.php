@@ -18,7 +18,7 @@
     <?php //$this->options->themeUrl('material/material.indigo-pink.min.css'); ?><!--">-->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.font.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('material/dialog-polyfill.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/nprogress.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
 
     <!--[if lt IE 9]>
@@ -68,9 +68,8 @@
     <!--drawer-->
     <?php $this->need('drawer.php'); ?>
 
-    <main class="mdl-layout__content">
-        <div class="bg mdl-color--primary-dark"></div>
-        <div class="page-content mdl-grid">
+    <main class="mdl-layout__content" id="mdl-layout-content">
+        <div id="page-content" class="page-content mdl-grid <?php if(($this->options->homeType && $this->options->homeType == 'type1')):echo ' page-content-type1';endif; ?>">
 
 
     

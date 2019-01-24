@@ -2,7 +2,8 @@
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 
-<div class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible">
+<div class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible"
+style="max-width: 280px;">
 
     <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col menu-dialog-visible">

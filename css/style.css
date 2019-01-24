@@ -79,6 +79,12 @@ html, body {
     transition: all 0.15s;
 }
 
+.flex-center {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
 .mdl-menu li a {
     text-decoration: none;
     color: unset;
@@ -179,6 +185,73 @@ html, body {
     width: 100%;
 }
 
+.anim-avator {
+    transition: transform 0.3s;
+    -webkit-transition: transform 0.3s;
+}
+
+.anim-avator:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.ds-avatar img, .ds-avatar img:hover {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.7s;
+    animation-duration: 0.7s;
+}
+
+@-webkit-keyframes swing {
+    20%, 40%, 60%, 80%, 100% {
+        -webkit-transform-origin: top center;
+    }
+    20% {
+        -webkit-transform: rotate(15deg);
+    }
+    40% {
+        -webkit-transform: rotate(-10deg);
+    }
+    60% {
+        -webkit-transform: rotate(5deg);
+    }
+    80% {
+        -webkit-transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@keyframes swing {
+    20% {
+        transform: rotate(15deg);
+    }
+    40% {
+        transform: rotate(-10deg);
+    }
+    60% {
+        transform: rotate(5deg);
+    }
+    80% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.ds-avatar img:hover {
+    -webkit-transform-origin: top center;
+    -moz-transform-origin: top center;
+    -o-transform-origin: top center;
+    transform-origin: top center;
+    -webkit-animation-name: swing;
+    -moz-animation-name: swing;
+    -o-animation-name: swing;
+    animation-name: swing;
+}
+
 /***********************/
 header {
     display: flex;
@@ -237,17 +310,21 @@ header {
 .mdl-layout__content {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .page-content {
     box-sizing: border-box;
     max-width: 1005px;
     width: 100%;
-    min-height: calc(100% - 319px);
-    margin: 150px auto 0 auto;
-    padding: 0;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 150px 0 0 0;
     flex-shrink: 0;
+}
+
+.page-content-type1 {
+    max-width: 900px !important;
 }
 
 .post-card .mdl-card__supporting-text {
@@ -276,6 +353,14 @@ header {
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+}
+
+.head-card-left .mdl-menu a,
+.head-card-right .mdl-menu a {
+    width: 100%;
+    display: block;
+    height: 100%;;
 }
 
 
@@ -303,6 +388,9 @@ header {
 
 .has-image {
     height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat
 }
 
 .card-text-wrapper {
@@ -433,8 +521,27 @@ header {
 
 .article-content img {
     display: block;
-    margin: 32px auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
     max-width: 100%;
+    transition: all 0.3s;
+}
+
+
+.article-content img.show {
+    position: fixed;
+    cursor: pointer;
+    z-index: 1111;
+    margin: auto;
+    transition: all 0.3s;
+    width: auto;
+    max-width: 95%;
+    max-height: 95%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0;
 }
 
 
@@ -447,33 +554,10 @@ header {
     color: rgba(0, 0, 0, 0.54);
 }
 
-.article-content blockquote p:last-child {
-    margin-bottom: 0;
-}
-
-blockquote:before {
+blockquote:before, blockquote:after {
     content: none;
 }
 
-blockquote:after {
-    content: none;
-}
-
-.article-content code {
-    padding: 4px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 2px;
-}
-
-.article-content pre,
-.article-content figure {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.article-content pre code,
-.article-content blockquote code {
-    background-color: unset;
-}
 
 /*post-near*/
 .post-near {
@@ -499,6 +583,11 @@ blockquote:after {
     color: #757575;
 }
 
+.post-near li a {
+    margin-top: -24px;
+    padding-top: 24px;
+}
+
 .post-near .enabled {
     cursor: pointer;
 }
@@ -519,10 +608,13 @@ blockquote:after {
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding-left: 0;
+    padding: 0 16px;
+    overflow: hidden;
     margin-top: 32px;
+    box-sizing: border-box;
     align-self: center;
     justify-content: center;
+
 }
 
 .page-navigator li a {
@@ -531,26 +623,17 @@ blockquote:after {
     line-height: 32px;
     min-width: 24px;
     padding: 0 4px;
-    margin: 0 4px;
+    margin: 0 0px;
     border-radius: 2px;
     height: 32px;
     color: #747474;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-}
-
-.bg {
-    width: 100%;
-    visibility: hidden;
-    height: 280px;
-    position: absolute;
-    top: 0;
-    z-index: 1;
 }
 
 .page-navigator li a .material-icons {
@@ -569,6 +652,7 @@ blockquote:after {
 
 /*breadcrumb*/
 .breadcrumb {
+    position: relative;
     height: max-content;
     min-height: unset;
     background: rgba(255, 255, 255, 0.9);
@@ -578,6 +662,14 @@ blockquote:after {
     align-items: center;
     border-radius: 3px;
     padding: 12px 16px;
+}
+
+.breadcrumb > .right-box {
+    position: relative;
+    margin-left: auto;
+    margin-top: -12px;
+    margin-bottom: -12px;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .breadcrumb > a {
@@ -651,6 +743,7 @@ blockquote:after {
 /*menu-list*/
 .menu-list ul {
     padding-left: 0px;
+    width: 100%;
 }
 
 .menu-list li {
@@ -680,14 +773,40 @@ blockquote:after {
     -webkit-transition: all 0.2s;
 }
 
-.menu-list li a:hover {
-    background: #e0e0e0;
-    color: #2196f3!important;
-}
-.menu-list li a:hover .count{
-    background-color: #2196f3!important;
+.menu-list .menu-sub-list a {
+    padding: 14px 16px;
 }
 
+.menu-list li a:hover {
+    background: #e0e0e0;
+    color: #2196f3 !important;
+}
+
+.menu-list li.open > a,
+.menu-list li a .menu-switch:hover,
+.menu-list li a .menu-right-btn:hover {
+    color: #2196f3 !important;
+}
+
+.menu-list li.open > a > .menu-right-btn {
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+}
+
+.menu-list li.open > a .count,
+.menu-list li a:hover .count {
+    background-color: #2196f3 !important;
+}
+
+.menu-list .menu-right-btn {
+    margin-left: auto;
+    -webkit-transition: transform 0.2s;
+    transition: transform 0.2s;
+    background: none;
+}
 
 .menu-list li a .material-icons {
     margin-right: 32px;
@@ -700,6 +819,7 @@ blockquote:after {
     color: inherit;
 }
 
+
 .menu-list .menu-switch {
     cursor: pointer;
 }
@@ -707,18 +827,29 @@ blockquote:after {
 .menu-list .menu-sub-list {
     display: none;
 }
-.menu-list .menu-sub-list a{
+
+.menu-list .menu-sub-list a {
     color: #757575;
     display: flex;
     align-items: center;
 }
-.menu-list .menu-sub-list .count{
-    margin-left: auto;
+
+.menu-list .menu-sub-list .count {
     padding: 0px 8px;
-    color: white!important;
+    color: white !important;
     display: block;
     background: #878787;
     border-radius: 12px;
+}
+
+.menu-list .menu-archive .count {
+    margin-left: auto;
+    margin-right: 4px;
+}
+
+.menu-list .menu-category .count {
+    margin-right: 4px;
+    margin-left: auto;
 }
 
 .menu-list .open {
@@ -726,6 +857,7 @@ blockquote:after {
 }
 
 /*end drawer*/
+
 
 /*comment*/
 .comment-input-form {
@@ -739,11 +871,24 @@ blockquote:after {
     align-items: center;
 }
 
-.comment-input-form .mdl-textfield__input {
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
+/*.comment-input-form .input-group-3 input{*/
+/*width: 33.3333%;*/
+/*}*/
 
+/*#comments .input-group input{*/
+/*display: block;*/
+/*outline: none;*/
+/*box-sizing: border-box;*/
+/*padding: 8px;*/
+/*font-size: 15px;*/
+/*background: none;*/
+/*border-top: none;*/
+/*border-right: none;*/
+/*border-left: none;*/
+/*border-bottom: 1px solid #dedede;*/
+/*}*/
+
+/*#comments .input-group input:*/
 
 #comments .comment-list {
     list-style: none;
@@ -763,7 +908,9 @@ blockquote:after {
 }
 
 #comments .avatar {
-    border-radius: 50%;
+    /*border-radius: 50%;*/
+    box-shadow: 1px 1px 2px #aaaaaa;
+    border-radius: 2px;
 }
 
 #comments .comment-author {
@@ -784,9 +931,9 @@ blockquote:after {
     margin-top: -4px;
 }
 
+#comments .fn,
 #comments .fn a {
     font-weight: bold;
-    font-size: 16px;
 }
 
 #comments .comment-time a {
@@ -795,7 +942,10 @@ blockquote:after {
 }
 
 #comments .comment-content {
-    padding: 24px 8px 10px 8px;
+    padding: 24px 0px 10px 56px;
+    overflow: hidden;
+    color: black;
+    word-break: break-all;
 }
 
 #comments .comment-meta {
@@ -805,12 +955,12 @@ blockquote:after {
 }
 
 #comments .comment-reply {
-    display: block;
-    margin-left: 8px;
+    /*display: block;*/
+    /*margin-left: 8px;*/
     visibility: visible;
-    /*position: absolute;*/
-    /*right: 0;*/
-    /*top: 0;*/
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 #comments .comment-body:hover > div:not(.comment-children) .comment-reply {
@@ -824,13 +974,20 @@ blockquote:after {
     display: block;
     padding: 0 4px;
     box-sizing: border-box;
+    transition: color ease 0.3s;
     width: 100%;
     height: 100%;
+}
+
+#comments .cancel-comment-reply a:hover,
+#comments .comment-reply a:hover {
+    color: #2196F3;
 }
 
 #comments .comment-form-title-w {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 #comments #response {
@@ -843,8 +1000,13 @@ blockquote:after {
 }
 
 #comments .respond {
-    margin-top: 8px;
     margin-bottom: 32px;
+}
+
+#comments .reply-author {
+    text-decoration: none;
+    float: left;
+    margin-right: 4px;
 }
 
 /*.comment-recent*/
@@ -887,9 +1049,9 @@ blockquote:after {
 .tag-cloud li a {
     outline: none;
     text-decoration: none;
-    padding: 4px 13px;
+    padding: 2px 12px;
     display: block;
-    border-radius: 16px;
+    border-radius: 13px;
     color: white;
     box-sizing: border-box;
 }
@@ -952,6 +1114,98 @@ blockquote:after {
 
 .article-title-list .index-menu-list .index-menu-list {
     display: none;
+}
+
+
+/*links*/
+.links-ul {
+    padding: 0;
+    margin: 16px -4px;
+}
+
+.links-ul li {
+    width: 33.3333%;
+    padding: 6px 4px;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+    float: left;
+}
+
+.links-ul a {
+    width: 100%;
+    transition: all 0.2s;
+    display: block;
+    border-radius: 16px;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+.links-ul a:hover,
+.links-ul a:active {
+    background-color: #CECECE;
+}
+
+.links-ul img {
+    height: 32px;
+    margin: 0;
+    width: 32px;
+    border-radius: 16px;
+}
+
+.links-ul .name-w {
+    float: left;
+    width: calc(100% - 32px);
+    display: flex;
+    align-items: center;
+}
+
+.links-ul .name {
+    user-select: auto;
+    padding: 0 2px 0 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.links-ul .material-icons {
+    float: right;
+    border-radius: 50%;
+    margin-top: 4px;
+    background-color: #bbdefb;
+    margin-right: 4px;
+    color: white;
+}
+
+/*submit loading*/
+@keyframes rotating {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.submit-loading {
+    animation: rotating 1.2s linear infinite
+}
+
+.avator-bg {
+    position: absolute;
+    right: 0;
+    margin-right: 16px;
+    width: 46px;
+    height: 46px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    margin-left: 16px;
+    transition: all 0.5s;
+    opacity: 0.1;
 }
 
 /*footer*/
@@ -1018,6 +1272,10 @@ blockquote:after {
     .has-image {
         height: 180px;
     }
+
+    .links-ul li {
+        width: 50%;
+    }
 }
 
 @media (min-width: 481px) {
@@ -1068,7 +1326,12 @@ blockquote:after {
     }
 
     .page-content {
-        margin-top: 0px;
+        padding-top: 56px;
+        margin-top: 56px;
+    }
+
+    .head-card-left {
+        margin-top: -56px;
     }
 
     .tag-wrapper a {
@@ -1079,7 +1342,15 @@ blockquote:after {
         display: unset !important;
     }
 
-    .input-group-3 > div {
+    .input-group-3 > * {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+    .links-ul li {
         width: 100%;
     }
 }

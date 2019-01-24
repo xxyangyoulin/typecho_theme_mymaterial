@@ -14,25 +14,16 @@ function themeConfig($form)
     $form->addInput($drawerImage);
 
     $drawerBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('drawerBlock',
-        array('showMessageBoard' => _t('显示留言板'),
-            'ShowLinks' => _t('显示友情链接'),
-            'ShowAbout' => _t('显示关于'),
-            'ShowPages' => _t('显示页面'),
+        array('ShowPages' => _t('显示页面'),
             'ShowCategory' => _t('显示分类'),
             'ShowArchive' => _t('显示归档')),
-        array('showMessageBoard', 'ShowLinks', 'ShowAbout', 'ShowPages', 'ShowCategory', 'ShowArchive'), _t('抽屉显示'));
+        array('ShowPages', 'ShowCategory', 'ShowArchive'), _t('抽屉显示'));
 
     $form->addInput($drawerBlock->multiMode());
 
-    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
-        array('ShowRecentPosts' => _t('显示最新文章'),
-            'ShowRecentComments' => _t('显示最近回复'),
-            'ShowCategory' => _t('显示分类'),
-            'ShowArchive' => _t('显示归档'),
-            'ShowOther' => _t('显示其它杂项')),
-        array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
-
-    $form->addInput($sidebarBlock->multiMode());
+    $homeType = new Typecho_Widget_Helper_Form_Element_Radio('homeType',
+        array('type1' => '简洁模式', 'type2' => '一般模式'), array('type2'), _t('首页风格'));
+    $form->addInput($homeType);
 }
 
 
@@ -87,10 +78,33 @@ function getBuildTime()
     }
 }
 
-function getStartTime(){
+function getStartTime()
+{
     return '2029-01-19 00:00:00';
 }
 
+function drawerMenuPages()
+{
+    return array('about', 'links', 'board');
+}
+
+//评论添加回复标记
+function getCommentReply($parent)
+{
+
+    $db = Typecho_Db::get();
+//    $prow = $db->fetchRow($db->select('parent')->from('table.comments')
+//        ->where('coid = ? AND status = ?', $coid, 'approved'));
+//    $parent = $prow['parent'];
+    if ($parent != "0") {
+        $arow = $db->fetchRow($db->select('author')->from('table.comments')
+            ->where('coid = ? AND status = ?', $parent, 'approved'));
+
+        if ($arow && $arow['author']) {
+            echo "<a  href=\"#comment-{$parent}\" class=\"reply-author mdl-color-text--primary\">@<b>{$arow['author']}</b></a>";
+        }
+    }
+}
 
 function randomMaterialColor($index = NULL)
 {

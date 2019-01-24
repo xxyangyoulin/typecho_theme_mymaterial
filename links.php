@@ -1,4 +1,11 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+/**
+ * 友链
+ *
+ * @package custom
+ *
+ */
+if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">
@@ -19,9 +26,10 @@
 
         <?php $cardImage = $this->fields->card_image;
         if ($cardImage): ?>
-            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')"></div>
-        <?php endif; ?>
-
+        <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')">
+            <?php else: ?>
+                <div class="mdl-card__title""><?php endif; ?>
+        </div>
 
         <div class="mdl-card__supporting-text color-text-block-primary">
             <div class="card-text-wrapper" style="margin: 0 0 16px 0;padding: 0;">
@@ -39,6 +47,12 @@
             </div>
 
             <div class="article-content">
+
+                <ul class="links-ul">
+                    <?php Links_Plugin::output("SHOW_MD"); ?>
+                    <div class="clearfix"></div>
+                </ul>
+
                 <?php $this->content(); ?>
             </div>
 
@@ -85,6 +99,7 @@
 </div><!--article-title-list-->
 
 <?php $this->need('footer.php'); ?>
+
 
 
 
