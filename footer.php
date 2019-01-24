@@ -17,10 +17,10 @@
             </a>
 
             <span class="mdl-tooltip mdl-tooltip--top" for="ft-email">Email</span>
-<!--            <a href="" target="_blank" class="mdl-button mdl-js-button mdl-button--icon" id="ft-weibo">-->
-<!--                <img src="--><?php //$this->options->themeUrl('image/icon/weibo.png'); ?><!--">-->
-<!--            </a>-->
-<!--            <span class="mdl-tooltip mdl-tooltip--top" for="ft-weibo">微博</span>-->
+            <!--            <a href="" target="_blank" class="mdl-button mdl-js-button mdl-button--icon" id="ft-weibo">-->
+            <!--                <img src="--><?php //$this->options->themeUrl('image/icon/weibo.png'); ?><!--">-->
+            <!--            </a>-->
+            <!--            <span class="mdl-tooltip mdl-tooltip--top" for="ft-weibo">微博</span>-->
         </div>
 
         <div class="footer-center" style="text-align: center">
@@ -79,22 +79,38 @@
     $(document).on('pjax:complete', function () {
         NProgress.done();
         $('#mdl-layout-content').scrollTop(0);
+
     });
+
 
     $(document).on('pjax:end', function () {
         console.log("end");
+
         $.afterPjax();
         Prism.highlightAll();
 
+        var page = $('#page-content');
+        page.find('*[class^=mdl]').removeClass('is-upgraded').removeAttr("data-upgraded");
+        page.find('.mdl-menu__item-ripple-container').remove();
+        page.find('.mdl-js-ripple-effect--ignore-events').removeClass('mdl-js-ripple-effect--ignore-events');
+
+        var mdl_menu_container = page.find('.mdl-menu__container');
+        mdl_menu_container.each(function () {
+            $(this).after($(this).html());
+            $(this).remove()
+        });
+
+        componentHandler.upgradeDom();
+
+        scrollToHash();
+    });
+
+    var scrollToHash = function () {
         if (window.location.hash) {
             var id = window.location.hash.replace('#', "");
             $.gotoAnchorSmooth($('#' + id), 0, 0)
         }
-    });
-
-    setInterval(function () {
-        componentHandler.upgradeDom();
-    }, 1000);
+    }
 
 </script>
 <?php $this->need('loginDialog.php'); ?>
