@@ -1,4 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php $this->header('commentReply=1&description=0&keywords=0&generator=0&template=0&pingback=0&xmlrpc=0&wlw=0&rss2=0&rss1=0&antiSpam=0&atom'); ?>
 
 <?php function threadedComments($comments, $options)
 {
@@ -31,9 +32,10 @@
                 <div class="author-time-w">
                     <span class="fn inner-a-color-inherit a-none anim-line-inner-a mdl-color-text--black">
                         <?php $comments->author(); ?>
-                        <?php CommentApprove_Plugin::identify($comments->mail); ?>
-<!--                        --><?php //UserAgent_Plugin::render($comments->agent);
-                        ?>
+                        <?php try {
+                            if (class_exists('CommentApprove_Plugin')) CommentApprove_Plugin::identify($comments->mail);
+                        } catch (Exception $e) {
+                        } ?>
                     </span>
                     <span class="comment-time" style="color: #616161">
                         <a class="no-pjax" href="<?php $comments->permalink(); ?>"><?php $comments->dateWord(); ?></a>

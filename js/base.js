@@ -1,24 +1,3 @@
-var cookie = {
-    set: function (cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=" + cvalue + "; " + expires;
-    },
-    get: function (cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i].trim();
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    },
-    delete: function (key) {
-    }
-};
 (function ($, h, c) {
     var a = $([]),
         e = $.resize = $.extend($.resize, {}),
@@ -97,6 +76,23 @@ var cookie = {
     }
 })(jQuery, this);
 
+function trim(str) {
+    if(str == null){
+        str = "";
+    }
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+var shareWeibo = function (title, url, pics='') {
+    var share_str = 'http://v.t.sina.com.cn/share/share.php?' +
+        'title=' + title
+        + '&url=' + url
+        + '&content=utf-8' +
+        '&sourceUrl=' + url
+        + '&pic=' + pics;
+
+    window.open(share_str, 'newwindow', 'height=400,width=400,top=100,left=100');
+};
 
 var buildTimeout, startTimeV;
 
@@ -246,11 +242,12 @@ $(function () {
             rmCurrent();
 
             let current = articleTitleList.find('a[href="#' + res.id + '"]');
-
+            //current is a elements
             if (!current.hasClass('current')) {
                 current.addClass('current');
                 innerList.removeClass('open');
                 current.parents('.index-menu-list').addClass('open').slideDown();
+                current.next('.index-menu-list').addClass('open').slideDown();
                 innerList.not('.open').slideUp();
             }
 
@@ -458,12 +455,14 @@ $.commentsAjax = function () {
                     || $('.page-navigator .prev').length === 0 //在第一页
                     || isReply) {//是回复
                     $('#comments').html($('#comments', data).html());
+                    reUpgradePageDem();/*评论区的内容全部替换了,所以刷洗一下MDL输入框组件*/
                     $.pageNav();
                     $.commentsAjax();
 
                     $('#mdl-layout-content').animate({
                         scrollTop: $('li[id=li-comment-' + maxId + ']').offset().top + $('#mdl-layout-content').scrollTop()
                     }, 300);
+
                     return;
                 }
 
@@ -491,6 +490,22 @@ $.commentsAjax = function () {
 
 function restNoPjaxClass() {
     $('.comment-reply a, .cancel-comment-reply-link').addClass("no-pjax");
+}
+
+/**重新刷新pge-content下的mdl组件功能.*/
+function reUpgradePageDem() {
+    var page = $('#page-content');
+    page.find('*[class^=mdl]').removeClass('is-upgraded').removeAttr("data-upgraded");
+    page.find('.mdl-menu__item-ripple-container').remove();
+    page.find('.mdl-js-ripple-effect--ignore-events').removeClass('mdl-js-ripple-effect--ignore-events');
+
+    var mdl_menu_container = page.find('.mdl-menu__container');
+    mdl_menu_container.each(function () {
+        $(this).after($(this).html());
+        $(this).remove()
+    });
+
+    componentHandler.upgradeDom();
 }
 
 $.showSnackbar = function (msg) {

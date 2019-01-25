@@ -48,7 +48,7 @@
         <div class="mdl-layout-spacer"></div>
 
         <!-- Title -->
-        <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+        <form id="search" method="get" action="<?php $this->options->siteUrl(); ?>" role="search">
             <div class="mdl-cell--hide-phone mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
                 <label class="mdl-button mdl-js-button mdl-button--icon"

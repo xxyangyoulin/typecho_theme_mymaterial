@@ -26,10 +26,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
         <?php $cardImage = $this->fields->card_image;
         if ($cardImage): ?>
-        <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')">
-            <?php else: ?>
-                <div class="mdl-card__title""><?php endif; ?>
-        </div>
+            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')"></div>
+        <?php endif; ?>
 
         <div class="mdl-card__supporting-text color-text-block-primary">
             <div class="card-text-wrapper" style="margin: 0 0 16px 0;padding: 0;">

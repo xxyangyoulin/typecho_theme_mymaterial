@@ -48,16 +48,18 @@
             </div>
         </div>
 
-        <button style="position: absolute;top: 16px;right: 16px;"
+        <button style="position: absolute;top: 16px;right: 16px;" id="post-share-btn"
                 class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--grey-600">
-            <i id="post-share-btn" class="material-icons">share</i>
+            <i  class="material-icons">share</i>
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
             for="post-share-btn">
-            <li class="mdl-menu__item">分享到 Twitter</li>
-            <li class="mdl-menu__item">分享到 Fackbook</li>
-            <li class="mdl-menu__item">分享到 新浪微博</li>
-            <li class="mdl-menu__item">分享到 QQ空间</li>
+            <li class="mdl-menu__item">
+                <a class="no-pjax" onclick="shareWeibo(
+                        '<?php urlencode($this->title()) ?>',
+                        '<?php urlencode($this->permalink()) ?>',
+                        '<?php urlencode($this->fields->card_image()) ?>')">分享到 微博</a>
+            </li>
         </ul>
 
         <div class="mdl-card__supporting-text color-text-block-primary ">
@@ -79,9 +81,9 @@
             <?php $this->need('comments.php'); ?>
 
             <ul class="post-near ">
-                    <?php $this->theNext('<li class=""><i class="material-icons">arrow_back</i>%s</li>', '没有了'); ?>
+                <?php $this->theNext('<li class=""><i class="material-icons">arrow_back</i>%s</li>', '没有了'); ?>
                 <div class="mdl-layout-spacer"></div>
-                    <?php $this->thePrev('<li class="right"><i class="material-icons">arrow_forward</i>%s</li>', '没有了'); ?>
+                <?php $this->thePrev('<li class="right"><i class="material-icons">arrow_forward</i>%s</li>', '没有了'); ?>
             </ul>
         </div><!--mdl-card__actions-->
 

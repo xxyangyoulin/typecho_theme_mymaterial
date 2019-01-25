@@ -18,5 +18,5 @@ if ($this->options->homeType && $this->options->homeType == 'type1') {
     $this->need('home2.php');
     $this->need('sidebar.php');
 }
-
 $this->need('footer.php');
+

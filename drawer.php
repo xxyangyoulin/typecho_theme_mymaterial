@@ -21,13 +21,13 @@
     <div class="menu-list">
         <ul>
             <li>
-                <form class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-color-text--grey-600"
+                <form id="drawer-search" class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-color-text--grey-600"
                       action="<?php $this->options->siteUrl(); ?>"
                       style="padding: 0px 16px;">
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" name="s" type="text" id="drawer-search"
+                        <input class="mdl-textfield__input" name="s" type="text" id="drawer-search-input"
                                style="padding: 6px 0">
-                        <label class="mdl-textfield__label" for="drawer-search">Search...</label>
+                        <label class="mdl-textfield__label" for="drawer-search-input">Search...</label>
                     </div>
                 </form>
             </li><!--search-->

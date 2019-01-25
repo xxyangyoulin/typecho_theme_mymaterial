@@ -5,37 +5,59 @@
 <footer id="footer">
     <div class="footer-w">
         <div class="footer-left">
-            <a href="https://github.com/mnnyang" target="_blank"
-               class="mdl-button mdl-js-button mdl-button--icon" id="ft-github">
-                <img src="<?php $this->options->themeUrl('image/icon/github.png'); ?>">
-            </a>
+            <?php if ($this->options->ftGithub): ?>
+                <a href="https://github.com/<?php echo urlencode($this->options->ftGithub) ?>" target="_blank"
+                   class="mdl-button mdl-js-button mdl-button--icon" id="ft-github">
+                    <img src="<?php $this->options->themeUrl('image/icon/github.png'); ?>">
+                </a>
+                <span class="mdl-tooltip mdl-tooltip--top" for="ft-github">Github</span>
+            <?php endif; ?>
 
-            <span class="mdl-tooltip mdl-tooltip--top" for="ft-github">Github</span>
-            <a href="" target="_self" onclick="window.open('mailto:xxyangyoulin@gmail.com','_self'); return false;"
-               class="mdl-button mdl-js-button mdl-button--icon" id="ft-email">
-                <img src="<?php $this->options->themeUrl('image/icon/mail.png'); ?>">
-            </a>
+            <?php if ($this->options->ftQQ): ?>
+                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?php echo urlencode($this->options->ftQQ) ?>&amp;site=qq&amp;menu=yes"
+                   target="_blank"
+                   class="mdl-button mdl-js-button mdl-button--icon" id="ft-qq">
+                    <img src="<?php $this->options->themeUrl('image/icon/qq.png'); ?>">
+                </a>
+                <span class="mdl-tooltip mdl-tooltip--top" for="ft-qq">QQ</span>
+            <?php endif; ?>
 
-            <span class="mdl-tooltip mdl-tooltip--top" for="ft-email">Email</span>
-            <!--            <a href="" target="_blank" class="mdl-button mdl-js-button mdl-button--icon" id="ft-weibo">-->
-            <!--                <img src="--><?php //$this->options->themeUrl('image/icon/weibo.png'); ?><!--">-->
-            <!--            </a>-->
-            <!--            <span class="mdl-tooltip mdl-tooltip--top" for="ft-weibo">微博</span>-->
+            <?php if ($this->options->ftWeibo): ?>
+                <a href="<?php $this->options->ftWeibo(); ?>" target="_blank"
+                   class="mdl-button mdl-js-button mdl-button--icon" id="ft-Weibo">
+                    <img src="<?php $this->options->themeUrl('image/icon/weibo.png'); ?>">
+                </a>
+                <span class="mdl-tooltip mdl-tooltip--top" for="ft-Weibo">Weibo</span>
+            <?php endif; ?>
+
+            <?php if ($this->options->ftEmail): ?>
+                <a href="" target="_self"
+                   onclick="window.open('mailto:<?php echo urlencode($this->options->Email) ?>','_self'); return false;"
+                   class="mdl-button mdl-js-button mdl-button--icon" id="ft-email">
+                    <img src="<?php $this->options->themeUrl('image/icon/mail.png'); ?>">
+                </a>
+                <span class="mdl-tooltip mdl-tooltip--top" for="ft-email">Email</span>
+            <?php endif; ?>
+            <!--TODO 如果你需要其他图标, 可以到这下载: https://www.iconfont.cn/-->
         </div>
 
         <div class="footer-center" style="text-align: center">
             本站已生存了 <span id="build-time"></span><br>
             <div>
-                Copyright © <?php echo date('Y'); ?>
+                Copyright © 2017-<?php echo date('Y'); ?>
                 <a class="mdl-color-text--primary anim-line" style="opacity: 0.9"
                    href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> All rights reserved.
+                <?php if ($this->options->customFooter): ?>
+                    <br><?php $this->options->customFooter() ?>
+                <?php endif; ?>
             </div>
         </div>
 
         <div class="footer-right" style="text-align: end">
-            Theme <a class="mdl-color-text--primary   anim-line" style="opacity: 0.9" href="#">My Material</a> <br>
-            <?php _e('<a class="mdl-color-text--primary  anim-line" style="opacity: 0.9"  target="_blank" href="http://www.typecho.org">Typecho</a> 强力驱动'); ?>
-            .
+            Theme <a class="mdl-color-text--primary   anim-line" style="opacity: 0.9"
+                     target="_blank" href="https://github.com/mnnyang/typecho_theme_mymaterial">My Material</a><br>
+            <?php _e('<a class="mdl-color-text--primary  anim-line" style="opacity:0.9"  
+                    target="_blank" href="http://www.typecho.org">Typecho</a> 强力驱动'); ?>.
         </div>
     </div>
 
@@ -72,6 +94,10 @@
         timeout: 8000
     });
 
+    $(document).on('submit', '#search,#drawer-search', function (event) {
+        $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
+    });
+
     $(document).on('pjax:send', function () {
         NProgress.start();
     });
@@ -79,29 +105,13 @@
     $(document).on('pjax:complete', function () {
         NProgress.done();
         $('#mdl-layout-content').scrollTop(0);
-
     });
 
 
     $(document).on('pjax:end', function () {
-        console.log("end");
-
         $.afterPjax();
         Prism.highlightAll();
-
-        var page = $('#page-content');
-        page.find('*[class^=mdl]').removeClass('is-upgraded').removeAttr("data-upgraded");
-        page.find('.mdl-menu__item-ripple-container').remove();
-        page.find('.mdl-js-ripple-effect--ignore-events').removeClass('mdl-js-ripple-effect--ignore-events');
-
-        var mdl_menu_container = page.find('.mdl-menu__container');
-        mdl_menu_container.each(function () {
-            $(this).after($(this).html());
-            $(this).remove()
-        });
-
-        componentHandler.upgradeDom();
-
+        reUpgradePageDem();
         scrollToHash();
     });
 

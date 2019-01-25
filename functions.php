@@ -3,14 +3,30 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 function themeConfig($form)
 {
+    $homeType = new Typecho_Widget_Helper_Form_Element_Radio('homeType',
+        array('type1' => '简洁模式', 'type2' => '一般模式'), array('type2'), _t('首页风格'));
+    $form->addInput($homeType);
+
+    $homeCard = new Typecho_Widget_Helper_Form_Element_Checkbox('homeCard',
+        array('showLeft' => _t('显示首页左边大图Card'),
+            'showRight' => _t('显示首页右边大图Card'),
+            'showComment' => _t('显示最新回复 (一般模式下有效)'),
+            'showNewest' => _t('显示最新发布 (一般模式下有效)'),
+            'showTagCloud' => _t('显示标签云 (一般模式下有效)')),
+        array('showLeft', 'showRight','showComment','showNewest','showTagCloud',),
+        _t('首页功能'),
+        _t('简洁模式只能全显示或全隐藏 (默认情况全部显示)'));
+    $form->addInput($homeCard->multiMode());
+
     $LeftImage = new Typecho_Widget_Helper_Form_Element_Text('leftImageUrl', NULL, NULL,
-        _t('站点 左边大图 地址'), _t('在这里填入一个图片 URL 地址'));
+        _t('站点 左边Card背景图'), _t('在这里填入一个图片 URL 地址'));
     $form->addInput($LeftImage);
     $rightImage = new Typecho_Widget_Helper_Form_Element_Text('rightImageUrl', NULL, NULL,
-        _t('站点 右边小图 地址'), _t('在这里填入一个图片 URL 地址'));
+        _t('站点 右边Card背景图'), _t('在这里填入一个图片 URL 地址'));
     $form->addInput($rightImage);
+
     $drawerImage = new Typecho_Widget_Helper_Form_Element_Text('drawerImageUrl', NULL, NULL,
-        _t('站点 侧拉栏头图 地址'), _t('在这里填入一个图片 URL 地址'));
+        _t('站点 侧拉图的背景图'), _t('在这里填入一个图片 URL 地址'));
     $form->addInput($drawerImage);
 
     $drawerBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('drawerBlock',
@@ -18,14 +34,28 @@ function themeConfig($form)
             'ShowCategory' => _t('显示分类'),
             'ShowArchive' => _t('显示归档')),
         array('ShowPages', 'ShowCategory', 'ShowArchive'), _t('抽屉显示'));
-
     $form->addInput($drawerBlock->multiMode());
 
-    $homeType = new Typecho_Widget_Helper_Form_Element_Radio('homeType',
-        array('type1' => '简洁模式', 'type2' => '一般模式'), array('type2'), _t('首页风格'));
-    $form->addInput($homeType);
-}
+    $customFooter = new Typecho_Widget_Helper_Form_Element_Text('customFooter', NULL, NULL,
+        _t('网站脚自定义文字'), _t('填入一些东西(备案之类的信息..), 也可写入html..\(^o^)/'));
+    $form->addInput($customFooter);
 
+    $ftGithub = new Typecho_Widget_Helper_Form_Element_Text('ftGithub', NULL, NULL,
+        _t('网站脚联系方式: GitHub'), _t('填入github登录用户名'));
+    $form->addInput($ftGithub);
+
+    $ftQQ = new Typecho_Widget_Helper_Form_Element_Text('ftQQ', NULL, NULL,
+        _t('网站脚联系方式: QQ'), _t('填入QQ号码'));
+    $form->addInput($ftQQ);
+
+    $ftWeibo = new Typecho_Widget_Helper_Form_Element_Text('ftWeibo', NULL, NULL,
+        _t('网站脚联系方式: Weibo'), _t('填入微博主页网址Url'));
+    $form->addInput($ftWeibo);
+
+    $ftEmail = new Typecho_Widget_Helper_Form_Element_Text('ftEmail', NULL, NULL,
+        _t('网站脚联系方式: Email'), _t('填入邮箱'));
+    $form->addInput($ftEmail);
+}
 
 function themeFields($layout)
 {
