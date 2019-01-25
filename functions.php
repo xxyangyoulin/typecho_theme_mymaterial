@@ -12,8 +12,9 @@ function themeConfig($form)
             'showRight' => _t('显示首页右边大图Card'),
             'showComment' => _t('显示最新回复 (一般模式下有效)'),
             'showNewest' => _t('显示最新发布 (一般模式下有效)'),
-            'showTagCloud' => _t('显示标签云 (一般模式下有效)')),
-        array('showLeft', 'showRight','showComment','showNewest','showTagCloud',),
+            'showTagCloud' => _t('显示标签云 (一般模式下有效)'),
+            'showBreadcrumb' => _t('显示面包屑导航条')),
+        array('showLeft', 'showRight', 'showComment', 'showNewest', 'showTagCloud', 'showBreadcrumb',),
         _t('首页功能'),
         _t('简洁模式只能全显示或全隐藏 (默认情况全部显示)'));
     $form->addInput($homeCard->multiMode());

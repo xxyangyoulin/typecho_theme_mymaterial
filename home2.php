@@ -17,26 +17,28 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
 
 <div class="mdl-cell--8-col mdl-cell--5-col-tablet" style="position: relative">
-    <?php if (!$this->is('index') || $this->getCurrentPage() != 1): ?>
-        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
-            <a class="mdl-color-text--primary" href="<?php $this->options->siteUrl(); ?>">
-                <i class="material-icons">home</i>
-                首页
-            </a>
-            <?php if (!$this->is('index')): ?>
-                <a>
-                    <?php $this->archiveTitle(array(
-                        'category' => _t('分类 %s'),
-                        'search' => _t('包含关键字 %s'),
-                        'tag' => _t('标签 %s'),
-                        'author' => _t('%s')
-                    ), '', ''); ?>
+    <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
+        <?php if (!$this->is('index') || $this->getCurrentPage() != 1): ?>
+            <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
+                <a class="mdl-color-text--primary" href="<?php $this->options->siteUrl(); ?>">
+                    <i class="material-icons">home</i>
+                    首页
                 </a>
-            <?php endif; ?>
-            <?php if ($this->getCurrentPage() != 1): ?>
-                <a>第<?php echo $this->getCurrentPage() ?>页</a>
-            <?php endif; ?>
-        </div>
+                <?php if (!$this->is('index')): ?>
+                    <a>
+                        <?php $this->archiveTitle(array(
+                            'category' => _t('分类 %s'),
+                            'search' => _t('包含关键字 %s'),
+                            'tag' => _t('标签 %s'),
+                            'author' => _t('%s')
+                        ), '', ''); ?>
+                    </a>
+                <?php endif; ?>
+                <?php if ($this->getCurrentPage() != 1): ?>
+                    <a>第<?php echo $this->getCurrentPage() ?>页</a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
     <?php if ($this->is('index') && $this->getCurrentPage() == 1): ?>
         <?php if (!empty($this->options->homeCard) && in_array('showLeft', $this->options->homeCard)): ?>

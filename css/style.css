@@ -330,6 +330,10 @@ header {
     max-width: 900px !important;
 }
 
+.post-card{
+    height: max-content;
+}
+
 .post-card .mdl-card__supporting-text {
     width: 100%;
     box-sizing: border-box;

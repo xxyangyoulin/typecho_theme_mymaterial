@@ -1,17 +1,17 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
-
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">
-    <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
-        <a class="mdl-color-text--primary" href="#" onclick="window.history.back();return false;">
-            <i class="material-icons">arrow_back</i>返回</a>
-        <a><?php $this->title() ?></a>
+    <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
+        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
+            <a class="mdl-color-text--primary" href="#" onclick="window.history.back();return false;">
+                <i class="material-icons">arrow_back</i>返回</a>
+            <a><?php $this->title() ?></a>
 
-        <div class="right-box">
+            <div class="right-box">
+            </div>
         </div>
-    </div>
-
+    <?php endif; ?>
     <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp menu-dialog-visible
              mdl-cell--12-col">
 
@@ -50,7 +50,7 @@
 
         <button style="position: absolute;top: 16px;right: 16px;" id="post-share-btn"
                 class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--grey-600">
-            <i  class="material-icons">share</i>
+            <i class="material-icons">share</i>
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
             for="post-share-btn">
