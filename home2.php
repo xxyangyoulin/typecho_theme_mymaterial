@@ -46,7 +46,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
                      style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">
                     <div class="card-text-wrapper">
 
-                        <h2 class="mdl-card__title-text color-text-white-primary">
+                        <h2 class="mdl-card__title-text mdl-color-text--white">
                             <?php $this->options->title() ?>
                         </h2>
                         <div class="mdl-card__subtitle-text color-text-white-second">
@@ -56,7 +56,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
                 </div>
 
                 <div class="mdl-card__actions ">
-                    <div class="avator-wrapper">
+                    <div class="avator-wrapper zoom-avator">
                         <?php echo $this->author->gravatar(40); ?>
 
                         <span class="author-text color-text-block-primary">

@@ -3,7 +3,9 @@
     <div class="nav-header"
          style="background-image: url('<?php if ($this->options->drawerImageUrl): $this->options->drawerImageUrl(); else:$this->options->themeUrl('image/drawer.jpg'); endif; ?>');">
 
+        <div class="drawer-avator zoom-avator">
         <?php echo $this->author->gravatar(50); ?>
+        </div>
 
         <div class="author">
             <?php $this->author('screenName'); ?>

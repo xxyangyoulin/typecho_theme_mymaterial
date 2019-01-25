@@ -18,9 +18,9 @@ Typecho_Cookie::delete('__typecho_remember_name');
             <a target="_blank" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?>
                 (<?php $this->user->screenName(); ?>)
             </a><br>
-            <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
+            <a class="no-pjax" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
         <?php else: ?>
-            <a href="<?php $this->options->adminUrl('login.php'); ?>">
+            <a target="_blank" href="<?php $this->options->adminUrl('login.php'); ?>">
                 <?php _e('前往后台登录'); ?>
             </a>
         <?php endif; ?>

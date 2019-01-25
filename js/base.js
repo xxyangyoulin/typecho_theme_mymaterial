@@ -77,13 +77,13 @@
 })(jQuery, this);
 
 function trim(str) {
-    if(str == null){
+    if (str == null) {
         str = "";
     }
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-var shareWeibo = function (title, url, pics='') {
+var shareWeibo = function (title, url, pics = '') {
     var share_str = 'http://v.t.sina.com.cn/share/share.php?' +
         'title=' + title
         + '&url=' + url

@@ -42,7 +42,9 @@
         </div>
 
         <div class="footer-center" style="text-align: center">
-            本站已生存了 <span id="build-time"></span><br>
+            <?php if ($this->options->siteTime): ?>
+                本站已生存了 <span id="build-time"></span><br>
+            <?php endif; ?>
             <div>
                 Copyright © 2017-<?php echo date('Y'); ?>
                 <a class="mdl-color-text--primary anim-line" style="opacity: 0.9"
@@ -84,43 +86,49 @@
 <script>
 
     $(function () {
-        startTime(<?php getStartTime();?>);
-    });
+        <?php if ($this->options->siteTime): ?>
+        startTime('<?php $this->options->siteTime();?>');
+        <?php endif; ?>
 
-    // $.pjax.defaults.maxCacheLength = 0;
-    $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
-        container: '#page-content',
-        fragment: '#page-content',
-        timeout: 8000
-    });
+        // $.pjax.defaults.maxCacheLength = 0;
+        $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
+            container: '#page-content',
+            fragment: '#page-content',
+            timeout: 8000
+        });
 
-    $(document).on('submit', '#search,#drawer-search', function (event) {
-        $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
-    });
+        $(document).on('submit', '#search,#drawer-search', function (event) {
+            $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
+        });
 
-    $(document).on('pjax:send', function () {
-        NProgress.start();
-    });
+        $(document).on('pjax:send', function () {
+            NProgress.start();
+        });
 
-    $(document).on('pjax:complete', function () {
-        NProgress.done();
-        $('#mdl-layout-content').scrollTop(0);
-    });
+        $(document).on('pjax:complete', function () {
+            NProgress.done();
+            $('#mdl-layout-content').scrollTop(0);
+        });
 
 
-    $(document).on('pjax:end', function () {
-        $.afterPjax();
-        Prism.highlightAll();
-        reUpgradePageDem();
-        scrollToHash();
-    });
+        $(document).on('pjax:end', function () {
+            $.afterPjax();
+            reUpgradePageDem();
+            scrollToHash();
 
-    var scrollToHash = function () {
-        if (window.location.hash) {
-            var id = window.location.hash.replace('#', "");
-            $.gotoAnchorSmooth($('#' + id), 0, 0)
+            try {
+                Prism.highlightAll();
+            } catch (e) {
+            }
+        });
+
+        var scrollToHash = function () {
+            if (window.location.hash) {
+                var id = window.location.hash.replace('#', "");
+                $.gotoAnchorSmooth($('#' + id), 0, 0)
+            }
         }
-    }
+    });
 
 </script>
 <?php $this->need('loginDialog.php'); ?>

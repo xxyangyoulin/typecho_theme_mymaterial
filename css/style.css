@@ -202,6 +202,7 @@ html, body {
     animation-duration: 0.7s;
 }
 
+
 @-webkit-keyframes swing {
     20%, 40%, 60%, 80%, 100% {
         -webkit-transform-origin: top center;
@@ -319,10 +320,10 @@ header {
     box-sizing: border-box;
     max-width: 1005px;
     width: 100%;
-    justify-content: center;
     margin: 0 auto;
     padding: 150px 0 0 0;
     flex: 1 0 auto;
+    align-content: flex-start;
 }
 
 .page-content-type1 {
@@ -396,6 +397,7 @@ header {
 }
 
 .card-text-wrapper {
+    display: block;
     align-self: flex-end;
     margin: -16px;
     padding: 24px 16px 16px 16px;
@@ -723,10 +725,10 @@ blockquote:before, blockquote:after {
     background-repeat: no-repeat;
 }
 
-.nav-header > img {
-    display: block;
+.nav-header > .drawer-avator {
     width: 50px;
     margin-left: 16px;
+    overflow: hidden;
     margin-top: 40px;
     height: 50px;
     border-radius: 50%;
@@ -739,7 +741,7 @@ blockquote:before, blockquote:after {
 }
 
 .nav-header .desc {
-    padding: 0px 16px 0px 16px;
+    padding: 0px 16px 16px 16px;
     color: whitesmoke;
 }
 

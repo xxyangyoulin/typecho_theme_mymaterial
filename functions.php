@@ -36,6 +36,10 @@ function themeConfig($form)
         array('ShowPages', 'ShowCategory', 'ShowArchive'), _t('抽屉显示'));
     $form->addInput($drawerBlock->multiMode());
 
+    $siteTime = new Typecho_Widget_Helper_Form_Element_Text('siteTime', NULL, '2019-01-01',
+        _t('网站出生时间'), _t('填入日期, 例如 (2019-01-01 00:00:00)'));
+    $form->addInput($siteTime);
+
     $customFooter = new Typecho_Widget_Helper_Form_Element_Text('customFooter', NULL, NULL,
         _t('网站脚自定义文字'), _t('填入一些东西(备案之类的信息..), 也可写入html..\(^o^)/'));
     $form->addInput($customFooter);
@@ -110,7 +114,7 @@ function getBuildTime()
 
 function getStartTime()
 {
-    return '2029-01-19 00:00:00';
+    echo '2000-01-19 00:00:00';
 }
 
 function drawerMenuPages()
