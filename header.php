@@ -13,9 +13,6 @@
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
 
-    <!-- 使用url函数转换相关路径 -->
-    <!--    <link rel="stylesheet" href="-->
-    <?php //$this->options->themeUrl('material/material.indigo-pink.min.css'); ?><!--">-->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.font.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/nprogress.css'); ?>">
@@ -26,7 +23,6 @@
     <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 </head>
 <body style="">
@@ -61,9 +57,10 @@
                 </div>
             </div>
         </form>
-        <button id="show-login-dialog" class="mdl-cell--hide-phone mdl-button mdl-js-button mdl-button--icon" style="margin-left: 16px;">
+        <a href="<?php $this->options->adminUrl(); ?>" id="show-login-dialog" target="_blank"
+           class="mdl-cell--hide-phone mdl-button mdl-js-button mdl-button--icon no-pjax" style="margin-left: 16px;">
             <i class="material-icons">person</i>
-        </button>
+        </a>
     </header>
     <!--drawer-->
     <?php $this->need('drawer.php'); ?>
