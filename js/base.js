@@ -380,12 +380,15 @@ $(function () {
         });
     }
 
-    /**删除文章出现的多余空行*/
-    function articleDelMoreBr() {
+    function articleContentReplace() {
         $('.article-content').each(function () {
+            /**删除文章出现的多余空行*/
             $(this).html($(this).html().replace(/(<br>){2,}/ig, "<br>"));
+            /**a标签block打开*/
+            $(this).find('a').attr('target','_block')
         });
     }
+
 
     /**页面resize*/
     $(window).resize(function () {
@@ -411,7 +414,7 @@ $(function () {
         $.pageNav();
         articleTitleTree();
         articleImage();
-        articleDelMoreBr();
+        articleContentReplace();
         $.commentsAjax();
 
         $mdl_content.getNiceScroll().resize();
