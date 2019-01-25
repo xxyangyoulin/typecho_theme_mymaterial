@@ -1,6 +1,6 @@
 # Typecho My Material 主题
 预览: [小酌一杯](https://yangyoulin.com)    
-
+[说明](https://yangyoulin.com/index.php/archives/20.html)
 魔改了一下Material主题，反正闲着也是闲着...  
 基本实现了全局pjax加载..links插件支持..代码高亮插件pjax支持...如果你喜欢我非常高兴😄。
 
