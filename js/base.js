@@ -380,6 +380,13 @@ $(function () {
         });
     }
 
+    /**删除文章出现的多余空行*/
+    function articleDelMoreBr() {
+        $('.article-content').each(function () {
+            $(this).html($(this).html().replace(/(<br>){2,}/ig, "<br>"));
+        });
+    }
+
     /**页面resize*/
     $(window).resize(function () {
         resizeMenuTreeHeight();
@@ -404,6 +411,7 @@ $(function () {
         $.pageNav();
         articleTitleTree();
         articleImage();
+        articleDelMoreBr();
         $.commentsAjax();
 
         $mdl_content.getNiceScroll().resize();
