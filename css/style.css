@@ -308,6 +308,16 @@ header {
 }
 
 /*page-content*/
+.mdl-layout{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mdl-layout *{
+    /*opacity: 0.98;*/
+}
+
 .mdl-layout__content {
     width: 100%;
     display: flex;

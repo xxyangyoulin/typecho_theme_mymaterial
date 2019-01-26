@@ -112,7 +112,7 @@
 
 
         $(document).on('pjax:end', function () {
-            $.afterPjax();
+            $.afterPjax();// 需要第一个执行
             reUpgradePageDem();
             scrollToHash();
 

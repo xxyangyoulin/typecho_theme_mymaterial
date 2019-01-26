@@ -374,9 +374,8 @@ $(function () {
 
     function articleImage() {
         /**zoom article image*/
-        $('#article-content img').on('click', function () {
-            let $t = $(this);
-            $t.toggleClass('show')
+        $('.article-content img').on('click', function () {
+            $(this).toggleClass('show')
         });
     }
 
@@ -410,11 +409,11 @@ $(function () {
     });
 
     $.afterPjax = function () {
-        $.postNear();
-        $.pageNav();
+        articleContentReplace();
         articleTitleTree();
         articleImage();
-        articleContentReplace();
+        $.postNear();
+        $.pageNav();
         $.commentsAjax();
 
         $mdl_content.getNiceScroll().resize();
