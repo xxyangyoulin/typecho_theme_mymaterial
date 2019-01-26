@@ -1,6 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php if (!$this->request->isAjax()) {
     $this->need('header.php');
+} else {
+    $this->need('siteTitle.php');
 } ?>
 
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">

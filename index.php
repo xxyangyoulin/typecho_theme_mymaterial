@@ -11,6 +11,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 if (!$this->request->isAjax()) {
     $this->need('header.php');
+} else {
+    $this->need('siteTitle.php');
 }
 
 if ($this->options->homeType && $this->options->homeType == 'type1') {

@@ -6,8 +6,11 @@
  *
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (!$this->request->isAjax()) {$this->need('header.php');} ?>
-
+<?php if (!$this->request->isAjax()) {
+    $this->need('header.php');
+} else {
+    $this->need('siteTitle.php');
+} ?>
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">
     <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
         <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
@@ -97,7 +100,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
     </div>
 </div><!--article-title-list-->
 
-<?php if (!$this->request->isAjax()) {$this->need('footer.php');} ?>
+<?php if (!$this->request->isAjax()) {
+    $this->need('footer.php');
+} ?>
 
 
 
