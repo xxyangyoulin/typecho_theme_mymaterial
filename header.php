@@ -13,6 +13,9 @@
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
 
+    <link rel="shortcut icon" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
+    <link rel="bookmark" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
+
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.font.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/nprogress.css'); ?>">
@@ -66,7 +69,8 @@
     <?php $this->need('drawer.php'); ?>
 
     <main class="mdl-layout__content" id="mdl-layout-content">
-        <div id="page-content" class="page-content mdl-grid <?php if(($this->options->homeType && $this->options->homeType == 'type1')):echo ' page-content-type1';endif; ?>">
+        <div id="page-content"
+             class="page-content mdl-grid <?php if (($this->options->homeType && $this->options->homeType == 'type1')):echo ' page-content-type1';endif; ?>">
 
 
     
