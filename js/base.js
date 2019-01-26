@@ -221,7 +221,8 @@ $(function () {
         if (articleTitleList.length === 0) return;
         resizeMenuTreeHeight();
 
-        var enabled = true, innerList = $('.index-menu-list .index-menu-list');
+        $.titleScrollEnabled = true;
+        var innerList = $('.index-menu-list .index-menu-list');
         updateMenuIndexTags();
 
         function currentItem() {
@@ -236,7 +237,7 @@ $(function () {
         }
 
         $mdl_content.scroll(function () {
-            if (!enabled) return;
+            if (!$.titleScrollEnabled) return;
             let res = search(0, menu_index_tags.length - 1, scrollTopValue());
             if (!res) return;
             rmCurrent();
@@ -254,9 +255,13 @@ $(function () {
             titleToShow(current.parent())
         });
 
-        $('.index-menu-link').on('click', function () {
+        var enabledTimeOut = null;
+        $('.index-menu-link').on('click', function (e) {
+            e.preventDefault();
             var t = $(this);
-            enabled = false;
+            $.titleScrollEnabled = false;
+            clearTimeout(enabledTimeOut);
+
             rmCurrent();
             t.addClass('current');
 
@@ -266,9 +271,11 @@ $(function () {
                 .addClass('open').stop(false, true).slideDown();
             innerList.not('.open').stop(false, true).slideUp();
 
-            setTimeout(function () {
-                enabled = true;
-            }, 1000);
+            var id = t.attr('href');
+            $.gotoAnchorSmooth($(id));
+            enabledTimeOut = setTimeout(function () {
+                $.titleScrollEnabled = true;
+            }, 1300);
         });
 
         let firstItem = $(".index-menu  .index-menu-item")[0], indexMenu = $('.index-menu');
