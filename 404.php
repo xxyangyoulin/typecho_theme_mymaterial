@@ -1,16 +1,17 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('header.php'); ?>
-
-    <div class="col-mb-12 col-tb-8 col-tb-offset-2">
-
-        <div class="error-page">
-            <h2 class="post-title">404 - <?php _e('页面没找到'); ?></h2>
-            <p><?php _e('你想查看的页面已被转移或删除了, 要不要搜索看看: '); ?></p>
-            <form method="post">
-                <p><input type="text" name="s" class="text" autofocus /></p>
-                <p><button type="submit" class="submit"><?php _e('搜索'); ?></button></p>
-            </form>
+<?php if (!$this->request->isAjax()) {
+    $this->need('header.php');
+} ?>
+<div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp menu-dialog-visible">
+    <div style="width: 100%;text-align: center;padding: 80px 16px;box-sizing: border-box">
+        <h2 style="font-size: 128px;line-height: 100px;">404</h2>
+        <div style="padding-top: 16px; word-break: break-all;overflow: hidden;box-sizing: border-box;line-height: 22px;">
+            很抱歉, 你要找的东西可能被删除了呢?😀 <br><b>尝试搜索看看</b>...
         </div>
-
-    </div><!-- end #content-->
-	<?php $this->need('footer.php'); ?>
+        <a style="margin-top: 8px;" href="<?php $this->options->siteUrl(); ?>"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">返回首页</a>
+    </div>
+</div>
+<?php if (!$this->request->isAjax()) {
+    $this->need('footer.php');
+} ?>
