@@ -372,10 +372,22 @@ $(function () {
         }
     };
 
+    (function () {
+        $('#show-image').on('click', function () {
+            var $t = $(this);
+            $t.animate({'opacity': 0}, 200, function () {
+                $t.find('.inner-flex').html('')
+                $t.hide();
+            })
+        })
+    })();
+
     function articleImage() {
         /**zoom article image*/
         $('.article-content img').on('click', function () {
-            $(this).toggleClass('show')
+            $('#show-image').css('opacity', '0.0').show();
+            $('#show-image .inner-flex').html($(this).clone());
+            $('#show-image').animate({'opacity': 1}, 200)
         });
     }
 
@@ -384,10 +396,9 @@ $(function () {
             /**删除文章出现的多余空行*/
             $(this).html($(this).html().replace(/(<br>){2,}/ig, "<br>"));
             /**a标签block打开*/
-            $(this).find('a').attr('target','_block')
+            $(this).find('a').attr('target', '_block')
         });
     }
-
 
     /**页面resize*/
     $(window).resize(function () {

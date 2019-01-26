@@ -1,16 +1,9 @@
 <?php
 /**
- * My Material 主题
- *
- * @package My Material Theme
- * @author xxyangyoulin
- * @version 1.0
- * @link http://typecho.org
+ * My Material 主题 一般模式
  */
-
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
-<?php //debug_print($this->getCurrentPage()) ?>
 
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>

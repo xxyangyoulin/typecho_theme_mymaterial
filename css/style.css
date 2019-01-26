@@ -25,10 +25,8 @@ html, body {
 }
 
 .menu-dialog-visible {
-    z-index: 10;
     overflow: visible !important;
 }
-
 
 .a-none {
     text-decoration: none;
@@ -133,6 +131,12 @@ html, body {
 .hover--margin-top-3px:hover {
     transform: translateY(-3px);
 }
+
+/*遮挡了子元素的z-index*/
+.mdl-card {
+    z-index: unset;
+}
+
 
 /**anim a underline*/
 
@@ -308,13 +312,13 @@ header {
 }
 
 /*page-content*/
-.mdl-layout{
+.mdl-layout {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.mdl-layout *{
+.mdl-layout * {
     /*opacity: 0.98;*/
 }
 
@@ -340,7 +344,7 @@ header {
     max-width: 900px !important;
 }
 
-.post-card{
+.post-card {
     height: max-content;
 }
 
@@ -550,7 +554,7 @@ header {
 .article-content img.show {
     position: fixed;
     cursor: pointer;
-    z-index: 1111;
+    z-index: 9999;
     margin: auto;
     transition: all 0.3s;
     width: auto;
@@ -1227,6 +1231,39 @@ blockquote:before, blockquote:after {
     margin-left: 16px;
     transition: all 0.5s;
     opacity: 0.1;
+}
+
+#show-image {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+}
+
+#show-image .inner-flex {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#show-image img {
+    cursor: pointer;
+    margin: auto;
+    transition: all 0.3s;
+    max-width: 95%;
+    max-height: 95%;
+    height: auto;
 }
 
 /*footer*/

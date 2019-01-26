@@ -1,4 +1,3 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="mdl-layout__drawer" id="drawer">
     <div class="nav-header"
          style="background-image: url('<?php if ($this->options->drawerImageUrl): $this->options->drawerImageUrl(); else:$this->options->themeUrl('image/drawer.jpg'); endif; ?>');">

@@ -1,7 +1,6 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
 <?php while ($this->next()): ?>
-<div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp ">
+<div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp menu-dialog-visible">
 
     <?php $cardImage = $this->fields->card_image;
     if ($cardImage): ?>

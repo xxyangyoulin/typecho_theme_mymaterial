@@ -1,4 +1,3 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 

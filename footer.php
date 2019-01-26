@@ -75,6 +75,8 @@
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
 </div><!--snackbar-->
+
+<div id="show-image" style=""><div class="inner-flex"></div></div>
 </body>
 
 <script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
@@ -93,7 +95,7 @@
         // $.pjax.defaults.maxCacheLength = 0;
         $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
             container: '#page-content',
-            fragment: '#page-content',
+            // fragment: '#page-content',
             timeout: 8000
         });
 

@@ -9,8 +9,9 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-$this->need('header.php');
-
+if (!$this->request->isAjax()) {
+    $this->need('header.php');
+}
 
 if ($this->options->homeType && $this->options->homeType == 'type1') {
     $this->need('home1.php');
@@ -18,5 +19,7 @@ if ($this->options->homeType && $this->options->homeType == 'type1') {
     $this->need('home2.php');
     $this->need('sidebar.php');
 }
-$this->need('footer.php');
 
+if (!$this->request->isAjax()) {
+    $this->need('footer.php');
+}

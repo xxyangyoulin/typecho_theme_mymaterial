@@ -1,13 +1,7 @@
 <?php
 /**
- * My Material 主题
- *
- * @package My Material Theme
- * @author xxyangyoulin
- * @version 1.0
- * @link http://typecho.org
+ * My Material 主题 简单模式
  */
-
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
