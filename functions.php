@@ -104,7 +104,7 @@ function musicList($list_str)
 
         $result_item['src'] = trim($item_info[0]);
         if (is_numeric($result_item['src'])) {
-            $result_item['src'] = 'http://music.163.com/song/media/outer/url?id='.$result_item['src'];
+            $result_item['src'] = 'https://music.163.com/song/media/outer/url?id='.$result_item['src'];
         }
         $result_item['name'] = trim($item_info[1]);
         if (count($item_info) >= 2) {
