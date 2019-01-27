@@ -543,8 +543,8 @@ header {
 
 .article-content img {
     display: block;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     max-width: 100%;
     cursor: pointer;
     transition: all 0.3s;
