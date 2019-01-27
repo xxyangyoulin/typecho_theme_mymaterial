@@ -24,6 +24,11 @@
     <![endif]-->
 
     <?php $this->header(); ?>
+
+    <script>
+        var musicAutoPlay = <?php echo ($this->options->musicCtrl && in_array('auto', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
+        var musicAutoNext = <?php echo ($this->options->musicCtrl && in_array('autoNext', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
+    </script>
 </head>
 <body style="">
 <!--[if lt IE 8]>
@@ -57,6 +62,46 @@
                 </div>
             </div>
         </form>
+        <div id="music-panel">
+            <div class="music-panel-w">
+                <div class="list-panel">
+                    <ul>
+                        <?php $musicList = musicList($this->options->musicList);
+                        foreach ($musicList as $i=>$item) {
+                            $html = "<li data-src=\"{$item['src']}\">";
+                            $html .= ($i+1).'. '.$item['name'];
+
+                            if (!empty($item['singer'])) {
+                                $html .= " - " . $item['singer'];
+                            }
+
+                            $html .= "</li>";
+                            echo $html;
+                        } ?>
+                    </ul>
+                </div>
+                <div class="ctrl-group">
+                    <button id="music-album" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                class="material-icons">music_note</i>
+                    </button>
+                    <div class="hide-panel">
+                        <div class="ctrl-panel">
+                            <button id="music-volume" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                        class="material-icons">volume_up</i></button>
+                            <button id="music-list" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                        class="material-icons">playlist_play</i></button>
+                            <button id="music-prev" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                        class="material-icons">skip_previous</i></button>
+                            <button id="music-play" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                        class="material-icons">play_circle_filled</i></button>
+                            <button id="music-next" class=" mdl-button mdl-js-button mdl-button--icon"><i
+                                        class="material-icons">skip_next</i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <a href="<?php $this->options->adminUrl(); ?>" id="show-login-dialog" target="_blank"
            class="mdl-cell--hide-phone mdl-button mdl-js-button mdl-button--icon no-pjax" style="margin-left: 16px;">
             <i class="material-icons">person</i>

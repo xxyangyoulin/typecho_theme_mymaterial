@@ -135,6 +135,15 @@ $(function () {
     let drawerMenu = $('.menu-list');
     let menuSwitch = $('.menu-switch');
 
+    $.showSnackbar = function (msg) {
+        var snackbarContainer = document.querySelector('#demo-snackbar-example');
+        var data = {
+            message: msg,
+            timeout: 2000,
+        };
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    };
+
     $.gotoAnchorSmooth = function ($target, offset = 0, time = 300) {
         if ($target instanceof $ && $target.length) {
             $mdl_content.animate({scrollTop: $target.offset().top + $mdl_content.scrollTop() + offset}, time);
@@ -275,7 +284,7 @@ $(function () {
             $.gotoAnchorSmooth($(id));
             enabledTimeOut = setTimeout(function () {
                 $.titleScrollEnabled = true;
-            }, 1300);
+            }, 1000);
         });
 
         let firstItem = $(".index-menu  .index-menu-item")[0], indexMenu = $('.index-menu');
@@ -438,6 +447,200 @@ $(function () {
     };
 
     $.afterPjax();
+
+    /**music*/
+    (function () {
+        var autoOpenList = true;
+        var panListWidth = '250px';
+        var musicPanel = $('#music-panel');
+        var musicPanelW = $('.music-panel-w');
+        var album = $('#music-album');
+        var hidePanel = $('.hide-panel');
+        var play = $('#music-play');
+        var next = $('#music-next');
+        var prev = $('#music-prev');
+        var volume = $('#music-volume');
+        var btnList = $('#music-list');
+        var panList = $('.list-panel');
+        var listItems = panList.find('li');
+
+        var music = new Audio();
+
+        music.addEventListener('ended', function () {
+            toPause();
+            if (musicAutoNext) {
+                toNext();
+            }
+        }, false);
+
+        if (listItems.length) {
+            $(listItems[0]).addClass('current');
+            music.src = $(listItems[0]).data('src');
+        } else {
+            //没有歌曲,不用初始化,隐藏播放按钮
+            musicPanel.hide(300);
+            return;
+        }
+
+        volume.on('click', function () {
+            changeVolume();
+        });
+
+        play.on('click', function () {
+            if (!music.src) {
+                $.showSnackbar('当前没有歌曲 !');
+                return;
+            }
+            music.paused ? toPlay() : toPause();
+        });
+
+        next.on('click', function () {
+            toNext();
+        });
+        prev.on('click', function () {
+            toPrev();
+        });
+
+        listItems.on('click', function () {
+            var src = $(this).data('src');
+            if (src) {
+                music.src = src;
+                toPlay();
+                listItems.removeClass('current');
+                $(this).addClass('current')
+            }
+        });
+
+        btnList.on('click', function (e) {
+            if (panList.css('display') != 'none') {
+                panList.animate({'width': '0px'}, 200, function () {
+                    panList.hide();
+                });
+                autoOpenList = true;
+            } else {
+                panList.show().animate({'width': panListWidth}, 200);
+                autoOpenList = false;
+            }
+        });
+
+
+        album.on('click', function (e) {
+            if (musicPanelW.hasClass('open')) {
+                closeMusicPanel();
+            } else {
+                openMusicPanel();
+            }
+
+            //点击其他地方关闭播放板
+            $(document).one("click", function () {
+                closeMusicPanel();
+            });
+            musicPanelW.on('click', function (e) {
+                e.stopPropagation();
+            })
+        });
+
+        var changeVolume = function () {
+            if (music.muted) {
+                music.muted = false;
+                volume.find('i').html('volume_up')
+            } else {
+                music.muted = true;
+                volume.find('i').html('volume_off')
+            }
+        };
+
+        var toPlay = function () {
+            if (!music.src) return;
+            music.play();
+            if(music.paused)return;
+            playing(true);
+            play.find('i').html('pause_circle_filled');
+        };
+
+        var toPause = function () {
+            music.pause();
+            playing(false);
+            play.find('i').html('play_circle_filled');
+        };
+
+        var toNext = function () {
+            if (listItems.length == 0) {
+                $.showSnackbar('没有歌曲 !');
+                return;
+            }
+            var current = $('.list-panel .current');
+            if (current.length) {
+                var next = current.next('li');
+                if (next.length) {
+                    toPlayItem(next);
+                    return;
+                }
+            }
+            toPlayItem($(listItems[0]))
+        };
+
+        var toPrev = function () {
+            if (listItems.length == 0) {
+                $.showSnackbar('没有歌曲 !');
+                return;
+            }
+            var current = $('.list-panel .current');
+            if (current.length) {
+                var prev = current.prev('li');
+                if (prev.length) {
+                    toPlayItem(prev);
+                    return;
+                }
+            }
+            toPlayItem($(listItems[listItems.length - 1]))
+        };
+
+        var toPlayItem = function ($item) {
+            listItems.removeClass('current');
+            $item.addClass('current');
+            music.src = $item.data('src');
+            toPlay();
+        };
+
+        var closeMusicPanel = function () {
+            if (panList.css('display') != 'none') {
+                panList.animate({'width': '0px'}, 200, function () {
+                    panList.hide();
+                    closeHidePanel();
+                })
+            } else {
+                closeHidePanel();
+            }
+        };
+
+        var openMusicPanel = function () {
+            musicPanelW.addClass('mdl-shadow--2dp open');
+            hidePanel.slideDown(200, function () {
+                if (!autoOpenList) {
+                    panList.show().animate({'width': panListWidth}, 200);
+                }
+            });
+        };
+
+        var closeHidePanel = function () {
+            hidePanel.slideUp(200, function () {
+                musicPanelW.removeClass('mdl-shadow--2dp open');
+            });
+        };
+
+        var playing = function (isPlaying) {
+            if (isPlaying) album.addClass('playing');
+            else album.removeClass('playing');
+        };
+
+        /**自动播放*/
+        if (musicAutoPlay) {
+            setTimeout(function () {
+                play.trigger('click')
+            }, 2000)
+        }
+    })();
 });
 
 
@@ -535,12 +738,3 @@ function reUpgradePageDem() {
 
     componentHandler.upgradeDom();
 }
-
-$.showSnackbar = function (msg) {
-    var snackbarContainer = document.querySelector('#demo-snackbar-example');
-    var data = {
-        message: msg,
-        timeout: 2000,
-    };
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-};

@@ -133,6 +133,10 @@
     });
 
 </script>
+<script>
+
+</script>
+
 <?php //$this->need('loginDialog.php'); ?>
 <?php $this->footer(); ?>
 </html>
