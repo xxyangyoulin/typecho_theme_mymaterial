@@ -444,6 +444,10 @@ $(function () {
         $.commentsAjax();
 
         $mdl_content.getNiceScroll().resize();
+
+        $('.post-card').bind('resize', function () {
+            $mdl_content.getNiceScroll().resize();
+        });
     };
 
     $.afterPjax();
@@ -553,7 +557,7 @@ $(function () {
         var toPlay = function () {
             if (!music.src) return;
             music.play();
-            if(music.paused)return;
+            if (music.paused) return;
             playing(true);
             play.find('i').html('pause_circle_filled');
         };
