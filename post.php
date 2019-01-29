@@ -7,7 +7,7 @@
 
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">
     <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
-        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
+        <div class="breadcrumb mdl-cell mdl-cell--12-col ">
             <a class="mdl-color-text--primary" href="#" onclick="window.history.back();return false;">
                 <i class="material-icons">arrow_back</i>返回</a>
             <a><?php $this->title() ?></a>

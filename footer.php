@@ -100,7 +100,16 @@
         });
 
         $(document).on('submit', '#search,#drawer-search', function (event) {
-            $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
+            event.preventDefault();
+
+            var value = $(this).find('input[name=s]').val();
+            value = trim(value);
+            if(!value){
+                $.showSnackbar('请输入搜索关键字');
+                return;
+            }
+            $.pjax({url: '<?php $this->options->siteUrl(); ?>?s='+value, container: '#page-content'})
+            // $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
         });
 
         $(document).on('pjax:send', function () {
