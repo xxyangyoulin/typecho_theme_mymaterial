@@ -341,6 +341,14 @@ header {
     justify-content: center;
 }
 
+.empty-content{
+    text-align: center;
+    font-size: 16px;
+    padding: 32px;
+    color: black;
+    min-height:  max-content!important;
+}
+
 .page-content-type1 {
     max-width: 900px !important;
 }

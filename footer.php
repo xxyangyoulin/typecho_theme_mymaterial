@@ -96,7 +96,7 @@
         $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
             container: '#page-content',
             // fragment: '#page-content',
-            timeout: 8000
+            timeout: 10000
         });
 
         $(document).on('submit', '#search,#drawer-search', function (event) {
@@ -108,7 +108,7 @@
                 $.showSnackbar('请输入搜索关键字');
                 return;
             }
-            $.pjax({url: '<?php $this->options->siteUrl(); ?>?s='+value, container: '#page-content'})
+            $.pjax({url: '<?php $this->options->siteUrl(); ?>?s='+value, container: '#page-content',timeout: 10000})
             // $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
         });
 
