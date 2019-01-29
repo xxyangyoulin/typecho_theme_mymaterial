@@ -108,8 +108,7 @@
                 $.showSnackbar('请输入搜索关键字');
                 return;
             }
-            $.pjax({url: '<?php $this->options->siteUrl(); ?>?s='+value, container: '#page-content',timeout: 10000})
-            // $.pjax.submit(event, '#page-content'); // It will reload the page,fuck..
+            $.pjax.submit(event, '#page-content',{timeout:10000});
         });
 
         $(document).on('pjax:send', function () {
