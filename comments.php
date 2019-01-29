@@ -27,7 +27,7 @@
         <div id="<?php $comments->theId(); ?>">
             <div class="comment-author">
                 <a target="_blank" class="ds-avatar" href="<?php $comments->url(); ?>">
-                    <?php $comments->gravatar('40', ''); ?>
+                    <?php $comments->gravatar(60, ''); ?>
                 </a>
                 <div class="author-time-w">
                     <span class="fn inner-a-color-inherit a-none anim-line-inner-a mdl-color-text--black">
