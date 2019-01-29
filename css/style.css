@@ -338,6 +338,7 @@ header {
     padding: 150px 0 0 0;
     flex: 1 0 auto;
     align-content: flex-start;
+    justify-content: center;
 }
 
 .page-content-type1 {
@@ -1445,23 +1446,17 @@ blockquote:before, blockquote:after {
 
 
 @media (max-width: 480px) {
+    #home2-left-column,
+    #home2-right-column{
+        width: 100%;
+        max-width: 100%!important;
+    }
+
     .head-card-left {
         height: 300px;
-        margin: 0;
+        margin: -56px 0 0 0;
         border-radius: 0;
         width: 100%;
-    }
-
-    .dark-header {
-        background-color: #2196f3;
-    }
-
-    .main-header {
-        color: white;
-    }
-
-    .mdl-layout__drawer-button i {
-        color: white;
     }
 
     .head-card-right {
@@ -1474,11 +1469,6 @@ blockquote:before, blockquote:after {
 
     .page-content {
         padding-top: 56px;
-        /*margin-top: 56px;*/
-    }
-
-    .head-card-left {
-        margin-top: -56px;
     }
 
     .tag-wrapper a {

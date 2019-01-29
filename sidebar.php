@@ -1,7 +1,7 @@
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 
-<div class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible"
+<div  id="home2-right-column"  class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible"
      style="max-width: 280px;">
 
     <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>

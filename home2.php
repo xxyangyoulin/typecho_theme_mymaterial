@@ -9,7 +9,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 
 
-<div class="mdl-cell--8-col mdl-cell--5-col-tablet" style="position: relative">
+<div id="home2-left-column" class="mdl-cell--8-col mdl-cell--5-col-tablet" style="position: relative">
     <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
         <?php if (!$this->is('index') || $this->getCurrentPage() != 1): ?>
             <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
