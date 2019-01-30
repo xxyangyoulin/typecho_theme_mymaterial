@@ -2,15 +2,6 @@ html, body {
     width: 100%;
     background-color: #FAFAFA;
     overflow: hidden;
-    font-size: 16px;
-}
-
-p{
-    font-size: 16px;
-}
-
-.color-html {
-    color: #3c4858;
 }
 
 .font-ant {
@@ -1027,8 +1018,12 @@ blockquote:before, blockquote:after {
 #comments .comment-content {
     padding: 24px 0px 10px 56px;
     overflow: hidden;
+    font-size: 16px;
     color: black;
     word-break: break-all;
+}
+#comments .comment-content *{
+    font-size: 16px;
 }
 
 #comments .comment-meta {
