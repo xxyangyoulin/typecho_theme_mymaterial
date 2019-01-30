@@ -12,18 +12,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
     $this->need('siteTitle.php');
 } ?>
 <div class="mdl-cell--9-col mdl-cell--6-col-tablet">
-    <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
-        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
-            <a class="mdl-color-text--primary" href="<?php $this->options->siteUrl(); ?>">
-                <i class="material-icons">home</i>
-                首页
-            </a>
-            <a><?php $this->title() ?></a>
-
-            <div class="right-box">
-            </div>
-        </div>
-    <?php endif; ?>
+<!--    --><?php //if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
+    <!--        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">-->
+    <!--            <a class="mdl-color-text--primary" href="--><?php //$this->options->siteUrl(); ?><!--">-->
+    <!--                <i class="material-icons">home</i>-->
+    <!--                首页-->
+    <!--            </a>-->
+    <!--            <a>--><?php //$this->title() ?><!--</a>-->
+    <!---->
+    <!--            <div class="right-box">-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    --><?php //endif; ?>
 
     <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
              mdl-cell--12-col">

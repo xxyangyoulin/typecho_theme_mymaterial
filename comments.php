@@ -26,8 +26,8 @@
     ?>">
         <div id="<?php $comments->theId(); ?>">
             <div class="comment-author">
-                <a target="_blank" class="ds-avatar" href="<?php $comments->url(); ?>">
-                    <?php $comments->gravatar(60, ''); ?>
+                <a target="_blank" class="ds-avatar comment-avatar-w" href="<?php $comments->url(); ?>">
+                    <?php $comments->gravatar(100, ''); ?>
                 </a>
                 <div class="author-time-w">
                     <span class="fn inner-a-color-inherit a-none anim-line-inner-a mdl-color-text--black">
@@ -101,11 +101,11 @@
                   role="form">
                 <div class="avator-bg"></div>
                 <?php if ($this->user->hasLogin()): ?>
-                    <p>
+                    <p style="font-size: 15px">
                         <?php _e('登录身份: '); ?>
-                        <a class="anim-line no-pjax"
+                        <a class="anim-line no-pjax mdl-color-text--primary"
                            href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>.
-                        <a class="anim-line no-pjax" href="<?php $this->options->logoutUrl(); ?>"
+                        <a class="anim-line no-pjax mdl-color-text--primary" href="<?php $this->options->logoutUrl(); ?>"
                            title="Logout"> <?php _e('退出'); ?> </a>
                     </p>
                 <?php else: ?>

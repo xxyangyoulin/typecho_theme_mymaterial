@@ -1,7 +1,7 @@
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 
-<div  id="home2-right-column"  class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible"
+<div id="home2-right-column" class="mdl-cell--4-col mdl-cell--3-col-tablet menu-dialog-visible"
      style="max-width: 280px;">
 
     <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>
@@ -69,21 +69,22 @@
 
     <?php if (!empty($this->options->homeCard) && in_array('showComment', $this->options->homeCard)): ?>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
-             mdl-cell--12-col">
+             mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 style="font-size: 16px"
-                    class="mdl-card__title-text mdl-typography--font-bold color-text-block-second">
+                <h2 class="mdl-card__title-text sidebar-card-title">
                     最近回复</h2>
             </div>
             <ul class="comment-recent">
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                 <?php while ($comments->next()): ?>
-                    <li>
-                        <a href="<?php $comments->url(); ?>">
+                    <li class="comment-recent-item">
+                        <a class="item-avator" href="<?php $comments->url(); ?>">
                             <?php $comments->gravatar('40', ''); ?>
                         </a>
-                        <a href="<?php $comments->permalink(); ?>" style="margin-left: 16px;">
-                            <div style="color:rgba(0,0,0,0.54) "><?php $comments->author(false); ?></div>
+
+                        <a class="item-link" href="<?php $comments->permalink(); ?>"
+                           style="margin-left: 16px;">
+                            <div><?php $comments->author(false); ?></div>
                             <?php $comments->excerpt(35, '...'); ?>
                         </a>
                     </li>
@@ -94,29 +95,28 @@
 
     <?php if (!empty($this->options->homeCard) && in_array('showNewest', $this->options->homeCard)): ?>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
-             mdl-cell--12-col">
+             mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 style="font-size: 16px"
-                    class="mdl-card__title-text mdl-typography--font-bold color-text-block-second">
+                    class="mdl-card__title-text sidebar-card-title">
                     最新发布</h2>
             </div>
 
 
             <ul class="comment-recent">
                 <?php $this->widget('Widget_Contents_Post_Recent')
-                    ->parse('<li><a style="color: rgba(0,0,0,0.54);overflow: hidden;font-size: 16px"  href="{permalink}">{title}<div 
-style="overflow: hidden;white-space: nowrap;font-size: 14px;
-    text-overflow: ellipsis;color: rgba(0,0,0,0.45);">{description}</div></a></li>'); ?>
+                    ->parse('<li class="sidebar-item"><a class="sidebar-item-title"  
+href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a></li>'); ?>
             </ul>
         </div><!--最新发布-->
     <?php endif; ?>
 
     <?php if (!empty($this->options->homeCard) && in_array('showTagCloud', $this->options->homeCard)): ?>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
-             mdl-cell--12-col menu-dialog-visible">
+             mdl-cell--12-col menu-dialog-visible font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 style="font-size: 16px"
-                    class="mdl-card__title-text mdl-typography--font-bold color-text-block-second">
+                    class="mdl-card__title-text sidebar-card-title">
                     标签云</h2>
             </div>
 
