@@ -466,7 +466,7 @@ header {
 }
 
 .tag-wrapper {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     margin-top: 32px;
 }
@@ -529,7 +529,7 @@ header {
 
 .post-card .post-meta {
     position: relative;
-    font-size: 16px;
+    font-size: 14px;
     height: 56px;
     display: flex;
     align-items: center;
@@ -542,12 +542,12 @@ header {
 .article-content {
     color: #3c4858;
     padding: 0 8px 8px 8px;
-    font-size: 16px;
+    font-size: 14px;
     -webkit-font-smoothing: antialiased;
 }
 
-.article-content * {
-    font-size: 16px;
+.article-content* {
+    font-size: 14px;
     color: #3c4858;
 }
 
@@ -1018,12 +1018,9 @@ blockquote:before, blockquote:after {
 #comments .comment-content {
     padding: 24px 0px 10px 56px;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     color: black;
     word-break: break-all;
-}
-#comments .comment-content *{
-    font-size: 16px;
 }
 
 #comments .comment-meta {
