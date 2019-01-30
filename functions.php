@@ -45,7 +45,7 @@ function themeConfig($form)
     $musicCtrl = new Typecho_Widget_Helper_Form_Element_Checkbox('musicCtrl',
         array('auto' => _t('自动播放'),
             'autoNext' => _t('自动播放下一曲')),
-        array('auto', 'autoNext'), _t('音乐播放控制'),_t('谷歌浏览器可能会自动播放失败 (浏览器原因)'));
+        array('auto', 'autoNext'), _t('音乐播放控制'), _t('谷歌浏览器可能会自动播放失败 (浏览器原因)'));
     $form->addInput($musicCtrl->multiMode());
 
     $siteTime = new Typecho_Widget_Helper_Form_Element_Text('siteTime', NULL, '2019-01-01',
@@ -104,7 +104,7 @@ function musicList($list_str)
 
         $result_item['src'] = trim($item_info[0]);
         if (is_numeric($result_item['src'])) {
-            $result_item['src'] = 'https://music.163.com/song/media/outer/url?id='.$result_item['src'];
+            $result_item['src'] = 'https://music.163.com/song/media/outer/url?id=' . $result_item['src'];
         }
         $result_item['name'] = trim($item_info[1]);
         if (count($item_info) >= 2) {
@@ -149,6 +149,33 @@ function randomMaterialColor($index = NULL)
         '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b',
         '#ffc107', '#ff9800', '#ff5722', '#795548', '#9e9e9e', '#607d8b');
     echo $mdColors[$index % count($mdColors)];
+}
+
+function getOS()
+{
+    $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+
+    if (strpos($agent, 'windows nt')) {
+        $platform = 'windows';
+    } elseif (strpos($agent, 'macintosh')) {
+        $platform = 'mac';
+    } elseif (strpos($agent, 'ipod')) {
+        $platform = 'ipod';
+    } elseif (strpos($agent, 'ipad')) {
+        $platform = 'ipad';
+    } elseif (strpos($agent, 'iphone')) {
+        $platform = 'iphone';
+    } elseif (strpos($agent, 'android')) {
+        $platform = 'android';
+    } elseif (strpos($agent, 'unix')) {
+        $platform = 'unix';
+    } elseif (strpos($agent, 'linux')) {
+        $platform = 'linux';
+    } else {
+        $platform = 'other';
+    }
+
+    return $platform;
 }
 
 function debug_print($obj)

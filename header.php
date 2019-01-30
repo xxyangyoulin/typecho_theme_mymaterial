@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/nprogress.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
 
+    <?php if(getOS() == 'mac'): ?>
+    <style>
+        .article-content,
+        .article-content *{
+            font-size: 16px;
+        }
+    </style>
+    <?php endif; ?>
+
     <!--[if lt IE 9]>
     <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
     <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -113,6 +122,5 @@
     <main class="mdl-layout__content" id="mdl-layout-content">
         <div id="page-content"
              class="page-content mdl-grid <?php if (($this->options->homeType && $this->options->homeType == 'type1')):echo ' page-content-type1';endif; ?>">
-
 
     
