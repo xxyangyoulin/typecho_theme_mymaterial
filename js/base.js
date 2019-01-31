@@ -420,7 +420,16 @@ $(function () {
     function revolvermaps() {
         var revo = $('#revolvermaps');
         if (revo.length && revo.css('display') != 'none') {
-            $(this).find('.maps-w').css('height', revo.width());
+            var maps = revo.find('.maps-w');
+            if (revo.find('script').length == 0) {// Script is eaten by pjax, fuck...
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = maps.data('src') + '?_dc=' + new Date().getTime();
+                script.async = true;
+                maps.html(script);
+            }
+
+            maps.css('height', revo.width());
         }
     }
 
@@ -452,6 +461,8 @@ $(function () {
         $.postNear();
         $.pageNav();
         $.commentsAjax();
+        revolvermaps();
+
 
         $mdl_content.getNiceScroll().resize();
 
