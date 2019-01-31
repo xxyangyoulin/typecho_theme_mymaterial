@@ -73,7 +73,7 @@ function themeConfig($form)
     $form->addInput($ftEmail);
 
     $ftVisitor = new Typecho_Widget_Helper_Form_Element_Text('ftVisitor', NULL, NULL,
-        _t('地球访客'), _t('填写https://www.revolvermaps.com/得到的代码 (不填则不用该功能)'));
+        _t('地球访客'), _t('填写https://www.revolvermaps.com/得到的代码的**src部分** (不填则不用该功能)'));
     $form->addInput($ftVisitor);
 }
 

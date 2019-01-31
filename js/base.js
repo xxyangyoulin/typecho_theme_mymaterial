@@ -477,7 +477,6 @@ $(function () {
     (function () {
         var autoOpenList = true;
         var panListWidth = '250px';
-        var musicPanel = $('#music-panel');
         var musicPanelW = $('.music-panel-w');
         var album = $('#music-album');
         var hidePanel = $('.hide-panel');
@@ -489,8 +488,14 @@ $(function () {
         var panList = $('.list-panel');
         var listItems = panList.find('li');
 
-        var music = new Audio();
+        if (listItems.length) {
+            $(listItems[0]).addClass('current');
+        } else {
+            $('#music-panel').hide(300);//没有歌曲,不用初始化,隐藏播放按钮
+            return;
+        }
 
+        var music = new Audio();
         music.addEventListener('ended', function () {
             toPause();
             if (musicAutoNext) {
@@ -498,23 +503,14 @@ $(function () {
             }
         }, false);
 
-        if (listItems.length) {
-            $(listItems[0]).addClass('current');
-            music.src = $(listItems[0]).data('src');
-        } else {
-            //没有歌曲,不用初始化,隐藏播放按钮
-            musicPanel.hide(300);
-            return;
-        }
-
         volume.on('click', function () {
             changeVolume();
         });
 
         play.on('click', function () {
             if (!music.src) {
-                $.showSnackbar('当前没有歌曲 !');
-                return;
+                music.src = $(listItems[0]).data('src');
+                $(listItems[0]).addClass('current');
             }
             music.paused ? toPlay() : toPause();
         });
@@ -663,7 +659,7 @@ $(function () {
         if (musicAutoPlay) {
             setTimeout(function () {
                 play.trigger('click')
-            }, 2000)
+            }, 5000) //延迟加载
         }
     })();
 });
