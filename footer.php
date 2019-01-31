@@ -46,7 +46,9 @@
                 本站已生存了 <span id="build-time"></span><br>
             <?php endif; ?>
             <div>
-                Copyright © 2017-<?php echo date('Y'); ?>
+                Copyright © <?php if ($this->options->siteTime):
+                    echo substr($this->options->siteTime, 0, 4) . ' - ';
+                endif; ?><?php echo date('Y'); ?>
                 <a class="mdl-color-text--primary anim-line" style="opacity: 0.9"
                    href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> All rights reserved.
                 <?php if ($this->options->customFooter): ?>
@@ -76,7 +78,9 @@
     <button class="mdl-snackbar__action" type="button"></button>
 </div><!--snackbar-->
 
-<div id="show-image" style=""><div class="inner-flex"></div></div>
+<div id="show-image" style="">
+    <div class="inner-flex"></div>
+</div>
 </body>
 
 <script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
@@ -104,11 +108,11 @@
 
             var value = $(this).find('input[name=s]').val();
             value = trim(value);
-            if(!value){
+            if (!value) {
                 $.showSnackbar('请输入搜索关键字');
                 return;
             }
-            $.pjax.submit(event, '#page-content',{timeout:10000});
+            $.pjax.submit(event, '#page-content', {timeout: 10000});
         });
 
         $(document).on('pjax:send', function () {
