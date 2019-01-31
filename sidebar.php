@@ -97,8 +97,7 @@
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 style="font-size: 16px"
-                    class="mdl-card__title-text sidebar-card-title">
+                <h2 class="mdl-card__title-text sidebar-card-title">
                     最新发布</h2>
             </div>
 
@@ -115,8 +114,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col menu-dialog-visible font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 style="font-size: 16px"
-                    class="mdl-card__title-text sidebar-card-title">
+                <h2 class="mdl-card__title-text sidebar-card-title">
                     标签云</h2>
             </div>
 
@@ -140,5 +138,19 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
             </ul>
             <div class="clearfix"></div>
         </div><!--标签云-->
+    <?php endif; ?>
+
+    <?php if ($this->options->ftVisitor): ?>
+        <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+             mdl-cell--12-col font-ant">
+            <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
+                <h2 class="mdl-card__title-text sidebar-card-title">
+                    地球访客</h2>
+            </div>
+
+            <div class="maps-w" style="height: auto;width: 100%">
+                <?php $this->options->ftVisitor(); ?>
+            </div>
+        </div><!--地球访客-->
     <?php endif; ?>
 </div>

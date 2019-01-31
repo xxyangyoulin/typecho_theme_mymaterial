@@ -71,6 +71,10 @@ function themeConfig($form)
     $ftEmail = new Typecho_Widget_Helper_Form_Element_Text('ftEmail', NULL, NULL,
         _t('网站脚联系方式: Email'), _t('填入邮箱'));
     $form->addInput($ftEmail);
+
+    $ftVisitor = new Typecho_Widget_Helper_Form_Element_Text('ftVisitor', NULL, NULL,
+        _t('地球访客'), _t('填写https://www.revolvermaps.com/得到的代码 (不填则不用该功能)'));
+    $form->addInput($ftVisitor);
 }
 
 function themeFields($layout)

@@ -416,14 +416,24 @@ $(function () {
         });
     }
 
+    /**访客地图*/
+    function revolvermaps() {
+        var revo = $('#revolvermaps');
+        if (revo.length && revo.css('display') != 'none') {
+            $(this).find('.maps-w').css('height', revo.width());
+        }
+    }
+
     /**页面resize*/
     $(window).resize(function () {
         resizeMenuTreeHeight();
+        revolvermaps();
     });
 
     headerStatus();
     drawer();
     toTop();
+    revolvermaps();
 
     $mdl_content.niceScroll({
         cursorcolor: "#d0d0d0",
