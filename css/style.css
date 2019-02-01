@@ -8,6 +8,15 @@ html, body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    color: #2196f3;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1976d2;
+}
+
 .color-btn-primary {
     color: #757575 !important;
 }
@@ -546,7 +555,7 @@ header {
     -webkit-font-smoothing: antialiased;
 }
 
-.article-content* {
+.article-content * {
     font-size: 14px;
     color: #3c4858;
 }
@@ -1103,6 +1112,7 @@ blockquote:before, blockquote:after {
     font-size: 14px;
     text-overflow: ellipsis;
 }
+
 .sidebar-item:hover * {
     color: rgba(60, 72, 88, 1);
 }
@@ -1126,7 +1136,7 @@ blockquote:before, blockquote:after {
     color: rgba(60, 72, 88, 0.8);
 }
 
-.comment-recent .item-avator{
+.comment-recent .item-avator {
     margin-top: 6px;
 }
 
@@ -1166,6 +1176,23 @@ blockquote:before, blockquote:after {
     color: white;
     box-sizing: border-box;
 }
+
+/*rss*/
+.RSS-w {
+    height: auto;
+    width: 100%;
+    padding: 16px;
+    font-size: 13px;
+    word-break: break-all;
+    box-sizing: border-box;
+    color: rgba(60, 72, 88, 1);
+    line-height: 23px;
+}
+.RSS-w img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
 
 /*article-title-list*/
 .article-title-list-w {

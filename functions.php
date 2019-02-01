@@ -75,6 +75,11 @@ function themeConfig($form)
     $ftVisitor = new Typecho_Widget_Helper_Form_Element_Text('ftVisitor', NULL, NULL,
         _t('地球访客'), _t('填写https://www.revolvermaps.com/得到的代码的**src部分** (不填则不用该功能)'));
     $form->addInput($ftVisitor);
+
+    $RSSList = new Typecho_Widget_Helper_Form_Element_Textarea('RSSList', NULL, NULL,
+        _t('RSS聚合'),
+        _t('格式:<span style="color: darkred">RSS标题 (空格)RSS的url,(逗号)</span>'));
+    $form->addInput($RSSList);
 }
 
 function themeFields($layout)
@@ -84,6 +89,33 @@ function themeFields($layout)
         _t('文章顶部图片'),
         _t('在这里填入一个图片URL地址, 以在文章标题后加上背景图片'));
     $layout->addItem($logoUrl);
+}
+
+function RSSList($list_str)
+{
+    $result = [];
+    $list_str = trim($list_str);
+    if (empty($list_str)) {
+        return $result;
+    }
+    $list_arr = explode(',', $list_str);
+
+    foreach ($list_arr as $list_item) {
+        $list_item = trim($list_item);
+        if (!$list_item) {
+            continue;
+        }
+        $item_info = explode(' ', $list_item);
+        if (count($item_info) < 1) {
+            continue;
+        }
+
+        $result_item['title'] = trim($item_info[0]);
+        $result_item['url'] = trim($item_info[1]);
+
+        $result[] = $result_item;
+    }
+    return $result;
 }
 
 function musicList($list_str)

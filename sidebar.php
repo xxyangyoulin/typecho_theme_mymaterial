@@ -15,9 +15,11 @@
                 <div class="action-wrapper">
                     <div class="mdl-layout-spacer"></div>
                     <button id="right-card-pages" style="margin-left: auto;"
-                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">short_text</i></button>
+                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">short_text</i>
+                    </button>
                     <button id="right-card-menu" style="margin-left: auto;"
-                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i></button>
+                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i>
+                    </button>
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                         for="right-card-pages">
                         <?php while ($pages->next()): ?>
@@ -131,11 +133,38 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
         <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 class="mdl-card__title-text sidebar-card-title">地球访客</h2>
+                <h2 class="mdl-card__title-text sidebar-card-title">访客</h2>
             </div>
             <div data-src="<?php $this->options->ftVisitor(); ?>" class="maps-w" style="height: auto;width: 100%">
                 <script type="text/javascript" src="<?php $this->options->ftVisitor(); ?>" async="async"></script>
             </div>
-        </div><!--地球访客-->
+        </div><!--访客-->
     <?php endif; ?>
+
+    <?php $RSSList = RSSList($this->options->RSSList);
+    require $this->getThemeDir() . 'lib/lastRSS.php';
+    foreach ($RSSList as $item):?>
+        <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+             mdl-cell--12-col font-ant">
+            <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
+                <h2 class="mdl-card__title-text sidebar-card-title"><?php echo $item['title']; ?></h2>
+            </div>
+            <div class="RSS-w">
+                <?php $rss = new lastRSS;
+                $rss->cache_dir = $this->getThemeDir() . 'cache';
+                $rss->cache_time = 3600; // one hour
+                $rss->date_format = 'Y-m-d H:i';
+                $rss->CDATA = 'strip';
+
+                if ($rs = $rss->get($item['url'])) {
+                    foreach ($rs['items'] as $value) {
+                        echo "<a href='{$value['link']}'>{$value['pubDate']}</a> : ";
+                        echo $value['description'];
+                        echo "<div style='height: 16px;'></div>";
+                    }
+                }
+                ?>
+            </div>
+        </div><!--RSS-->
+    <?php endforeach; ?>
 </div>
