@@ -1321,6 +1321,11 @@ blockquote:before, blockquote:after {
     color: white;
 }
 
+.links-ul .mdl-tooltip{
+    color: white;
+    word-break: break-all;
+}
+
 /*submit loading*/
 @keyframes rotating {
     from {
