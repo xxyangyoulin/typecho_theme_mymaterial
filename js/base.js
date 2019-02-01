@@ -225,7 +225,35 @@ $(function () {
         }
     }
 
+    function titleTreeType() {
+        if ($('#article-index-w').length) {
+            if ($(document).width() < 480) {
+                $('#index-button').show();
+                $('#article-index-w')
+                    .removeClass('article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tablet')
+                    .addClass('index-card mdl-card mdl-shadow--2dp mdl-cell--hide-desktop mdl-cell--hide-tablet');
+
+                $('.index-card').on('click', function (e) {
+                    e.stopPropagation();
+                });
+                $(document).on('click', function () {
+                    $('.index-card').slideUp(200);
+                })
+            } else {
+                $('#index-button').hide();
+                $('#article-index-w')
+                    .removeClass('index-card mdl-card mdl-shadow--2dp mdl-cell--hide-desktop mdl-cell--hide-tablet')
+                    .addClass('article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tablet');
+            }
+        }else{
+            $('#index-button').hide();
+        }
+    }
+
     function articleTitleTree() {
+
+        titleTreeType();
+
         var articleTitleList = $('.article-title-list');
         if (articleTitleList.length === 0) return;
         resizeMenuTreeHeight();
@@ -433,10 +461,25 @@ $(function () {
         }
     }
 
+    (function () {
+        $('#index-button').on('click', function (e) {
+            var card = $('.index-card');
+            if (!card.length) return;
+            if (card.css('display') === 'none') {
+                card.slideDown(200);
+            } else {
+                card.slideUp(200);
+            }
+
+            e.stopPropagation();
+        })
+    })();
+
     /**页面resize*/
     $(window).resize(function () {
         resizeMenuTreeHeight();
         revolvermaps();
+        titleTreeType();
     });
 
     headerStatus();

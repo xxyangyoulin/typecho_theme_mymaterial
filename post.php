@@ -68,8 +68,8 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 </div>
 
 <?php if (!$this->fields->rmTree && $treeMenu): ?>
-    <div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
-            mdl-cell--2-col-tablet">
+    <div id="article-index-w"
+         class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tablet">
         <div class="article-title-list">
             <?php echo $treeMenu; ?>
         </div>

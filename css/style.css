@@ -1520,6 +1520,21 @@ blockquote:before, blockquote:after {
     animation: rotating 6s linear infinite
 }
 
+.index-card {
+    display: none;
+    z-index: 10;
+    box-sizing: border-box;
+    position: fixed;
+    top: 48px;
+    right: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    max-height: 320px;
+    width: 196px;
+    background-color: rgba(255, 255, 255, 0.95);
+    overflow-y: auto
+}
+
 @media (max-width: 840px) {
     .head-card-left {
         height: 350px;
@@ -1540,6 +1555,8 @@ blockquote:before, blockquote:after {
     .links-ul li {
         width: 50%;
     }
+
+
 }
 
 @media (min-width: 481px) {
