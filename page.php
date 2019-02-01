@@ -59,18 +59,18 @@
         <div class="mdl-card__actions mdl-card--border" style="background: #EEEEEE;">
 
 
-            <ul class="post-near ">
-                <li class="">
-                    <i class="material-icons">arrow_back</i>
-                    <?php $this->theNext('%s', '没有了'); ?>
-                </li>
-                <div class="mdl-layout-spacer"></div>
-
-                <li class="right">
-                    <i class="material-icons">arrow_forward</i>
-                    <?php $this->thePrev('%s', '没有了'); ?>
-                </li>
-            </ul>
+<!--            <ul class="post-near ">-->
+<!--                <li class="">-->
+<!--                    <i class="material-icons">arrow_back</i>-->
+<!--                    --><?php //$this->theNext('%s', '没有了'); ?>
+<!--                </li>-->
+<!--                <div class="mdl-layout-spacer"></div>-->
+<!---->
+<!--                <li class="right">-->
+<!--                    <i class="material-icons">arrow_forward</i>-->
+<!--                    --><?php //$this->thePrev('%s', '没有了'); ?>
+<!--                </li>-->
+<!--            </ul>-->
 
             <?php $this->need('comments.php'); ?>
 
