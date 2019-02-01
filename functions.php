@@ -78,7 +78,7 @@ function themeConfig($form)
 
     $RSSList = new Typecho_Widget_Helper_Form_Element_Textarea('RSSList', NULL, NULL,
         _t('RSS聚合'),
-        _t('格式:<span style="color: darkred">RSS标题 (空格)RSS的url,(逗号)</span>'));
+        _t('格式:<span style="color: darkred">RSS标题 (空格)RSS的url (空格)缓存时间(单位秒, 不填默认6小时, 需要给主题目录下cache目录读写权限),(逗号)</span>'));
     $form->addInput($RSSList);
 }
 
@@ -112,6 +112,9 @@ function RSSList($list_str)
 
         $result_item['title'] = trim($item_info[0]);
         $result_item['url'] = trim($item_info[1]);
+        if (count($item_info) >= 2) {
+            $result_item['cacheTime'] = $item_info[2];
+        }
 
         $result[] = $result_item;
     }

@@ -152,7 +152,13 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
             <div class="RSS-w">
                 <?php $rss = new lastRSS;
                 $rss->cache_dir = $this->getThemeDir() . 'cache';
-                $rss->cache_time = 3600; // one hour
+
+                if (isset($item['cacheTime']) && is_numeric($item['cacheTime'])) {
+                    $rss->cache_time = $item['cache'];
+                } else {
+                    $rss->cache_time = 3600 * 6; // six hour
+                }
+
                 $rss->date_format = 'Y-m-d H:i';
                 $rss->CDATA = 'strip';
 
