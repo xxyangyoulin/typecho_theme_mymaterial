@@ -781,6 +781,7 @@ blockquote:before, blockquote:after {
     transition: ease-out transform 0.15s;
     -webkit-transform: translateX(-290px);
     transform: translateX(-290px);
+    border: none;
 }
 
 #close-drawer {
@@ -1188,6 +1189,7 @@ blockquote:before, blockquote:after {
     color: rgba(60, 72, 88, 1);
     line-height: 23px;
 }
+
 .RSS-w img {
     max-width: 100%;
     margin: 0 auto;

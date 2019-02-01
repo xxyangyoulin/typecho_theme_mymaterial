@@ -5,20 +5,13 @@
     $this->need('siteTitle.php');
 } ?>
 
-<div class="mdl-cell--9-col mdl-cell--6-col-tablet">
-<!--    --><?php //if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
-<!--        <div class="breadcrumb mdl-cell mdl-cell--12-col ">-->
-<!--            <a class="mdl-color-text--primary" href="#" onclick="window.history.back();return false;">-->
-<!--                <i class="material-icons">arrow_back</i>返回</a>-->
-<!--            <a>--><?php //$this->title() ?><!--</a>-->
-<!---->
-<!--            <div class="right-box">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    --><?php //endif; ?>
-    <div class="post-card mdl-card mdl-cell mdl-shadow--4dp hover-shadow--6dp menu-dialog-visible
-             mdl-cell--12-col">
+<?php $treeMenu = $this->treeMenu;
+if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div>') $treeMenu = NULL;
+?>
 
+<div id="post-card-column" style="max-width: 900px;"
+     class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
+    <div class="post-card mdl-card mdl-cell mdl-shadow--4dp hover-shadow--6dp menu-dialog-visible mdl-cell--12-col">
         <?php $cardImage = $this->fields->card_image;
         if ($cardImage): ?>
         <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')">
@@ -32,8 +25,6 @@
                     </a>
                 </h2>
                 <div class="post-meta2">
-
-
                     <time datetime="<?php $this->date('c'); ?>" itemprop="datePublished">
                         <?php $this->date('Y/m/d'); ?>
                     </time>
@@ -56,7 +47,6 @@
             <div class="article-content" id="article-content">
                 <?php $this->content(); ?>
             </div>
-
             <div class="tag-wrapper">
                 <?php foreach ($this->tags as $tag): ?>
                     <a class="mdl-button mdl-js-button least-button mdl-button--primary"
@@ -65,12 +55,9 @@
                 <?php endforeach; ?>
             </div>
         </div>
-
-
         <div class="mdl-card__actions mdl-card--border" style="background: #EEEEEE;">
             <?php $this->need('comments.php'); ?>
         </div><!--mdl-card__actions-->
-
     </div>
 
     <ul class="post-near ">
@@ -80,17 +67,18 @@
     </ul>
 </div>
 
-
-<div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
+<?php if (!$this->fields->rmTree && $treeMenu): ?>
+    <div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
             mdl-cell--2-col-tablet">
-    <div class="article-title-list">
-        <?php
-        if (!$this->fields->rmTree):$this->treeMenu();endif;
-        ?>
+        <div class="article-title-list">
+            <?php echo $treeMenu; ?>
+        </div>
     </div>
-</div><!--article-title-list-->
+<?php endif; ?>
 
-<?php if (!$this->request->isAjax()) {$this->need('footer.php');} ?>
+<?php if (!$this->request->isAjax()) {
+    $this->need('footer.php');
+} ?>
 
 
 

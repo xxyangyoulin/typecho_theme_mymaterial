@@ -143,6 +143,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
 
     <?php $RSSList = RSSList($this->options->RSSList);
     require $this->getThemeDir() . 'lib/lastRSS.php';
+    date_default_timezone_set('PRC');
     foreach ($RSSList as $item):?>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col font-ant">

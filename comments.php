@@ -33,7 +33,13 @@
                     <span class="fn inner-a-color-inherit a-none anim-line-inner-a mdl-color-text--black">
                         <?php $comments->author(); ?>
                         <?php try {
-                            if (class_exists('CommentApprove_Plugin')) CommentApprove_Plugin::identify($comments->mail);
+                            if (class_exists('CommentApprove_Plugin'))
+                                CommentApprove_Plugin::identify($comments->mail);
+                            if (class_exists('UserAgent_Plugin')) {
+                                echo '<span class="">';
+                                UserAgent_Plugin::render($comments->agent);
+                                echo '</span>';
+                            }
                         } catch (Exception $e) {
                         } ?>
                     </span>
@@ -105,7 +111,8 @@
                         <?php _e('登录身份: '); ?>
                         <a class="anim-line no-pjax mdl-color-text--primary"
                            href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>.
-                        <a class="anim-line no-pjax mdl-color-text--primary" href="<?php $this->options->logoutUrl(); ?>"
+                        <a class="anim-line no-pjax mdl-color-text--primary"
+                           href="<?php $this->options->logoutUrl(); ?>"
                            title="Logout"> <?php _e('退出'); ?> </a>
                     </p>
                 <?php else: ?>
