@@ -15,14 +15,9 @@
                 <div class="action-wrapper">
                     <div class="mdl-layout-spacer"></div>
                     <button id="right-card-pages" style="margin-left: auto;"
-                            class="mdl-button mdl-js-button mdl-button--icon">
-                        <i class="material-icons">short_text</i>
-                    </button>
+                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">short_text</i></button>
                     <button id="right-card-menu" style="margin-left: auto;"
-                            class="mdl-button mdl-js-button mdl-button--icon">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-
+                            class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i></button>
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                         for="right-card-pages">
                         <?php while ($pages->next()): ?>
@@ -32,8 +27,7 @@
                                         href="<?php $pages->permalink(); ?>"
                                         title="<?php $pages->title(); ?>">
                                     <?php $pages->title(); ?>
-                                </a>
-                            </li>
+                                </a></li>
                         <?php endwhile; ?>
                     </ul>
 
@@ -71,8 +65,7 @@
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 class="mdl-card__title-text sidebar-card-title">
-                    最近回复</h2>
+                <h2 class="mdl-card__title-text sidebar-card-title">最近回复</h2>
             </div>
             <ul class="comment-recent">
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -81,7 +74,6 @@
                         <a class="item-avator" href="<?php $comments->url(); ?>">
                             <?php $comments->gravatar('40', ''); ?>
                         </a>
-
                         <a class="item-link" href="<?php $comments->permalink(); ?>"
                            style="margin-left: 16px;">
                             <div><?php $comments->author(false); ?></div>
@@ -97,14 +89,11 @@
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 class="mdl-card__title-text sidebar-card-title">
-                    最新发布</h2>
+                <h2 class="mdl-card__title-text sidebar-card-title">最新发布</h2>
             </div>
-
-
             <ul class="comment-recent">
                 <?php $this->widget('Widget_Contents_Post_Recent')
-                    ->parse('<li class="sidebar-item"><a class="sidebar-item-title"  
+                    ->parse('<li class="sidebar-item"><a class="sidebar-item-title"
 href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a></li>'); ?>
             </ul>
         </div><!--最新发布-->
@@ -114,12 +103,10 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
         <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
              mdl-cell--12-col menu-dialog-visible font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 class="mdl-card__title-text sidebar-card-title">
-                    标签云</h2>
+                <h2 class="mdl-card__title-text sidebar-card-title">标签云</h2>
             </div>
 
             <ul class="tag-cloud">
-                <!--            --><?php //$this->widget('Widget_Metas_Tag_Cloud', 'ignoreZeroCount=1&limit=30')->to($tags); ?>
                 <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=30')->to($tags); ?>
                 <?php if ($tags->have()): ?>
                     <?php while ($tags->next()): ?>

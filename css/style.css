@@ -1114,17 +1114,20 @@ blockquote:before, blockquote:after {
 }
 
 .comment-recent li:not(:first-child) {
-    margin-top: 16px;
+    margin-top: 8px;
 }
 
 .comment-recent li {
     display: flex;
-    align-items: center;
 }
 
 .comment-recent li a {
     text-decoration: none;
     color: rgba(60, 72, 88, 0.8);
+}
+
+.comment-recent .item-avator{
+    margin-top: 6px;
 }
 
 .comment-recent .item-link:hover {
