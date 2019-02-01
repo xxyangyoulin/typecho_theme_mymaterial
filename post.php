@@ -9,7 +9,7 @@
 if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div>') $treeMenu = NULL;
 ?>
 
-<div id="post-card-column" style="max-width: 900px;"
+<div style="max-width: 900px;"
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
     <div class="post-card mdl-card mdl-cell mdl-shadow--4dp hover-shadow--6dp menu-dialog-visible mdl-cell--12-col">
         <?php $cardImage = $this->fields->card_image;

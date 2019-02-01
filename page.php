@@ -4,24 +4,14 @@
 } else {
     $this->need('siteTitle.php');
 } ?>
+<?php $treeMenu = $this->treeMenu;
+if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div>') $treeMenu = NULL;
+?>
 
-<div class="mdl-cell--9-col mdl-cell--6-col-tablet">
-<!--    --><?php //if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
-<!--        <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">-->
-<!--            <a class="mdl-color-text--primary" href="--><?php //$this->options->siteUrl(); ?><!--">-->
-<!--                <i class="material-icons">home</i>-->
-<!--                首页-->
-<!--            </a>-->
-<!--            <a>--><?php //$this->title() ?><!--</a>-->
-<!---->
-<!--            <div class="right-box">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    --><?php //endif; ?>
-
+<div style="max-width: 900px;"
+     class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
     <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
              mdl-cell--12-col">
-
         <?php $cardImage = $this->fields->card_image;
         if ($cardImage): ?>
             <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')"></div>
@@ -55,39 +45,20 @@
             </div>
         </div>
 
-
         <div class="mdl-card__actions mdl-card--border" style="background: #EEEEEE;">
-
-
-<!--            <ul class="post-near ">-->
-<!--                <li class="">-->
-<!--                    <i class="material-icons">arrow_back</i>-->
-<!--                    --><?php //$this->theNext('%s', '没有了'); ?>
-<!--                </li>-->
-<!--                <div class="mdl-layout-spacer"></div>-->
-<!---->
-<!--                <li class="right">-->
-<!--                    <i class="material-icons">arrow_forward</i>-->
-<!--                    --><?php //$this->thePrev('%s', '没有了'); ?>
-<!--                </li>-->
-<!--            </ul>-->
-
             <?php $this->need('comments.php'); ?>
-
-        </div><!--mdl-card__actions-->
-
+        </div>
     </div>
 </div>
 
-
-<div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
+<?php if (!$this->fields->rmTree && $treeMenu): ?>
+    <div class="article-title-list-w mdl-cell--3-col mdl-cell--hide-phone
             mdl-cell--2-col-tablet">
-    <div class="article-title-list">
-        <?php
-        if (!$this->fields->rmTree):$this->treeMenu();endif;
-        ?>
+        <div class="article-title-list">
+            <?php echo $treeMenu; ?>
+        </div>
     </div>
-</div><!--article-title-list-->
+<?php endif; ?>
 
 <?php if (!$this->request->isAjax()) {
     $this->need('footer.php');
