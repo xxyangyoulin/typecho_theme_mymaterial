@@ -1324,6 +1324,7 @@ blockquote:before, blockquote:after {
 .links-ul .mdl-tooltip{
     color: white;
     word-break: break-all;
+    font-size: 13px;
 }
 
 /*submit loading*/
