@@ -46,7 +46,7 @@
                 本站已生存了 <span id="build-time"></span><br>
             <?php endif; ?>
             <div>
-                Copyright © <?php if ($this->options->siteTime && substr($this->options->siteTime, 0, 4)!=date('Y')):
+                Copyright © <?php if ($this->options->siteTime && substr($this->options->siteTime, 0, 4) != date('Y')):
                     echo substr($this->options->siteTime, 0, 4) . ' - ';
                 endif; ?><?php echo date('Y'); ?>
                 <a class="mdl-color-text--primary anim-line" style="opacity: 0.9"
@@ -121,14 +121,17 @@
 
         $(document).on('pjax:complete', function () {
             NProgress.done();
-            $('#mdl-layout-content').scrollTop(0);
+            $.completePjax();
+            if (window.location.hash) {
+                scrollToHash();
+            } else {
+                $('#mdl-layout-content').scrollTop(0);
+            }
         });
-
 
         $(document).on('pjax:end', function () {
             $.afterPjax();// 需要第一个执行
             reUpgradePageDem();
-            scrollToHash();
 
             try {
                 Prism.highlightAll();

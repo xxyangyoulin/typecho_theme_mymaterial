@@ -1,3 +1,4 @@
+/**js太菜,只会面向过程写...*/
 var colorBuilder = {
     hslToRgb: function (H, S, L) {
         var R, G, B;
@@ -537,13 +538,13 @@ $(function () {
     })();
 
     /**tag随机颜色*/
-    function tagColor() {
+    var inittagColor = function () {
         var tagA = $('.tag-wrapper a');
         if (tagA.length) {
             var ca = colorBuilder.getHslArray(tagA.length);
             tagA.each(function (i) {
                 var color = 'rgb(' + colorBuilder.hslToRgb(ca[i][0], ca[i][1], ca[i][2]).toString() + ')';
-                $(this).css('color', 'white').css('background-color',color);
+                $(this).css('color', 'white').css('background-color', color);
             });
         }
 
@@ -552,11 +553,11 @@ $(function () {
             var ca = colorBuilder.getHslArray(tagA.length);
             tagA.each(function (i) {
                 var color = 'rgb(' + colorBuilder.hslToRgb(ca[i][0], ca[i][1], ca[i][2]).toString() + ')';
-                $(this).css('color', 'white').css('background-color',color);
+                $(this).css('color', 'white').css('background-color', color);
             });
         }
-    }
-    tagColor();
+    };
+    inittagColor();
 
     /**页面resize*/
     $(window).resize(function () {
@@ -580,17 +581,18 @@ $(function () {
         updateMenuIndexTags();
     });
 
+    $.completePjax = function () {
+        inittagColor();
+    };
 
     $.afterPjax = function () {
         articleContentReplace();
         articleTitleTree();
         articleImage();
-        tagColor();
         $.postNear();
         $.pageNav();
         $.commentsAjax();
         revolvermaps();
-
 
         $mdl_content.getNiceScroll().resize();
 
