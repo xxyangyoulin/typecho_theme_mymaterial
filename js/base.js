@@ -546,6 +546,15 @@ $(function () {
                 $(this).css('color', 'white').css('background-color',color);
             });
         }
+
+        tagA = $('.tag-cloud a');
+        if (tagA.length) {
+            var ca = colorBuilder.getHslArray(tagA.length);
+            tagA.each(function (i) {
+                var color = 'rgb(' + colorBuilder.hslToRgb(ca[i][0], ca[i][1], ca[i][2]).toString() + ')';
+                $(this).css('color', 'white').css('background-color',color);
+            });
+        }
     }
     tagColor();
 
