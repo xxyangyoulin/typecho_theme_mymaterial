@@ -43,9 +43,9 @@
                         } catch (Exception $e) {
                         } ?>
                     </span>
-                    <span class="comment-time" style="color: #616161">
+                    <div class="comment-time">
                         <a class="no-pjax" href="<?php $comments->permalink(); ?>"><?php $comments->dateWord(); ?></a>
-                    </span>
+                    </div>
                 </div>
 
             </div>

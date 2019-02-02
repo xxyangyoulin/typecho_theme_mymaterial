@@ -53,6 +53,14 @@ a:hover {
     color: inherit;
 }
 
+.scroll-bar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
 .mini-button {
     min-width: 40px;
@@ -445,10 +453,14 @@ header {
 .card-text-wrapper {
     display: block;
     align-self: flex-end;
-    margin: -16px;
-    padding: 24px;
+    margin: 0px;
+    padding: 0px;
     width: 100%;
     -webkit-font-smoothing: antialiased;
+}
+
+.post-card .mdl-card__title:not(.has-image) {
+    padding-bottom: 0;
 }
 
 .card-text-wrapper .mdl-card__title-text a {
@@ -461,6 +473,8 @@ header {
 }
 
 .has-image .card-text-wrapper {
+    margin: -16px;
+    padding: 24px;
     background-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -478,6 +492,17 @@ header {
     font-size: 14px;
     line-height: 24px;
     margin-top: 32px;
+}
+
+.tag-wrapper > a {
+    border-radius: 13px;
+    padding: 0 8px;
+    font-weight: 400;
+    font-size: 12px;
+    margin-right: 4px;
+    margin-top: 4px;
+    opacity: 0.9;
+
 }
 
 .article-category {
@@ -550,7 +575,7 @@ header {
 /*article-content*/
 .article-content {
     color: #3c4858;
-    padding: 0 8px 8px 8px;
+    padding: 0 8px 0px 8px;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
 }
@@ -564,6 +589,11 @@ header {
     font-weight: 400;
 }
 
+.article-content p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 .article-content h1,
 .article-content h2,
 .article-content h3,
@@ -574,27 +604,93 @@ header {
     font-weight: 600;
     line-height: 35px;
     padding-bottom: 2px;
+    position: relative;
 }
 
-.article-content h1:before,
-.article-content h2:before,
-.article-content h3:before,
-.article-content h4:before,
-.article-content h5:before,
-.article-content h6:before {
+.article-content h1:hover:before,
+.article-content h2:hover:before,
+.article-content h3:hover:before,
+.article-content h4:hover:before,
+.article-content h5:hover:before,
+.article-content h6:hover:before {
     content: '#';
-    padding-right: 5px;
+    width: 16px;
+    position: absolute;
+    left: -16px;
+    top: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+
     color: #0D5796;
+}
+
+.article-content hr {
+    background-color: transparent;
+    margin: 16px 0;
+    border-top: dashed #bbdefb 2px;
+}
+
+.article-content p code {
+    padding: 1px 3px;
+    margin: 0 2px;
+    border-radius: 3px;
+    background-color: #e3f2fd;
+    color: #2196F3;
 }
 
 .article-content a {
     color: #2196f3;
     text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
 .article-content a:hover {
     color: #1976d2;
+    /*padding-left: 4px;*/
+    padding-left: 4px;
 }
+
+.article-content .table-wrap {
+    overflow-x: auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.article-content table {
+    border: 1px solid #42a5f5;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px 0;
+    empty-cells: show;
+}
+
+.article-content table thead th {
+    background-color: #42a5f5;
+    color: white;
+}
+
+.article-content table thead th,
+.article-content table td {
+    padding: 10px 12px;
+}
+
+.article-content table td {
+    border: 1px solid #dedede;
+    text-align: left;
+}
+
+table tbody tr:nth-child(2n) {
+    background: rgba(227, 242, 253, 0.5);
+}
+
+table tr:hover {
+    background: rgba(227, 242, 253, 1) !important;
+}
+
 
 .article-content img {
     display: block;
@@ -605,6 +701,9 @@ header {
     transition: all 0.3s;
 }
 
+.article-content a img {
+    display: unset;
+}
 
 .article-content img.show {
     position: fixed;
@@ -1015,13 +1114,18 @@ blockquote:before, blockquote:after {
     margin-top: -4px;
 }
 
-#comments .fn,
 #comments .fn a {
-    font-weight: bold;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+#comments .fn a:hover {
+    color: #1976d2;
 }
 
 #comments .comment-time a {
-    color: rgba(0, 0, 0, 0.58);
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.87);
     text-decoration: none;
 }
 
@@ -1029,7 +1133,7 @@ blockquote:before, blockquote:after {
     padding: 24px 0px 10px 56px;
     overflow: hidden;
     font-size: 14px;
-    color: black;
+    color: rgba(0, 0, 0, 0.87);
     word-break: break-all;
 }
 
@@ -1321,7 +1425,7 @@ blockquote:before, blockquote:after {
     color: white;
 }
 
-.links-ul .mdl-tooltip{
+.links-ul .mdl-tooltip {
     color: white;
     word-break: break-all;
     font-size: 13px;

@@ -1,3 +1,60 @@
+var colorBuilder = {
+    hslToRgb: function (H, S, L) {
+        var R, G, B;
+        if (+S === 0) {
+            R = G = B = L; // 饱和度为0 为灰色
+        } else {
+            var hue2Rgb = function (p, q, t) {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1 / 6) return p + (q - p) * 6 * t;
+                if (t < 1 / 2) return q;
+                if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                return p;
+            };
+            var Q = L < 0.5 ? L * (1 + S) : L + S - L * S;
+            var P = 2 * L - Q;
+            R = hue2Rgb(P, Q, H + 1 / 3);
+            G = hue2Rgb(P, Q, H);
+            B = hue2Rgb(P, Q, H - 1 / 3);
+        }
+        return [Math.round(R * 255), Math.round(G * 255), Math.round(B * 255)];
+    },
+
+    // 获取随机HSL
+    randomHsl: function () {
+        var H = Math.random();
+        var S = Math.random();
+        var L = Math.random();
+        return [H, S, L];
+    },
+
+    // 获取HSL数组
+    getHslArray: function (hslLength) {
+        var HSL = [];
+        // var hslLength = 16; // 获取数量
+        for (var i = 0; i < hslLength; i++) {
+            var ret = this.randomHsl();
+
+            // 颜色相邻颜色差异须大于 0.25
+            if (i > 0 && Math.abs(ret[0] - HSL[i - 1][0]) < 0.25) {
+                i--;
+                continue; // 重新获取随机色
+            }
+            ret[1] = 0.7 + (ret[1] * 0.2); // [0.7 - 0.9] 排除过灰颜色
+            ret[2] = 0.4 + (ret[2] * 0.4); // [0.4 - 0.8] 排除过亮过暗色
+
+            // 数据转化到小数点后两位
+            ret = ret.map(function (item) {
+                return parseFloat(item.toFixed(2));
+            });
+
+            HSL.push(ret);
+        }
+        return HSL;
+    }
+};
+
 (function ($, h, c) {
     var a = $([]),
         e = $.resize = $.extend($.resize, {}),
@@ -245,7 +302,7 @@ $(function () {
                     .removeClass('index-card mdl-card mdl-shadow--2dp mdl-cell--hide-desktop mdl-cell--hide-tablet')
                     .addClass('article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tablet');
             }
-        }else{
+        } else {
             $('#index-button').hide();
         }
     }
@@ -437,10 +494,13 @@ $(function () {
 
     function articleContentReplace() {
         $('.article-content').each(function () {
+            var $t = $(this);
             /**删除文章出现的多余空行*/
-            $(this).html($(this).html().replace(/(<br>){2,}/ig, "<br>"));
+            $t.html($t.html().replace(/(<br>){2,}/ig, "<br>"));
             /**a标签block打开*/
-            $(this).find('a').attr('target', '_block')
+            $t.find('a').attr('target', '_block');
+            /**包裹table*/
+            $t.find('table').wrap('<div class="scroll-bar table-wrap"></div>')
         });
     }
 
@@ -461,6 +521,7 @@ $(function () {
         }
     }
 
+    /**index button 按钮事件*/
     (function () {
         $('#index-button').on('click', function (e) {
             var card = $('.index-card');
@@ -474,6 +535,19 @@ $(function () {
             e.stopPropagation();
         })
     })();
+
+    /**tag随机颜色*/
+    function tagColor() {
+        var tagA = $('.tag-wrapper a');
+        if (tagA.length) {
+            var ca = colorBuilder.getHslArray(tagA.length);
+            tagA.each(function (i) {
+                var color = 'rgb(' + colorBuilder.hslToRgb(ca[i][0], ca[i][1], ca[i][2]).toString() + ')';
+                $(this).css('color', 'white').css('background-color',color);
+            });
+        }
+    }
+    tagColor();
 
     /**页面resize*/
     $(window).resize(function () {
@@ -497,10 +571,12 @@ $(function () {
         updateMenuIndexTags();
     });
 
+
     $.afterPjax = function () {
         articleContentReplace();
         articleTitleTree();
         articleImage();
+        tagColor();
         $.postNear();
         $.pageNav();
         $.commentsAjax();
@@ -513,7 +589,6 @@ $(function () {
             $mdl_content.getNiceScroll().resize();
         });
     };
-
     $.afterPjax();
 
     /**music*/

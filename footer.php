@@ -46,7 +46,7 @@
                 本站已生存了 <span id="build-time"></span><br>
             <?php endif; ?>
             <div>
-                Copyright © <?php if ($this->options->siteTime):
+                Copyright © <?php if ($this->options->siteTime && substr($this->options->siteTime, 0, 4)!=date('Y')):
                     echo substr($this->options->siteTime, 0, 4) . ' - ';
                 endif; ?><?php echo date('Y'); ?>
                 <a class="mdl-color-text--primary anim-line" style="opacity: 0.9"

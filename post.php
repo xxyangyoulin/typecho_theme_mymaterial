@@ -49,8 +49,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
             </div>
             <div class="tag-wrapper">
                 <?php foreach ($this->tags as $tag): ?>
-                    <a class="mdl-button mdl-js-button least-button mdl-button--primary"
-                       style="padding:0 8px;-webkit-font-smoothing: antialiased;"
+                    <a class="mdl-button mdl-js-button least-button mdl-button--primary hover--margin-top-1px mdl-shadow--2dp hover-shadow--3dp translation-all-3"
                        href="<?php echo $tag['permalink']; ?>">#<?php echo $tag['name']; ?></a>
                 <?php endforeach; ?>
             </div>
