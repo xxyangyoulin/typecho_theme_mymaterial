@@ -115,6 +115,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
 
                         <li><a id="tag-cloud-item-<?php $tags->name() ?>"
                                style="padding 2px 4px; background-color:#b0bec5"
+                               class="translation-all-3 hover-shadow--3dp mdl-shadow--2dp hover--margin-top-1px"
                                href="<?php $tags->permalink(); ?>"
                                rel="tag"><?php $tags->name(); ?></a></li>
                         <span class="mdl-tooltip mdl-tooltip--top" for="tag-cloud-item-<?php $tags->name() ?>">
