@@ -1307,7 +1307,7 @@ blockquote:before, blockquote:after {
     margin-top: 8px;
     top: 0;
     padding: 168px 0 0 8px;
-    height: 100%;
+    height: 300px;
 }
 
 .article-title-list {

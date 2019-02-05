@@ -182,7 +182,10 @@ function startTime(time = '2010-01-01') {
 }
 
 function resizeMenuTreeHeight() {
-    $('.article-title-list').css('max-height', ($(window).height() - 200) + 'px');
+    var treeHeight = $(window).height() - 16;
+
+    $('.article-title-list-w').css('height', treeHeight + 'px');
+    $('.article-title-list').css('max-height', treeHeight-168 + 'px');
 }
 
 $(function () {
