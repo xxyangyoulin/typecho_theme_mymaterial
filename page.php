@@ -12,11 +12,12 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
     <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
              mdl-cell--12-col">
-        <?php $cardImage = $this->fields->card_image;
+        <?php $cardImage = $this->fields->card_image;$postThumb = getPostThumb($this);
         if ($cardImage): ?>
-            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')"></div>
+            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage; ?>')"></div>
+        <?php elseif($postThumb): ?>
+            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $postThumb; ?>')"></div>
         <?php endif; ?>
-
 
         <div class="mdl-card__supporting-text color-text-block-primary">
             <div class="card-text-wrapper" style="margin: 0 0 16px 0;padding: 0;">
@@ -34,7 +35,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
             </div>
 
             <div class="article-content">
-                <?php $this->content(); ?>
+                <?php $this->allContent(); ?>
             </div>
 
             <div class="tag-wrapper">

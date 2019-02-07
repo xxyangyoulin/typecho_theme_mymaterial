@@ -1,15 +1,20 @@
 <?php if (!$this->have()): ?>
-    <div class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">好像没发现东西...</div>
+    <div class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">好像没发现东西...
+    </div>
 <?php endif; ?>
 
 <?php while ($this->next()): ?>
     <div class="post-card mdl-card mdl-cell mdl-cell--12-col  shadow--1dp hover-shadow--3dp menu-dialog-visible translation-all-3">
 
     <?php $cardImage = $this->fields->card_image;
+    $postThumb = getPostThumb($this);
 if ($cardImage): ?>
-    <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')">
+    <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage; ?>')">
+    <?php elseif ($postThumb): ?>
+    <div class="mdl-card__title has-image" style="background-image: url('<?php echo $postThumb; ?>')">
     <?php else: ?>
-    <div class="mdl-card__title"><?php endif; ?>
+    <div class="mdl-card__title">
+<?php endif; ?>
     <div class="card-text-wrapper">
         <h2 class="mdl-card__title-text "><a class="a-none anim-line "
                                              href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
@@ -19,7 +24,7 @@ if ($cardImage): ?>
 
     <div class="mdl-card__supporting-text">
         <div class="article-content">
-            <?php $this->content() ?>
+            <?php $this->simpleContent() ?>
         </div>
     </div>
 
@@ -28,6 +33,7 @@ if ($cardImage): ?>
             <a href="<?php $this->permalink() ?>">
                 <span>继续阅读</span>
             </a>
+
             <div class="mdl-layout-spacer"></div>
             <?php $this->category(','); ?>
 

@@ -91,6 +91,37 @@ function themeFields($layout)
     $layout->addItem($logoUrl);
 }
 
+
+/**获取文章真正意义上的第一张图片（图片前再无其他内容）*/
+function getPostThumb($obj)
+{
+    $content = trim($obj->content);
+    $content = delStartWith($content, '<p>');
+    $content = trim($content);
+
+    if (strpos($content, '<img') === 0) {
+        preg_match("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", $obj->content, $matches);
+        if (isset($matches[1])) {
+            return $matches[1];
+        }
+    }
+    return NULL;
+}
+
+/***获取文章内容图*/
+function getPostHtmImg($obj)
+{
+    preg_match_all("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", $obj->content, $matches);
+    $atts = array();
+    if (isset($matches[1][0])) {
+        for ($i = 0; $i < count($matches[1]); $i++) {
+            $atts[] = array('name' => $obj->title . ' [' . ($i + 1) . ']', 'url' => $matches[1][$i]);
+        }
+    }
+    return count($atts) ? $atts : NULL;
+}
+
+
 function RSSList($list_str)
 {
     $result = [];
@@ -217,6 +248,14 @@ function getOS()
     return $platform;
 }
 
+function delStartWith($str, $prefix)
+{
+    if (substr($str, 0, strlen($prefix)) == $prefix) {
+        $str = substr($str, strlen($prefix));
+    }
+    return $str;
+}
+
 function debug_print($obj)
 {
     echo '<div style="border: 1px red solid;position:fixed; top: 0; left: 0; z-index: 10000;font-size: 12px;font-style: unset;
@@ -224,5 +263,62 @@ overflow: auto;background-color: black;color: gainsboro;height: 100%;width: 100%
         . print_r($obj, true)
         . '</pre></div>';
 }
+
+/**插件式操作*/
+//Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('MyMaterial', 'excerptEx'); //这个接口会被其他插件覆盖
+Typecho_Plugin::factory('Widget_Archive')->___allContent = array('MyMaterial', 'allContent');
+Typecho_Plugin::factory('Widget_Archive')->___simpleContent = array('MyMaterial', 'simpleContent');
+
+class MyMaterial
+{
+    /**
+     * 摘要文章
+     * 为了过滤掉头图在文章中的显示
+     */
+    function simpleContent($obj, $more)
+    {
+        $content = trim($obj->excerpt);
+        $content = delStartWith($content, '<p>');
+        $content = trim($content);
+
+        if (strpos($content, '<img') === 0) {
+            $content = preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
+            $content = trim($content);
+            $content = delStartWith($content, '<br>');
+        }
+
+        return false === $more ?: $content . "<p class=\"more\"><a href=\"{$obj->permalink}\" title=\"{$obj->title}\">{$more}</a></p>";
+    }
+
+    /**
+     * 文章全部内容
+     * 为了过滤掉头图在文章中的显示
+     */
+    function allContent($obj)
+    {
+        $content = trim($obj->content);
+        $content = delStartWith($content, '<p>');
+        $content = trim($content);
+
+        if (strpos($content, '<img') === 0) {
+            return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
+        }
+        return $obj->content;
+    }
+
+
+    function excerptEx($html, $widget, $lastResult)
+    {
+        $content = trim($html);
+        $content = delStartWith($content, '<p>');
+        $content = trim($content);
+
+        if (strpos($content, '<img') === 0) {
+            return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content);
+        }
+        return $html;
+    }
+}
+
 
 
