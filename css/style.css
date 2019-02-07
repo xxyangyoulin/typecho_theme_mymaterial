@@ -501,6 +501,7 @@ header {
     pointer-events: none;
 }
 
+
 .mdl-card__actions, .mdl-card__menu {
     z-index: 3;
 }
@@ -511,6 +512,7 @@ header {
 
 .card-text-wrapper .mdl-card__title-text a {
     color: #3c4858;
+    pointer-events: auto!important;
 }
 
 .card-text-wrapper time,
