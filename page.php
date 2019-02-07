@@ -10,7 +10,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 
 <div style="max-width: 900px;"
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
-    <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
+    <div class="post-card page-post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
              mdl-cell--12-col">
         <?php $postThumb = getPostThumb($this);
         if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>

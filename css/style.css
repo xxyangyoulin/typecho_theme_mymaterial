@@ -512,7 +512,7 @@ header {
 
 .card-text-wrapper .mdl-card__title-text a {
     color: #3c4858;
-    pointer-events: auto!important;
+    pointer-events: auto !important;
 }
 
 .card-text-wrapper time,
@@ -1708,15 +1708,9 @@ blockquote:before, blockquote:after {
         height: 350px;
     }
 
-    .has-image {
-        height: 180px;
-    }
-
     .links-ul li {
         width: 50%;
     }
-
-
 }
 
 @media (min-width: 481px) {
@@ -1756,10 +1750,6 @@ blockquote:before, blockquote:after {
         height: 300px;
     }
 
-    .has-image {
-        height: 150px;
-    }
-
     .page-content {
         padding-top: 56px;
     }
@@ -1775,8 +1765,6 @@ blockquote:before, blockquote:after {
     .input-group-3 > * {
         width: 100%;
     }
-
-
 }
 
 @media (max-width: 400px) {
@@ -1784,3 +1772,15 @@ blockquote:before, blockquote:after {
         width: 100%;
     }
 }
+
+/*头图高度*/
+@media (min-width: 840px) {
+    .has-image {
+        height: 200px;
+    }
+
+    .page-post-card .has-image {
+        height: 240px;
+    }
+}
+
