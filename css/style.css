@@ -475,6 +475,7 @@ header {
     transition: all 0.2s ease-out;
     -webkit-transition: all 0.2s ease-out;
     z-index: 1;
+    padding-left: 0 !important;
 }
 
 .has-image-img img {
@@ -485,8 +486,8 @@ header {
 }
 
 .has-image:hover .has-image-img {
-    transform: scale(1.01);
-    -webkit-transform: scale(1.01);
+    transform: scale(1.04);
+    -webkit-transform: scale(1.04);
 }
 
 .card-text-wrapper {
