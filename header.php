@@ -125,7 +125,8 @@
     <!--drawer-->
     <?php $this->need('drawer.php'); ?>
 
-    <main class="mdl-layout__content" id="mdl-layout-content">
+    <main class="mdl-layout__content" id="mdl-layout-content"
+          style="background-image: url('<?php $this->options->themeUrl('css/style.css'); ?>');">
         <div id="page-content"
              class="page-content mdl-grid <?php if (($this->options->homeType && $this->options->homeType == 'type1')):echo ' page-content-type1';endif; ?>">
 

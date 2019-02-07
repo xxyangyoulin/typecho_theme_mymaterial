@@ -12,7 +12,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div id="home2-left-column" class="mdl-cell--8-col mdl-cell--5-col-tablet" style="position: relative">
     <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
         <?php if (!$this->is('index') || $this->getCurrentPage() != 1): ?>
-            <div class="breadcrumb mdl-cell mdl-cell--12-col mdl-shadow--2dp hover-shadow--4dp">
+            <div class="breadcrumb mdl-cell mdl-cell--12-col hover-shadow--3dp shadow--1dp translation-all-3">
                 <a class="mdl-color-text--primary" href="<?php $this->options->siteUrl(); ?>">
                     <i class="material-icons">home</i>
                     首页
@@ -35,7 +35,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
     <?php endif; ?>
     <?php if ($this->is('index') && $this->getCurrentPage() == 1): ?>
         <?php if (!empty($this->options->homeCard) && in_array('showLeft', $this->options->homeCard)): ?>
-            <div class="head-card-left translation-all-3 mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
+            <div class="head-card-left translation-all-3 mdl-card mdl-cell shadow--1dp translation-all-3 hover-shadow--3dp
             mdl-cell--12-col menu-dialog-visible">
                 <div class="has-image mdl-card__title"
                      style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">

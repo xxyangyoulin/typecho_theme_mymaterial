@@ -1,9 +1,9 @@
 <?php if (!$this->have()): ?>
-    <div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp empty-content">好像没发现东西...</div>
+    <div class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">好像没发现东西...</div>
 <?php endif; ?>
 
 <?php while ($this->next()): ?>
-    <div class="post-card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col hover-shadow--4dp menu-dialog-visible">
+    <div class="post-card mdl-card mdl-cell mdl-cell--12-col  shadow--1dp hover-shadow--3dp menu-dialog-visible translation-all-3">
 
     <?php $cardImage = $this->fields->card_image;
 if ($cardImage): ?>
@@ -23,7 +23,7 @@ if ($cardImage): ?>
         </div>
     </div>
 
-    <div class="mdl-card__actions mdl-card--border">
+    <div class="mdl-card__actions mdl-card--border font-ant">
         <div class="action-wrapper mdl-color-text--primary inner-a-color-inherit a-none">
             <a href="<?php $this->permalink() ?>">
                 <span>继续阅读</span>

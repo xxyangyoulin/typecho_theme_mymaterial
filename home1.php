@@ -11,7 +11,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 <?php if ($this->is('index') && $this->getCurrentPage() == 1): ?>
     <?php if (!empty($this->options->homeCard) && in_array('showLeft', $this->options->homeCard)): ?>
-        <div class="head-card-left translation-all-3 mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
+        <div class="head-card-left translation-all-3 mdl-card mdl-cell hover-shadow--3dp shadow--1dp translation-all-3
             <?php if (in_array('showRight', $this->options->homeCard)): ?> mdl-cell--8-col mdl-cell--5-col-tablet <?php else: ?> mdl-cell--12-col <?php endif; ?> menu-dialog-visible">
             <div class="has-image mdl-card__title"
                  style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">
@@ -76,7 +76,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div><!--head-card-left-->
 
         <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>
-            <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+            <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
             mdl-cell--3-col-tablet menu-dialog-visible mdl-cell--hide-phone mdl-js-ripple-effect">
                 <div class="mdl-card__title"
                      style="background-image: url('<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>'">
@@ -142,7 +142,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 <?php if (!empty($this->options->homeCard) && in_array('showBreadcrumb', $this->options->homeCard)): ?>
     <?php if (!$this->is('index') || $this->getCurrentPage() != 1): ?>
-        <div class="breadcrumb mdl-cell mdl-cell--12-col">
+        <div class="breadcrumb mdl-cell mdl-cell--12-col  hover-shadow--3dp shadow--1dp translation-all-3">
             <a class="mdl-color-text--primary" href="<?php $this->options->siteUrl(); ?>">
                 <i class="material-icons">home</i>
                 首页

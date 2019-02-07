@@ -5,7 +5,7 @@
      style="max-width: 280px;">
 
     <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>
-        <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col menu-dialog-visible">
             <div class="mdl-card__title"
                  style="background-image: url('<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>'">
@@ -64,7 +64,7 @@
     <?php endif; ?>
 
     <?php if (!empty($this->options->homeCard) && in_array('showComment', $this->options->homeCard)): ?>
-        <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 class="mdl-card__title-text sidebar-card-title">最近回复</h2>
@@ -88,7 +88,7 @@
     <?php endif; ?>
 
     <?php if (!empty($this->options->homeCard) && in_array('showNewest', $this->options->homeCard)): ?>
-        <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 class="mdl-card__title-text sidebar-card-title">最新发布</h2>
@@ -102,7 +102,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
     <?php endif; ?>
 
     <?php if (!empty($this->options->homeCard) && in_array('showTagCloud', $this->options->homeCard)): ?>
-        <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col menu-dialog-visible font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 class="mdl-card__title-text sidebar-card-title">标签云</h2>
@@ -115,7 +115,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
 
                         <li><a id="tag-cloud-item-<?php $tags->name() ?>"
                                style="padding 2px 4px; background-color:#b0bec5"
-                               class="translation-all-3 hover-shadow--3dp mdl-shadow--2dp hover--margin-top-1px"
+                               class="translation-all-3 hover-shadow--3dp hover--margin-top-1px"
                                href="<?php $tags->permalink(); ?>"
                                rel="tag"><?php $tags->name(); ?></a></li>
                         <span class="mdl-tooltip mdl-tooltip--top" for="tag-cloud-item-<?php $tags->name() ?>">
@@ -131,7 +131,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
     <?php endif; ?>
 
     <?php if ($this->options->ftVisitor): ?>
-        <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 class="mdl-card__title-text sidebar-card-title">访客</h2>
@@ -146,7 +146,7 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
     require $this->getThemeDir() . 'lib/lastRSS.php';
     date_default_timezone_set('PRC');
     foreach ($RSSList as $item):?>
-        <div class="translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--4dp
+        <div class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col font-ant">
             <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
                 <h2 class="mdl-card__title-text sidebar-card-title"><?php echo $item['title']; ?></h2>

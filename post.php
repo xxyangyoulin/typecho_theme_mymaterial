@@ -11,7 +11,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 
 <div style="max-width: 900px;"
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
-    <div class="post-card mdl-card mdl-cell mdl-shadow--4dp hover-shadow--6dp menu-dialog-visible mdl-cell--12-col">
+    <div class="post-card mdl-card mdl-cell  mdl-shadow--2dp hover-shadow--4dp menu-dialog-visible mdl-cell--12-col">
         <?php $cardImage = $this->fields->card_image;
         if ($cardImage): ?>
         <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage ?>')">
