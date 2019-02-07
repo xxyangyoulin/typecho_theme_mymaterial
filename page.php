@@ -12,11 +12,15 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
     <div class="post-card mdl-card mdl-cell mdl-shadow--2dp hover-shadow--4dp
              mdl-cell--12-col">
-        <?php $cardImage = $this->fields->card_image;$postThumb = getPostThumb($this);
-        if ($cardImage): ?>
-            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage; ?>')"></div>
-        <?php elseif($postThumb): ?>
-            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $postThumb; ?>')"></div>
+        <?php $postThumb = getPostThumb($this);
+        if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
+        <?php if ($postThumb): ?>
+            <div class="mdl-card__title has-image">
+                <a href="<?php $this->permalink() ?>" class="has-image-img">
+                    <img alt="" src="<?php echo $postThumb; ?>"></a>
+            </div>
+        <?php else: ?>
+            <div class="mdl-card__title"></div>
         <?php endif; ?>
 
         <div class="mdl-card__supporting-text color-text-block-primary">
@@ -35,6 +39,13 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
             </div>
 
             <div class="article-content">
+                <?php  if ($this->is('page', 'links')): ?>
+                    <ul class="links-ul">
+                        <?php Links_Plugin::output("SHOW_MD"); ?>
+                        <div class="clearfix"></div>
+                    </ul>
+                <?php endif; ?>
+
                 <?php $this->allContent(); ?>
             </div>
 

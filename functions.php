@@ -87,7 +87,7 @@ function themeFields($layout)
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('card_image',
         NULL, NULL,
         _t('文章顶部图片'),
-        _t('在这里填入一个图片URL地址, 以在文章标题后加上背景图片'));
+        _t('在这里填入一个图片URL地址, 以在文章标题后加上背景图片<br>注意：<span style="color: red">Markdown格式下，推荐直接在文章第一行插入图片</span>。'));
     $layout->addItem($logoUrl);
 }
 
@@ -304,19 +304,6 @@ class MyMaterial
             return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
         }
         return $obj->content;
-    }
-
-
-    function excerptEx($html, $widget, $lastResult)
-    {
-        $content = trim($html);
-        $content = delStartWith($content, '<p>');
-        $content = trim($content);
-
-        if (strpos($content, '<img') === 0) {
-            return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content);
-        }
-        return $html;
     }
 }
 

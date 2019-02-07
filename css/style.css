@@ -110,7 +110,7 @@ a:hover {
 }
 
 .shadow--1dp {
-    box-shadow:0px 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
 }
 
 .hover-shadow--2dp,
@@ -415,6 +415,8 @@ header {
     background-size: cover;
     font-weight: 500;
     background-position: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .head-card-left h2,
@@ -457,16 +459,49 @@ header {
     height: 200px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat
+    overflow: hidden;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.has-image-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #EEEEEE;
+    height: 100%;
+    width: 100%;
+    display: block;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    z-index: 1;
+}
+
+.has-image-img img {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.has-image:hover .has-image-img {
+    transform: scale(1.01);
+    -webkit-transform: scale(1.01);
 }
 
 .card-text-wrapper {
+    z-index: 2;
     display: block;
     align-self: flex-end;
     margin: 0px;
     padding: 0px;
     width: 100%;
     -webkit-font-smoothing: antialiased;
+    pointer-events: none;
+}
+
+.mdl-card__actions, .mdl-card__menu {
+    z-index: 3;
 }
 
 .post-card .mdl-card__title:not(.has-image) {
@@ -554,7 +589,7 @@ header {
     align-items: center;
     transition: all 0.15s;
     -webkit-transition: all 0.15s;
-    box-shadow: -1px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .head-card-right .mdl-card__menu .label-item:hover {
@@ -1394,8 +1429,9 @@ blockquote:before, blockquote:after {
     transition: all 0.2s;
     display: block;
     border-radius: 16px;
-    height: 32px;
     box-sizing: border-box;
+    padding-left: 0 !important;
+    height: 32px;
 }
 
 .links-ul a:hover,

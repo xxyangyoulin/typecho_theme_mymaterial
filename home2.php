@@ -37,10 +37,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
         <?php if (!empty($this->options->homeCard) && in_array('showLeft', $this->options->homeCard)): ?>
             <div class="head-card-left translation-all-3 mdl-card mdl-cell shadow--1dp translation-all-3 hover-shadow--3dp
             mdl-cell--12-col menu-dialog-visible">
-                <div class="has-image mdl-card__title"
-                     style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">
+                <div class="has-image mdl-card__title">
+                        <a class="has-image-img"><img alt="" src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
+                            else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
                     <div class="card-text-wrapper">
-
                         <h2 class="mdl-card__title-text mdl-color-text--white">
                             <?php $this->options->title() ?>
                         </h2>

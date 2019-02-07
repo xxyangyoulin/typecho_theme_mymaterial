@@ -7,8 +7,10 @@
     <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>
         <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
              mdl-cell--12-col menu-dialog-visible">
-            <div class="mdl-card__title"
-                 style="background-image: url('<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>'">
+            <div class="mdl-card__title has-image">
+                <a class="has-image-img">
+                    <img src="<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>"
+                         alt=""></a>
             </div>
 
             <div class="mdl-card__actions">

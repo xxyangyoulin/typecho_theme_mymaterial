@@ -6,15 +6,15 @@
 <?php while ($this->next()): ?>
     <div class="post-card mdl-card mdl-cell mdl-cell--12-col  shadow--1dp hover-shadow--3dp menu-dialog-visible translation-all-3">
 
-    <?php $cardImage = $this->fields->card_image;
-    $postThumb = getPostThumb($this);
-if ($cardImage): ?>
-    <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage; ?>')">
-    <?php elseif ($postThumb): ?>
-    <div class="mdl-card__title has-image" style="background-image: url('<?php echo $postThumb; ?>')">
+    <?php $postThumb = getPostThumb($this);
+    if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
+    <?php if ($postThumb): ?>
+    <div class="mdl-card__title has-image">
+    <a href="<?php $this->permalink() ?>" class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
     <?php else: ?>
     <div class="mdl-card__title">
 <?php endif; ?>
+
     <div class="card-text-wrapper">
         <h2 class="mdl-card__title-text "><a class="a-none anim-line "
                                              href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>

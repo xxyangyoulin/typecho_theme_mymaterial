@@ -13,11 +13,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php if (!empty($this->options->homeCard) && in_array('showLeft', $this->options->homeCard)): ?>
         <div class="head-card-left translation-all-3 mdl-card mdl-cell hover-shadow--3dp shadow--1dp translation-all-3
             <?php if (in_array('showRight', $this->options->homeCard)): ?> mdl-cell--8-col mdl-cell--5-col-tablet <?php else: ?> mdl-cell--12-col <?php endif; ?> menu-dialog-visible">
-            <div class="has-image mdl-card__title"
-                 style="background-image: url('<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl(); else:$this->options->themeUrl('image/left.jpg'); endif; ?>') ">
-
+            <div class="has-image mdl-card__title">
+                <a class="has-image-img"><img alt="" src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
+                    else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
                 <div class="card-text-wrapper">
-
                     <h2 class="mdl-card__title-text   mdl-color-text--white">
                         <?php $this->options->title() ?>
                     </h2>
@@ -78,8 +77,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php if (!empty($this->options->homeCard) && in_array('showRight', $this->options->homeCard)): ?>
             <div class="head-card-right translation-all-3 mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
             mdl-cell--3-col-tablet menu-dialog-visible mdl-cell--hide-phone mdl-js-ripple-effect">
-                <div class="mdl-card__title"
-                     style="background-image: url('<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>'">
+                <div class="mdl-card__title has-image">
+                    <a class="has-image-img">
+                        <img src="<?php if ($this->options->rightImageUrl): $this->options->rightImageUrl(); else:$this->options->themeUrl('image/right.jpg'); endif; ?>"
+                             alt=""></a>
                 </div>
 
                 <div class="mdl-card__actions">

@@ -12,16 +12,14 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 <div style="max-width: 900px;"
      class="translation-all-1_5 <?php if (!$this->fields->rmTree && $treeMenu): ?>mdl-cell--9-col mdl-cell--6-col-tablet<?php else: ?>mdl-cell--11-col mdl-cell--8-col-tablet<?php endif; ?>">
     <div class="post-card mdl-card mdl-cell  mdl-shadow--2dp hover-shadow--4dp menu-dialog-visible mdl-cell--12-col">
-        <?php $cardImage = $this->fields->card_image;
-        $postThumb = getPostThumb($this);
-        if ($cardImage): ?>
-        <div class="mdl-card__title has-image" style="background-image: url('<?php echo $cardImage; ?>')">
-            <?php elseif ($postThumb): ?>
-            <div class="mdl-card__title has-image" style="background-image: url('<?php echo $postThumb; ?>')">
-                <?php else: ?>
-                <div class="mdl-card__title">
-                    <?php endif; ?>
-
+        <?php $postThumb = getPostThumb($this);
+        if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
+        <?php if ($postThumb): ?>
+        <div class="mdl-card__title has-image">
+            <a href="<?php $this->permalink() ?>" class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
+            <?php else: ?>
+            <div class="mdl-card__title">
+                <?php endif; ?>
             <div class="card-text-wrapper inner-a-color-inherit">
                 <h2 class="mdl-card__title-text mdl-typography--font-bold">
                     <a class="a-none anim-line"
