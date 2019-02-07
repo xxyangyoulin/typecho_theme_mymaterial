@@ -274,8 +274,11 @@ class MyMaterial
     /**
      * 摘要文章
      * 为了过滤掉头图在文章中的显示
+     * @param $obj
+     * @param bool $more
+     * @return string
      */
-    function simpleContent($obj, $more)
+    function simpleContent($obj, $more = false)
     {
         $content = trim($obj->excerpt);
         $content = delStartWith($content, '<p>');
@@ -284,15 +287,20 @@ class MyMaterial
         if (strpos($content, '<img') === 0) {
             $content = preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
             $content = trim($content);
+            $content = delStartWith($content, '</p>');
             $content = delStartWith($content, '<br>');
+        } else {
+            $content = trim($obj->excerpt);
         }
 
-        return false === $more ?: $content . "<p class=\"more\"><a href=\"{$obj->permalink}\" title=\"{$obj->title}\">{$more}</a></p>";
+        return false == $more ? $content : $content . "<p class=\"more\"><a href=\"{$obj->permalink}\" title=\"{$obj->title}\">{$more}</a></p>";
     }
 
     /**
      * 文章全部内容
      * 为了过滤掉头图在文章中的显示
+     * @param $obj
+     * @return string|string[]|null
      */
     function allContent($obj)
     {
