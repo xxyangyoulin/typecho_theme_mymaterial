@@ -557,14 +557,14 @@ $(function () {
         }
 
         //从第二页开始获取
-        var morePage = 2, isLoading = false;
+        var  isLoading = false;
         if (oldELoadMore.length == 0) return;
 
         oldELoadMore.unbind('click').on('click', function () {
             if (doing()) return;
 
             $.ajax({
-                url: typechoConf.siteUrl + 'index.php/page/' + morePage,
+                url: typechoConf.siteUrl + 'index.php/page/' + ($('.post-card').length/typechoConf.pageSize+1),
                 type: 'GET',
                 dataType: 'html',
                 error: function () {
@@ -578,7 +578,6 @@ $(function () {
 
                     $('.post-card').last().after($(data).hide().fadeIn(300));
                     //刷新新加入post-card的事件和渲染
-                    morePage++;
                     done($('.post-card').length >= typechoConf.pageTotalSize);
 
                     articleContentReplace();
