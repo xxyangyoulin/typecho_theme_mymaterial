@@ -420,14 +420,8 @@ $(function () {
 
     /**material color class*/
     $.pageNav = function () {
-        let pageNavCur = $('.page-navigator .current a');
-        if (pageNavCur.length) {
-            pageNavCur.addClass('mdl-color--primary')
-        }
-        let pageNavItem = $('.page-navigator li:not(.current) a');
-        if (pageNavItem) {
-            pageNavItem.addClass('mdl-color-text--primary')
-        }
+        $('.page-navigator .current a').addClass('mdl-color--primary');
+        $('.page-navigator li:not(.current) a').addClass('mdl-color-text--primary');
     };
 
     /**to_top*/
@@ -506,6 +500,12 @@ $(function () {
             /**包裹table*/
             $t.find('table').wrap('<div class="scroll-bar table-wrap"></div>')
         });
+
+        //代码高亮渲染
+        try {
+            Prism.highlightAll();
+        } catch (e) {
+        }
     }
 
     /**访客地图*/
@@ -541,13 +541,26 @@ $(function () {
     })();
 
     /**加载更多文章*/
+    var oldELoadMore = null;
     var initLoadMore = function () {
+        //首页more对象没有变动，无需刷新
+        if ($('#load-more').is(oldELoadMore)) {
+            return;
+        } else {
+            oldELoadMore = $('#load-more');
+        }
+
+        //已经没有更多了，无需刷新
+        if ($('.post-card').length >= typechoConf.pageTotalSize) {
+            $('#load-more').html('到底了');
+            return;
+        }
+
+        //从第二页开始获取
         var morePage = 2, isLoading = false;
-        var eLoadMore = $('#load-more');
+        if (oldELoadMore.length == 0) return;
 
-        if (eLoadMore.length == 0) return;
-
-        eLoadMore.on('click', function () {
+        oldELoadMore.unbind('click').on('click', function () {
             if (doing()) return;
 
             $.ajax({
@@ -562,9 +575,14 @@ $(function () {
                         done();
                         return;
                     }
-                    $('.load-more-wrap').before(data);
+
+                    $('.post-card').last().after($(data).hide().fadeIn(300));
+                    //刷新新加入post-card的事件和渲染
                     morePage++;
                     done($('.post-card').length >= typechoConf.pageTotalSize);
+
+                    articleContentReplace();
+                    articleImage();
                 }
             })
         });
@@ -643,8 +661,8 @@ $(function () {
         articleTitleTree();
         articleImage();
         $.postNear();
-        $.pageNav();
         initLoadMore();
+        $.pageNav();
         $.commentsAjax();
         revolvermaps();
 

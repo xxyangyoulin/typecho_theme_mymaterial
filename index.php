@@ -11,7 +11,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 if (!$this->request->isAjax()) {
     $this->need('header.php');
-} else {
+} else if($this->request->isAjax() &&$this->request->get('page') <=1){
     $this->need('siteTitle.php');
 }
 
@@ -31,3 +31,4 @@ if ($this->request->isAjax() && $this->request->get('page') > 1) {
 if (!$this->request->isAjax()) {
     $this->need('footer.php');
 }
+

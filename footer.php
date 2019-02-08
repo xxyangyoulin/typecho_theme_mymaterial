@@ -132,11 +132,6 @@
         $(document).on('pjax:end', function () {
             $.afterPjax();// 需要第一个执行
             reUpgradePageDem();
-
-            try {
-                Prism.highlightAll();
-            } catch (e) {
-            }
         });
 
         var scrollToHash = function () {
