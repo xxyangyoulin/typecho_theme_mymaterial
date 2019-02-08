@@ -35,8 +35,13 @@
     <?php $this->header(); ?>
 
     <script>
-        var musicAutoPlay = <?php echo ($this->options->musicCtrl && in_array('auto', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
-        var musicAutoNext = <?php echo ($this->options->musicCtrl && in_array('autoNext', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
+        <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+        var typechoConf = [];
+        typechoConf.siteUrl = '<?php $this->options->siteUrl() ?>';
+        typechoConf.pageSize = '<?php $this->options->pageSize() ?>';
+        typechoConf.pageTotalSize = '<?php $stat->publishedPostsNum() ?>';
+        typechoConf.musicAutoPlay = <?php echo ($this->options->musicCtrl && in_array('auto', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
+        typechoConf.musicAutoNext = <?php echo ($this->options->musicCtrl && in_array('autoNext', $this->options->musicCtrl)) ? 'true' : 'false' ?>;
     </script>
 </head>
 <body style="">

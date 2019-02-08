@@ -1,5 +1,5 @@
 <?php if (!$this->have()): ?>
-    <div class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">好像没发现东西...
+    <div id="no-more" class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">Nothing at all...
     </div>
 <?php endif; ?>
 

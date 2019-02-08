@@ -540,6 +540,55 @@ $(function () {
         })
     })();
 
+    /**加载更多文章*/
+    var initLoadMore = function () {
+        var morePage = 2, isLoading = false;
+        var eLoadMore = $('#load-more');
+
+        if (eLoadMore.length == 0) return;
+
+        eLoadMore.on('click', function () {
+            if (doing()) return;
+
+            $.ajax({
+                url: typechoConf.siteUrl + 'index.php/page/' + morePage,
+                type: 'GET',
+                dataType: 'html',
+                error: function () {
+                    done(false, true);
+                },
+                success: function (data) {
+                    if (false == data) {
+                        done();
+                        return;
+                    }
+                    $('.load-more-wrap').before(data);
+                    morePage++;
+                    done($('.post-card').length >= typechoConf.pageTotalSize);
+                }
+            })
+        });
+
+        var doing = function () {
+            if (isLoading) return true;
+
+            isLoading = true;
+            $('#load-more .description').html('请稍等');
+            $('#load-more-anim').addClass('spinner');
+            return false;
+        };
+
+        var done = function (damn = false, failed = false) {
+            isLoading = false;
+            $('#load-more-anim').removeClass('spinner');
+            if (damn) {
+                $('#load-more').html('到底了').unbind('click');
+            } else {
+                $('#load-more .description').html(failed ? '加载失败，请重试' : '加载更多');
+            }
+        }
+    };
+
     /**tag随机颜色*/
     var inittagColor = function () {
         var tagA = $('.tag-wrapper a');
@@ -595,6 +644,7 @@ $(function () {
         articleImage();
         $.postNear();
         $.pageNav();
+        initLoadMore();
         $.commentsAjax();
         revolvermaps();
 
@@ -632,7 +682,7 @@ $(function () {
         var music = new Audio();
         music.addEventListener('ended', function () {
             toPause();
-            if (musicAutoNext) {
+            if (typechoConf.musicAutoNext) {
                 toNext();
             }
         }, false);
@@ -790,7 +840,7 @@ $(function () {
         };
 
         /**自动播放*/
-        if (musicAutoPlay) {
+        if (typechoConf.musicAutoPlay) {
             setTimeout(function () {
                 play.trigger('click')
             }, 5000) //延迟加载

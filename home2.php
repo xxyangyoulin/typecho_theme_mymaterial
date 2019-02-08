@@ -38,8 +38,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
             <div class="head-card-left translation-all-3 mdl-card mdl-cell shadow--1dp translation-all-3 hover-shadow--3dp
             mdl-cell--12-col menu-dialog-visible">
                 <div class="has-image mdl-card__title">
-                        <a class="has-image-img"><img alt="" src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
-                            else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
+                    <a class="has-image-img"><img alt=""
+                                                  src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
+                                                  else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
                     <div class="card-text-wrapper">
                         <h2 class="mdl-card__title-text mdl-color-text--white">
                             <?php $this->options->title() ?>
@@ -102,7 +103,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
     <?php $this->need('postCard.php') ?>
 
-    <?php $this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
+    <!--    --><?php //$this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
+    <div class="load-more-wrap">
+        <a id="load-more"
+           style="margin: 16px 0">
+            <span class="description">加载更多</span>
+        </a>
+        <div id="load-more-anim">
+            <div class="cube1"></div><div class="cube2"></div>
+        </div>
+    </div>
 </div>
 
 

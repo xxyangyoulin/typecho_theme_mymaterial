@@ -167,5 +167,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <div></div>
 <?php $this->need('postCard.php') ?>
 
-<?php $this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
-
+<?php //$this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
+<div class="load-more-wrap" style="width: 100%;text-align: center">
+    <a id="load-more"
+       style="margin: 16px 0">
+        <span class="description">加载更多</span>
+    </a>
+    <div id="load-more-anim">
+        <div class="cube1"></div><div class="cube2"></div>
+    </div>
+</div>
