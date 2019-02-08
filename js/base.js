@@ -499,6 +499,13 @@ $(function () {
             $t.find('a').attr('target', '_block');
             /**包裹table*/
             $t.find('table').wrap('<div class="scroll-bar table-wrap"></div>')
+
+
+            /**保护内容的样式*/
+            if ($t.find('form.protected').length) {
+                $t.find('form.protected input[type=submit]').addClass('mdl-button mdl-js-button mdl-button--raised')
+                $t.parents('.post-card').addClass('post-card-protected')
+            }
         });
 
         //代码高亮渲染
@@ -557,14 +564,14 @@ $(function () {
         }
 
         //从第二页开始获取
-        var  isLoading = false;
+        var isLoading = false;
         if (oldELoadMore.length == 0) return;
 
         oldELoadMore.unbind('click').on('click', function () {
             if (doing()) return;
 
             $.ajax({
-                url: typechoConf.siteUrl + 'index.php/page/' + ($('.post-card').length/typechoConf.pageSize+1),
+                url: typechoConf.siteUrl + 'index.php/page/' + ($('.post-card').length / typechoConf.pageSize + 1),
                 type: 'GET',
                 dataType: 'html',
                 error: function () {
@@ -895,7 +902,7 @@ $.commentsAjax = function () {
                 done();
 
                 if (!$('#comments', data).length) {
-                    var msg = $('h1', data);
+                    var msg = $("<code></code>").append($(data)).find('.container, h1');
                     if (msg.length) msg = msg.html(); else msg = data;
                     $.showSnackbar("提交失败:  " + msg);
                     return false;
