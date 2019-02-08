@@ -75,7 +75,7 @@
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                 <?php while ($comments->next()): ?>
                     <li class="comment-recent-item">
-                        <a class="item-avator" href="<?php $comments->url(); ?>">
+                        <a class="item-avator" target="_blank" href="<?php $comments->url(); ?>">
                             <?php $comments->gravatar('40', ''); ?>
                         </a>
                         <a class="item-link" href="<?php $comments->permalink(); ?>"

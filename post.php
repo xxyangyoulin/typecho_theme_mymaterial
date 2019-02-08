@@ -16,7 +16,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
         if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
         <?php if ($postThumb): ?>
         <div class="mdl-card__title has-image">
-            <a href="<?php $this->permalink() ?>" class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
+            <a class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
             <?php else: ?>
             <div class="mdl-card__title">
                 <?php endif; ?>

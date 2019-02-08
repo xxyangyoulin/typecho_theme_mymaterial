@@ -185,7 +185,7 @@ function resizeMenuTreeHeight() {
     var treeHeight = $(window).height() - 16;
 
     $('.article-title-list-w').css('height', treeHeight + 'px');
-    $('.article-title-list').css('max-height', treeHeight-168 + 'px');
+    $('.article-title-list').css('max-height', treeHeight - 168 + 'px');
 }
 
 $(function () {
@@ -489,7 +489,7 @@ $(function () {
 
     function articleImage() {
         /**zoom article image*/
-        $('.article-content img').on('click', function () {
+        $('.article-content img').not('.image-no-show, .image-no-show img').on('click', function () {
             $('#show-image').css('opacity', '0.0').show();
             $('#show-image .inner-flex').html($(this).clone());
             $('#show-image').animate({'opacity': 1}, 200)
@@ -573,6 +573,7 @@ $(function () {
     drawer();
     toTop();
     revolvermaps();
+    titleTooltip();
 
     $mdl_content.niceScroll({
         cursorcolor: "#d0d0d0",
@@ -604,6 +605,7 @@ $(function () {
         });
     };
     $.afterPjax();
+
 
     /**music*/
     (function () {
@@ -822,10 +824,13 @@ $.commentsAjax = function () {
                 $.showSnackbar('提交失败！')
             },
             success: function (data) {
+                console.log(data);
                 done();
 
                 if (!$('#comments', data).length) {
-                    $.showSnackbar("提交失败,可能输入内容不符合规则！");
+                    var msg = $('h1', data);
+                    if (msg.length) msg = msg.html(); else msg = data;
+                    $.showSnackbar("提交失败:  " + msg);
                     return false;
                 }
 
@@ -875,6 +880,36 @@ $.commentsAjax = function () {
 function restNoPjaxClass() {
     $('.comment-reply a, .cancel-comment-reply-link').addClass("no-pjax");
 }
+
+var titleTooltip = function () {
+    $(".article-content .avatars").find("a").each(function (d) {//这里是控制标签
+        if ($(this).attr('title')) {
+            $(this).mouseover(function (d) {
+                var title = $(this).attr('title');
+                var url = '';
+                $(this).attr('title', '');
+                var href = $(this).attr('href');
+                if (href && !href.startsWith('#')) {
+                    url = '点击传送：' + href;
+                }
+                $("body").append('<div id="tooltip">' + '<span class="title">' + title + '</span>' + '<br>' + url + "</div>");
+                $("#tooltip").css({
+                    left: (d.pageX + 16) + "px",
+                    top: (d.pageY + 16) + "px",
+                }).fadeIn(150)
+            }).mouseout(function () {
+                $(this).attr('title', $("#tooltip .title").html());
+                $("#tooltip").remove();
+            }).mousemove(function (d) {
+                $("#tooltip").css({
+                    left: (d.pageX + 16) + "px",
+                    top: (d.pageY + 16) + "px"
+                });
+                //TODO tooltip有溢出窗口的可能
+            })
+        }
+    });
+};
 
 /**重新刷新pge-content下的mdl组件功能.*/
 function reUpgradePageDem() {

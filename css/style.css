@@ -501,6 +501,9 @@ header {
     pointer-events: none;
 }
 
+.card-text-wrapper * {
+    pointer-events: auto;
+}
 
 .mdl-card__actions, .mdl-card__menu {
     z-index: 3;
@@ -510,14 +513,18 @@ header {
     padding-bottom: 0;
 }
 
+.card-text-wrapper .mdl-card__title-text {
+    max-width: max-content;
+}
+
 .card-text-wrapper .mdl-card__title-text a {
     color: #3c4858;
-    pointer-events: auto !important;
 }
 
 .card-text-wrapper time,
 .card-text-wrapper .post-meta2 {
     color: rgba(60, 72, 88, 1);
+    max-width: max-content;
 }
 
 .has-image .card-text-wrapper {
@@ -1085,6 +1092,21 @@ blockquote:before, blockquote:after {
 
 /*end drawer*/
 
+.friend-wall > a {
+    margin-right: 4px;
+    padding-left: 0 !important;
+}
+
+#tooltip {
+    opacity: 0.7;
+    position: absolute;
+    display: none;
+    background: #000;
+    color: #fff;
+    z-index: 1112;
+    padding: 5px 8px;
+    border-radius: 2px ;
+}
 
 /*comment*/
 .comment-input-form {
@@ -1695,6 +1717,18 @@ blockquote:before, blockquote:after {
     overflow-y: auto
 }
 
+/*头图高度*/
+@media (min-width: 840px) {
+    .has-image {
+        height: 200px;
+    }
+
+    .page-post-card .has-image {
+        height: 240px;
+    }
+}
+
+
 @media (max-width: 840px) {
     .head-card-left {
         height: 350px;
@@ -1770,17 +1804,6 @@ blockquote:before, blockquote:after {
 @media (max-width: 400px) {
     .links-ul li {
         width: 100%;
-    }
-}
-
-/*头图高度*/
-@media (min-width: 840px) {
-    .has-image {
-        height: 200px;
-    }
-
-    .page-post-card .has-image {
-        height: 240px;
     }
 }
 

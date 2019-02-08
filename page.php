@@ -16,8 +16,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
         if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
         <?php if ($postThumb): ?>
             <div class="mdl-card__title has-image">
-                <a href="<?php $this->permalink() ?>" class="has-image-img">
-                    <img alt="" src="<?php echo $postThumb; ?>"></a>
+                <a class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
             </div>
         <?php else: ?>
             <div class="mdl-card__title"></div>
@@ -39,11 +38,19 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
             </div>
 
             <div class="article-content">
-                <?php  if ($this->is('page', 'links')): ?>
+                <?php if ($this->is('page', 'links')): ?>
                     <ul class="links-ul">
-                        <?php Links_Plugin::output("SHOW_MD"); ?>
+                        <?php Links_Plugin::output("SHOW_MD"); /**插件：links*/ ?>
                         <div class="clearfix"></div>
                     </ul>
+                <?php endif; ?>
+
+                <?php if ($this->is('page', 'board')): ?>
+                    <?php $this->avatars('span', 'friend-wall image-no-show');/**插件：http://www.yzmb.me/archives/net/avatars-for-typecho*/ ?>
+                    <script>
+                        if (typeof titleTooltip != 'undefined' && titleTooltip instanceof Function)
+                            titleTooltip();
+                    </script>
                 <?php endif; ?>
 
                 <?php $this->allContent(); ?>

@@ -55,14 +55,10 @@
                 <?php $comments->content(); ?>
 
                 <?php if ('waiting' == $comments->status) { ?>
-                    <span id="comment-waiting-<?php $comments->theId(); ?>" class=""
-                          style="background-color: #66bb6a	;color: white; padding: 4px 8px;border-radius: 12px;
-                          cursor: pointer;outline: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+                    <span style="background-color: #FFD479	;color: white; padding: 4px 8px;border-radius: 12px;font-size: 13px;box-sizing: border-box;
+                          outline: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
                     <?php $options->commentStatus(); ?>
                     </span>
-                    <div class="mdl-tooltip" data-mdl-for="comment-waiting-<?php $comments->theId(); ?>">
-                        只有通过审核之后，<br>别人才能看见！
-                    </div>
                 <?php } ?>
             </div>
 
