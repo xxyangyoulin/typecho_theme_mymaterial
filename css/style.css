@@ -1325,7 +1325,7 @@ header {
 }
 
 #comments .comment-content {
-    padding: 24px 0px 10px 56px;
+    padding: 0 0px 10px 56px;
     overflow: hidden;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.87);
