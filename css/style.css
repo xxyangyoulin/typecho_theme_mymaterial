@@ -390,10 +390,12 @@ header {
 .post-card-protected {
     background-color: #5E5E5E;
 }
-.post-card-protected *{
+
+.post-card-protected * {
     color: whitesmoke !important;
 }
-.post-card-protected .mdl-card__actions{
+
+.post-card-protected .mdl-card__actions {
     display: none;
 }
 
@@ -469,7 +471,6 @@ header {
     height: 200px;
     background-size: cover;
     background-position: center;
-    overflow: hidden;
     background-repeat: no-repeat;
     position: relative;
 }
@@ -482,8 +483,6 @@ header {
     height: 100%;
     width: 100%;
     display: block;
-    transition: all 0.2s ease-out;
-    -webkit-transition: all 0.2s ease-out;
     z-index: 1;
     padding-left: 0 !important;
 }
@@ -493,9 +492,11 @@ header {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
 }
 
-.has-image:hover .has-image-img {
+.has-image:hover .has-image-img img {
     transform: scale(1.04);
     -webkit-transform: scale(1.04);
 }
@@ -819,10 +820,10 @@ header {
     border-radius: 2px;
     padding: 0 16px;
     border: none;
-    background: rgba(158,158,158,.2);
+    background: rgba(158, 158, 158, .2);
     height: 36px;
     box-sizing: border-box;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
 .article-content form.protected input[type=submit] {
@@ -1837,6 +1838,41 @@ header {
     width: 196px;
     background-color: rgba(255, 255, 255, 0.95);
     overflow-y: auto
+}
+
+/*contact-wrap*/
+.contact-wrap .mdl-button {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+    background: #DAA486 !important;
+}
+
+.contact-wrap .mdl-button:nth-of-type(2){
+background: #02B4F7!important;
+}
+.contact-wrap .mdl-button:nth-of-type(3){
+background: #E9A79E!important;
+}
+.contact-wrap .mdl-button:nth-of-type(4){
+background: #BD4157!important;
+}
+.contact-wrap .mdl-button:nth-of-type(5){
+background: #262242!important;
+}
+
+
+.contact-wrap .mdl-button img {
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-12px, -12px);
+    transform: translate(-12px, -12px);
+    line-height: 24px;
+    width: 24px;
+    margin-left: -48px;
+    filter: drop-shadow(48px 0px 0px white)
 }
 
 /*头图高度*/
