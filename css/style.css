@@ -485,6 +485,7 @@ header {
     display: block;
     z-index: 1;
     padding-left: 0 !important;
+    overflow: hidden;
 }
 
 .has-image-img img {
