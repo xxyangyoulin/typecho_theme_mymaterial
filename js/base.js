@@ -134,6 +134,13 @@ var colorBuilder = {
     }
 })(jQuery, this);
 
+function isMobile() {
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        return true;
+    }
+    return false;
+}
+
 function trim(str) {
     if (str == null) {
         str = "";
@@ -635,6 +642,19 @@ $(function () {
     };
     inittagColor();
 
+    /**初始化 niceScroll*/
+    var initNiceScroll = function () {
+        if (isMobile()) return;
+        $mdl_content.niceScroll({
+            cursorcolor: "#d0d0d0",
+            horizrailenabled: false,
+        });
+        $('.page-content').bind('resize', function () {
+            $mdl_content.getNiceScroll().resize();
+            updateMenuIndexTags();
+        });
+    };
+
     /**页面resize*/
     $(window).resize(function () {
         resizeMenuTreeHeight();
@@ -647,16 +667,8 @@ $(function () {
     toTop();
     revolvermaps();
     titleTooltip();
+    initNiceScroll();
 
-    $mdl_content.niceScroll({
-        cursorcolor: "#d0d0d0",
-        horizrailenabled: false,
-    });
-
-    $('.page-content').bind('resize', function () {
-        $mdl_content.getNiceScroll().resize();
-        updateMenuIndexTags();
-    });
 
     $.completePjax = function () {
         inittagColor();
