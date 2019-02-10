@@ -132,7 +132,8 @@ class lastRSS {
 	// -------------------------------------------------------------------
 	function Parse ($rss_url) {
 		// Open and load RSS file
-		if ($f = @fopen($rss_url, 'r')) {
+        ini_set('user_agent', "X-MyCustomHeader: Foo");
+        if ($f = @fopen($rss_url, 'r')) {
 			$rss_content = '';
 			while (!feof($f)) {
 				$rss_content .= fgets($f, 4096);
