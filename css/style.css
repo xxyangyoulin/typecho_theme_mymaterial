@@ -698,6 +698,7 @@ header {
     border-top: dashed #bbdefb 2px;
 }
 
+.article-content li > code ,
 .article-content p code {
     padding: 1px 3px;
     margin: 0 2px;
