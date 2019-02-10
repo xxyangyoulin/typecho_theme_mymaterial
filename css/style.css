@@ -698,7 +698,7 @@ header {
     border-top: dashed #bbdefb 2px;
 }
 
-.article-content li > code ,
+.article-content li > code,
 .article-content p code {
     padding: 1px 3px;
     margin: 0 2px;
@@ -1850,17 +1850,20 @@ header {
     background: #DAA486 !important;
 }
 
-.contact-wrap .mdl-button:nth-of-type(2){
-background: #02B4F7!important;
+.contact-wrap .mdl-button:nth-of-type(2) {
+    background: #02B4F7 !important;
 }
-.contact-wrap .mdl-button:nth-of-type(3){
-background: #E9A79E!important;
+
+.contact-wrap .mdl-button:nth-of-type(3) {
+    background: #E9A79E !important;
 }
-.contact-wrap .mdl-button:nth-of-type(4){
-background: #BD4157!important;
+
+.contact-wrap .mdl-button:nth-of-type(4) {
+    background: #BD4157 !important;
 }
-.contact-wrap .mdl-button:nth-of-type(5){
-background: #262242!important;
+
+.contact-wrap .mdl-button:nth-of-type(5) {
+    background: #262242 !important;
 }
 
 
@@ -1875,6 +1878,80 @@ background: #262242!important;
     width: 24px;
     margin-left: -48px;
     filter: drop-shadow(48px 0px 0px white)
+}
+
+.douban-list ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.douban-list ul::after {
+    content: "";
+    flex: auto;
+}
+
+.douban-list li {
+    height: 140px;
+    width: auto;
+    flex-shrink: 0;
+    margin: 8px;
+    overflow: hidden;
+}
+.douban-list li:empty{
+    height: 0;
+    visibility: hidden;
+}
+
+.douban-list li > a {
+    height: 100%;
+    padding: 0 !important;
+    display: block;
+    margin: 0 !important;
+    position: relative;
+}
+
+.douban-list .info-wrap {
+    height: 140px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -100%;
+    align-items: center;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.douban-list li:hover .info-wrap {
+    margin-left: 0px;
+}
+
+.douban-list .info-wrap span,
+.douban-list .info-wrap strong{
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    text-align: center;
+}
+.douban-list .info-wrap span:first-of-type{
+    font-weight: bold!important;
+}
+
+.douban-list li img {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    object-fit: cover;
 }
 
 /*头图高度*/

@@ -76,6 +76,10 @@ function themeConfig($form)
         _t('地球访客'), _t('填写https://www.revolvermaps.com/得到的代码的**src部分** (不填则不用该功能)'));
     $form->addInput($ftVisitor);
 
+    $doubanId = new Typecho_Widget_Helper_Form_Element_Text('doubanId', NULL, NULL,
+        _t('豆瓣书单'), _t('填写豆瓣id，保证项目根目录下douban_cache有可读写权限, 页面的url为reading.html'));
+    $form->addInput($doubanId);
+
     $RSSList = new Typecho_Widget_Helper_Form_Element_Textarea('RSSList', NULL, NULL,
         _t('RSS聚合'),
         _t('格式:<br><span style="color: darkred">RSS标题 (空格)RSS的url (空格)缓存时间(单位秒, 不填默认6小时, 需要给主题目录下cache目录读写权限),(逗号)<br>例如:<br>微博 http://yangyoulin.com:1200/weibo/user2/2697157814?limit=4 3600,<br>我的接口就不开放了,512服务器🤣</span>'));
@@ -187,7 +191,7 @@ function musicList($list_str)
 
 function drawerMenuPages()
 {
-    return array('about', 'links', 'board');
+    return array('about', 'links', 'board', 'reading');
 }
 
 //评论添加回复标记

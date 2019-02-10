@@ -136,6 +136,7 @@
                         <i class="material-icons">
                             <?php if ($pages->slug == 'about'):echo 'person';
                             elseif ($pages->slug == 'links'):echo 'link';
+                            elseif ($pages->slug == 'reading'):echo 'photo_album';
                             elseif ($pages->slug == 'board'):echo 'sms'; endif; ?>
                         </i><?php $pages->title(); ?>
                     </a></li>
