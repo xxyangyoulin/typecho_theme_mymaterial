@@ -2,6 +2,8 @@
     <div id="no-more" class="post-card mdl-card mdl-cell mdl-cell--12-col shadow--1dp hover-shadow--4dp empty-content">
         没有了...
     </div>
+<?php elseif ($this->getTotalPage() == $this->getCurrentPage()): ?>
+<span id="tag-no-more"></span>
 <?php endif; ?>
 
 <?php while ($this->next()): ?>
@@ -32,7 +34,7 @@
     <div class="mdl-card__actions mdl-card--border font-ant">
         <div class="action-wrapper mdl-color-text--primary inner-a-color-inherit a-none">
             <a href="<?php $this->permalink() ?>">
-                    <span>继续阅读</span>
+                <span>继续阅读</span>
             </a>
 
             <div class="mdl-layout-spacer"></div>

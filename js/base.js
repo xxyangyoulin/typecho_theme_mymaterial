@@ -578,26 +578,27 @@ $(function () {
             if (doing()) return;
 
             $.ajax({
-                url: window.location.href+'?page=' + ($('.post-card').length / typechoConf.pageSize + 1),
+                url: window.location.href + '?page=' + ($('.post-card').length / typechoConf.pageSize + 1),
                 type: 'GET',
                 dataType: 'html',
                 error: function () {
                     done(false, true);
                 },
                 success: function (data) {
-                    if (false == data) {
+                    if (false == data) {//出错
                         done();
                         return;
                     }
 
-                    if($('<code></code>').append($(data)).find('#no-more').length){
+                    var tempData = $('<code></code>').append($(data));
+                    if (tempData.find('#no-more').length) {//已无更多
                         done(true);
                         return;
                     }
 
                     $('.post-card').last().after($(data).hide().fadeIn(300));
                     //刷新新加入post-card的事件和渲染
-                    done($('.post-card').length >= typechoConf.pageTotalSize);
+                    done($('#tag-no-more').length);
 
                     articleContentReplace();
                     articleImage();

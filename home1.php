@@ -14,8 +14,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="head-card-left translation-all-3 mdl-card mdl-cell hover-shadow--3dp shadow--1dp translation-all-3
             <?php if (in_array('showRight', $this->options->homeCard)): ?> mdl-cell--8-col mdl-cell--5-col-tablet <?php else: ?> mdl-cell--12-col <?php endif; ?> menu-dialog-visible">
             <div class="has-image mdl-card__title">
-                <a class="has-image-img"><img alt="" src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
-                    else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
+                <a class="has-image-img"><img alt=""
+                                              src="<?php if ($this->options->leftImageUrl): $this->options->leftImageUrl();
+                                              else:$this->options->themeUrl('image/left.jpg'); endif; ?>"></a>
                 <div class="card-text-wrapper">
                     <h2 class="mdl-card__title-text   mdl-color-text--white">
                         <?php $this->options->title() ?>
@@ -165,20 +166,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php endif; ?>
 <?php endif; ?>
 <div></div>
-<?php $postTotal = $this->getTotal();$postLength = $this->length; ?>
 <?php $this->need('postCard.php') ?>
 
 <?php //$this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
 <div class="load-more-wrap" style="width: 100%;text-align: center">
     <a id="load-more"
        style="margin: 16px 0">
-        <?php if ($postTotal == $postLength):/*当前一页可以显示完，没有更多了*/ ?>
-            <span id="tag-no-more" class="description">到底了</span>
-        <?php else: ?>
-            <span class="description">加载更多</span>
-        <?php endif; ?>
+        <span class="description">加载更多</span>
     </a>
     <div id="load-more-anim">
-        <div class="cube1"></div><div class="cube2"></div>
+        <div class="cube1"></div>
+        <div class="cube2"></div>
     </div>
 </div>
