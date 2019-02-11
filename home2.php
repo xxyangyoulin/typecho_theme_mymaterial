@@ -52,7 +52,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
                 </div>
 
                 <div class="mdl-card__actions ">
-                    <div class="avator-wrapper zoom-avator">
+                    <div class="avator-wrapper zoom-avator avatar-shadow">
                         <?php echo $this->author->gravatar(80); ?>
 
                         <span class="author-text color-text-block-primary">
