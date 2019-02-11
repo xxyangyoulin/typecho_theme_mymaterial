@@ -27,7 +27,7 @@
 6. 背景音乐（网易云id或者直接填音乐URL）
 7. ...
 
-![Typecho My Material](https://yangyoulin.com/usr/uploads/2019/01/1983369604.jpg)
+![Typecho My Material](https://yangyoulin.com/usr/uploads/2019/02/4031308670.png)
 
 音乐播放面板
 
