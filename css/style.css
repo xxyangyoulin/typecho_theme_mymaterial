@@ -675,12 +675,12 @@ header {
     position: relative;
 }
 
-.article-content h1:hover:before,
-.article-content h2:hover:before,
-.article-content h3:hover:before,
-.article-content h4:hover:before,
-.article-content h5:hover:before,
-.article-content h6:hover:before {
+.article-content > h1:hover:before,
+.article-content > h2:hover:before,
+.article-content > h3:hover:before,
+.article-content > h4:hover:before,
+.article-content > h5:hover:before,
+.article-content > h6:hover:before {
     content: '#';
     width: 16px;
     position: absolute;
@@ -1941,7 +1941,7 @@ header {
 .douban-list .info-wrap span,
 .douban-list .info-wrap strong{
     color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
 }
 .douban-list .info-wrap span:first-of-type{
