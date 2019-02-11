@@ -14,7 +14,7 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 24px; /* Preferred icon size */
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -101,15 +101,24 @@
 }
 
 @-webkit-keyframes nprogress-spinner {
-    0%   { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
+
 @keyframes nprogress-spinner {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-
+/* start */
 
 html, body {
     width: 100%;
@@ -2017,31 +2026,45 @@ header {
 }
 
 .douban-list li {
-    height: 130px;
-    max-width: 90px;
-    width: auto;
+    width: 20%;
+    padding-bottom: calc(20% / 0.688);
+    height: 0;
+    box-sizing: border-box;
     flex-shrink: 0;
-    margin: 8px;
+    position: relative;
     overflow: hidden;
 }
 
-.douban-list li:empty {
-    height: 0;
-    visibility: hidden;
+.douban-list li > a {
+    height: 90%;
+    width: 86%;
+    top: 5%;
+    left: 7%;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block;
+    box-sizing: border-box;
+
+    overflow: hidden;
+    position: absolute;
 }
 
-.douban-list li > a {
-    height: 100%;
-    padding: 0 !important;
-    display: block;
+.douban-list li img {
     margin: 0 !important;
-    position: relative;
+    padding: 0 !important;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
 }
 
 .douban-list .info-wrap {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -2057,29 +2080,25 @@ header {
     transition: all 0.2s;
 }
 
-.douban-list li:hover .info-wrap {
+.douban-list li > a:hover .info-wrap {
     margin-left: 0px;
 }
 
-.douban-list .info-wrap span,
-.douban-list .info-wrap strong {
-    color: rgba(255, 255, 255, 0.87);
-    font-size: 13px;
+.douban-list .info-wrap span {
+    color: white;
     text-align: center;
+    font-size: 15px;
 }
 
 .douban-list .info-wrap span:first-of-type {
-    font-weight: bold !important;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.douban-list li img {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 100%;
-    object-fit: cover;
-    border: 1px solid lightgray;
-    box-sizing: border-box;
+.douban-list blockquote{
+    margin-top: 32px;
 }
+
 
 /*头图高度*/
 @media (min-width: 840px) {
@@ -2090,6 +2109,8 @@ header {
     .page-post-card .has-image {
         height: 240px;
     }
+
+
 }
 
 
@@ -2108,6 +2129,11 @@ header {
 
     .links-ul li {
         width: 50%;
+    }
+
+    .douban-list li {
+        width: 25%;
+        padding-bottom: calc(25% / 0.688);
     }
 }
 
@@ -2165,8 +2191,18 @@ header {
     }
 
     .douban-list li {
-        margin: 4px;
+        width: 33.3333%;
+        padding-bottom: calc(33.3333% / 0.688);
     }
+
+    .douban-list .info-wrap span {
+        font-size: 12px;
+    }
+    .douban-list .info-wrap span:first-of-type {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
 }
 
 @media (max-width: 400px) {

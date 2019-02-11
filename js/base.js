@@ -235,6 +235,16 @@ $(function () {
         $('.mdl-layout__obfuscator').addClass(drawVisibleClass)
     }
 
+    /*auto*/
+    (function () {
+        // $('.my-drawer-button, #drawer').mouseover(function () {
+        //     openDrawer();
+        // })
+        $('#drawer').mouseleave(function () {
+            $.closeDrawer();
+        })
+    })();
+
     function headerStatus() {
         $mdl_content.scroll(function () {
             var nScrollTop = $(this)[0].scrollTop;

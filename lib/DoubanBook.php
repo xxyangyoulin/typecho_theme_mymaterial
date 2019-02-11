@@ -51,7 +51,7 @@ class DoubanBook
             }
         }
 
-        $readlist = $readinglist = [];
+        $readlist = $readinglist =$wishlist= [];
         $res = $json_content['collections'];
         foreach ($res as $v) {
             try {
@@ -77,12 +77,14 @@ class DoubanBook
                     $readlist[] = $item;
                 } elseif ($v['status'] == "reading") {
                     $readinglist[] = $item;
+                }elseif ($v['status'] == 'wish'){
+                    $wishlist[] = $item;
                 }
             } catch (Exception $e) {
 
             }
         }
 
-        return [$readlist, $readinglist];
+        return [$readlist, $readinglist,$wishlist];
     }
 }
