@@ -154,7 +154,7 @@ var shareWeibo = function (title, url, pics) {
         + '&url=' + url
         + '&content=utf-8' +
         '&sourceUrl=' + url
-        + '&pic=' + (pics | '');
+        + '&pic=' + (pics ||'');
 
     window.open(share_str, 'newwindow', 'height=400,width=400,top=100,left=100');
 };
@@ -162,7 +162,6 @@ var shareWeibo = function (title, url, pics) {
 var buildTimeout, startTimeV;
 
 function startTime(time) {
-    time = time | '2010-01-01';
     startTimeV = time;
     var $time = new Date().getTime() - new Date(startTimeV);
     if ($time < 0) return '0秒';
@@ -214,8 +213,8 @@ $(function () {
     };
 
     $.gotoAnchorSmooth = function ($target, offset, time) {
-        offset = offset | 0;
-        time = time | 300;
+        offset = offset || 0;
+        time = time || 300;
         if ($target instanceof $ && $target.length) {
             $mdl_content.animate({scrollTop: $target.offset().top + $mdl_content.scrollTop() + offset}, time);
         }
@@ -619,8 +618,8 @@ $(function () {
         };
 
         var done = function (damn, failed) {
-            damn = damn | false;
-            failed = failed | false;
+            damn = damn || false;
+            failed = failed || false;
             isLoading = false;
             $('#load-more-anim').removeClass('spinner');
             if (damn) {
