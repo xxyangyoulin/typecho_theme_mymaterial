@@ -565,7 +565,7 @@ $(function () {
         }
 
         //已经没有更多了，无需刷新
-        if ($('.post-card').length >= typechoConf.pageTotalSize) {
+        if ($('.post-card').length < typechoConf.pageSize || $('#tag-no-more').length) {
             $('#load-more').html('到底了');
             return;
         }
@@ -578,7 +578,7 @@ $(function () {
             if (doing()) return;
 
             $.ajax({
-                url: typechoConf.siteUrl + 'index.php/page/' + ($('.post-card').length / typechoConf.pageSize + 1),
+                url: window.location.href+'?page=' + ($('.post-card').length / typechoConf.pageSize + 1),
                 type: 'GET',
                 dataType: 'html',
                 error: function () {
@@ -587,6 +587,11 @@ $(function () {
                 success: function (data) {
                     if (false == data) {
                         done();
+                        return;
+                    }
+
+                    if($('<code></code>').append($(data)).find('#no-more').length){
+                        done(true);
                         return;
                     }
 

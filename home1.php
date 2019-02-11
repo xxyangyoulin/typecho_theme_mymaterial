@@ -165,13 +165,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php endif; ?>
 <?php endif; ?>
 <div></div>
+<?php $postTotal = $this->getTotal();$postLength = $this->length; ?>
 <?php $this->need('postCard.php') ?>
 
 <?php //$this->pageNav('<i class="material-icons">navigate_before</i>', '<i class="material-icons">navigate_next</i>'); ?>
 <div class="load-more-wrap" style="width: 100%;text-align: center">
     <a id="load-more"
        style="margin: 16px 0">
-        <span class="description">加载更多</span>
+        <?php if ($postTotal == $postLength):/*当前一页可以显示完，没有更多了*/ ?>
+            <span id="tag-no-more" class="description">到底了</span>
+        <?php else: ?>
+            <span class="description">加载更多</span>
+        <?php endif; ?>
     </a>
     <div id="load-more-anim">
         <div class="cube1"></div><div class="cube2"></div>
