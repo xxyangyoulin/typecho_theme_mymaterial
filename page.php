@@ -63,7 +63,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
                             <h1>在读的书</h1>
                             <ul>
                                 <?php foreach ($douBan[1] as $item): ?>
-                                    <li><a href="<?php echo $item['url'] ?>">
+                                    <li><a target="_blank" href="<?php echo $item['url'] ?>">
                                             <img src="<?php echo $item['img'] ?>">
                                             <div class="info-wrap">
                                                 <span><strong>《<?php echo $item['name'] ?>》</strong></span><span><?php echo $item['author'] ?></span>
@@ -77,7 +77,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
                             <h1>已读的书</h1>
                             <ul>
                                 <?php foreach ($douBan[0] as $item): ?>
-                                    <li><a href="<?php echo $item['url'] ?>">
+                                    <li><a target="_blank" href="<?php echo $item['url'] ?>">
                                             <img src="<?php echo $item['img'] ?>">
                                             <div class="info-wrap">
                                                 <span><strong>《<?php echo $item['name'] ?>》</strong></span><span><?php echo $item['author'] ?></span>

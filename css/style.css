@@ -1895,7 +1895,8 @@ header {
 }
 
 .douban-list li {
-    height: 140px;
+    height: 130px;
+    max-width: 90px;
     width: auto;
     flex-shrink: 0;
     margin: 8px;
@@ -1915,7 +1916,7 @@ header {
 }
 
 .douban-list .info-wrap {
-    height: 140px;
+    height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     overflow: hidden;
@@ -1952,6 +1953,8 @@ header {
     padding: 0 !important;
     height: 100%;
     object-fit: cover;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
 }
 
 /*头图高度*/
@@ -2035,6 +2038,10 @@ header {
 
     .input-group-3 > * {
         width: 100%;
+    }
+
+    .douban-list li {
+        margin: 4px;
     }
 }
 
