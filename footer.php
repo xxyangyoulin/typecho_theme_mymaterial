@@ -83,12 +83,13 @@
 </div>
 </body>
 
-<script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('material/material.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/jquery.nicescroll.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/jquery.pjax.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/nprogress.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/base.js'); ?>"></script>
+<!--<script src="--><?php //$this->options->themeUrl('js/jquery.min.js'); ?><!--"></script>-->
+<!--<script src="--><?php //$this->options->themeUrl('material/material.min.js'); ?><!--"></script>-->
+<!--<script src="--><?php //$this->options->themeUrl('js/jquery.nicescroll.min.js'); ?><!--"></script>-->
+<!--<script src="--><?php //$this->options->themeUrl('js/jquery.pjax.js'); ?><!--"></script>-->
+<!--<script src="--><?php //$this->options->themeUrl('js/nprogress.js'); ?><!--"></script>-->
+<!--<script src="--><?php //$this->options->themeUrl('js/base.js'); ?><!--"></script>-->
+<script src="<?php $this->options->themeUrl('js/all.min.js'); ?>"></script>
 <script>
 
     $(function () {

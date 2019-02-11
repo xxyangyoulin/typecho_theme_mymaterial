@@ -422,7 +422,7 @@
 // You probably shouldn't use pjax on pages with other pushState
 // stuff yet.
 
-    let scrollValues = {};
+    var scrollValues = {};
 
     function onPjaxPopstate(event) {
 

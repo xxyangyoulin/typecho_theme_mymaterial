@@ -148,25 +148,26 @@ function trim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-var shareWeibo = function (title, url, pics = '') {
+var shareWeibo = function (title, url, pics) {
     var share_str = 'http://v.t.sina.com.cn/share/share.php?' +
         'title=' + title
         + '&url=' + url
         + '&content=utf-8' +
         '&sourceUrl=' + url
-        + '&pic=' + pics;
+        + '&pic=' + (pics | '');
 
     window.open(share_str, 'newwindow', 'height=400,width=400,top=100,left=100');
 };
 
 var buildTimeout, startTimeV;
 
-function startTime(time = '2010-01-01') {
+function startTime(time) {
+    time = time | '2010-01-01';
     startTimeV = time;
     var $time = new Date().getTime() - new Date(startTimeV);
     if ($time < 0) return '0秒';
 
-    let result = '';
+    var result = '';
     if ($time >= 365 * 86400000) {
         result += parseInt($time / (365 * 86400000)) + '年';
         $time = ($time % (365 * 86400000));
@@ -196,12 +197,12 @@ function resizeMenuTreeHeight() {
 }
 
 $(function () {
-    let $main_header = $('header');
-    let $main_last_top = 0;
-    let $mdl_content = $(".mdl-layout__content"), $drawer = $('#drawer');
-    let drawVisibleClass = 'is-visible';
-    let drawerMenu = $('.menu-list');
-    let menuSwitch = $('.menu-switch');
+    var $main_header = $('header');
+    var $main_last_top = 0;
+    var $mdl_content = $(".mdl-layout__content"), $drawer = $('#drawer');
+    var drawVisibleClass = 'is-visible';
+    var drawerMenu = $('.menu-list');
+    var menuSwitch = $('.menu-switch');
 
     $.showSnackbar = function (msg) {
         var snackbarContainer = document.querySelector('#demo-snackbar-example');
@@ -212,7 +213,9 @@ $(function () {
         snackbarContainer.MaterialSnackbar.showSnackbar(data);
     };
 
-    $.gotoAnchorSmooth = function ($target, offset = 0, time = 300) {
+    $.gotoAnchorSmooth = function ($target, offset, time) {
+        offset = offset | 0;
+        time = time | 300;
         if ($target instanceof $ && $target.length) {
             $mdl_content.animate({scrollTop: $target.offset().top + $mdl_content.scrollTop() + offset}, time);
         }
@@ -235,7 +238,7 @@ $(function () {
 
     function headerStatus() {
         $mdl_content.scroll(function () {
-            let nScrollTop = $(this)[0].scrollTop;
+            var nScrollTop = $(this)[0].scrollTop;
 
             if (nScrollTop > 120 && nScrollTop > $main_last_top) {
                 $main_header.addClass('main-header-close');
@@ -258,13 +261,13 @@ $(function () {
         });
     }
 
-    let menu_index_tags;
+    var menu_index_tags;
 
     function updateMenuIndexTags() {
         // tags of article title
         menu_index_tags = $('.menu-target-fix');
         var topOffset = scrollTopValue();
-        for (let i = 0; i < menu_index_tags.length; i++) {
+        for (var i = 0; i < menu_index_tags.length; i++) {
             menu_index_tags[i].topHeight = $(menu_index_tags[i]).offset().top + topOffset;
             menu_index_tags[i].id = $(menu_index_tags[i]).attr('id');
         }
@@ -298,7 +301,7 @@ $(function () {
             if ($(document).width() < 480) {
                 $('#index-button').show();
                 $('#article-index-w')
-                    .removeClass('article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tablet')
+                    .removeClass('article-title-list-w mdl-cell--3-col mdl-cell--hide-phone mdl-cell--2-col-tabvar')
                     .addClass('index-card mdl-card mdl-shadow--2dp mdl-cell--hide-desktop mdl-cell--hide-tablet');
 
                 $('.index-card').on('click', function (e) {
@@ -335,7 +338,7 @@ $(function () {
         }
 
         function rmCurrent() {
-            let current = currentItem();
+            var current = currentItem();
             if (current.length) {
                 current.removeClass('current');
             }
@@ -343,11 +346,11 @@ $(function () {
 
         $mdl_content.scroll(function () {
             if (!$.titleScrollEnabled) return;
-            let res = search(0, menu_index_tags.length - 1, scrollTopValue());
+            var res = search(0, menu_index_tags.length - 1, scrollTopValue());
             if (!res) return;
             rmCurrent();
 
-            let current = articleTitleList.find('a[href="#' + res.id + '"]');
+            var current = articleTitleList.find('a[href="#' + res.id + '"]');
             //current is a elements
             if (!current.hasClass('current')) {
                 current.addClass('current');
@@ -383,7 +386,7 @@ $(function () {
             }, 1000);
         });
 
-        let firstItem = $(".index-menu  .index-menu-item")[0], indexMenu = $('.index-menu');
+        var firstItem = $(".index-menu  .index-menu-item")[0], indexMenu = $('.index-menu');
 
         function titleToShow($obj) {
             if (articleTitleList.height() >= indexMenu.height()) return;
@@ -399,9 +402,9 @@ $(function () {
     function drawer() {
         if (drawerMenu.length) {
             menuSwitch.on('click', function () {
-                let $t = $(this).is('a') ? $(this) : $(this).parent('a');
-                let pLi = $t.parent('li');
-                let subList = $t.next('.menu-sub-list');
+                var $t = $(this).is('a') ? $(this) : $(this).parent('a');
+                var pLi = $t.parent('li');
+                var subList = $t.next('.menu-sub-list');
 
                 menuSwitch.on('click', function (e) {
                     return false;
@@ -433,14 +436,14 @@ $(function () {
 
     /**to_top*/
     function toTop() {
-        let toTop = $("#to_top"), footer = $('footer'), fixedBottom = 68;
+        var toTop = $("#to_top"), footer = $('footer'), fixedBottom = 68;
 
         if (toTop.length) {
             toTop.click(function () {
                 $mdl_content.animate({scrollTop: 0}, 200);
             });
             $mdl_content.scroll(function () {
-                let footerBottom = footer.offset().top - $(window).height();
+                var footerBottom = footer.offset().top - $(window).height();
 
                 if (-footerBottom > fixedBottom) {
                     toTop.removeClass('fixed')
@@ -465,12 +468,12 @@ $(function () {
 
     /**post-near 没找到 post-near 的直接打印链接地址的api，所以...*/
     $.postNear = function () {
-        let $postNear = $('.post-near');
+        var $postNear = $('.post-near');
         if ($postNear.length) {
-            let pls = $postNear.children('li');
+            var pls = $postNear.children('li');
             pls.each(function () {
-                let t = $(this);
-                let a = t.children('a');
+                var t = $(this);
+                var a = t.children('a');
                 if (a.length) {
                     t.addClass('enabled');
                 }
@@ -615,7 +618,9 @@ $(function () {
             return false;
         };
 
-        var done = function (damn = false, failed = false) {
+        var done = function (damn, failed) {
+            damn = damn | false;
+            failed = failed | false;
             isLoading = false;
             $('#load-more-anim').removeClass('spinner');
             if (damn) {

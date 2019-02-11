@@ -9,15 +9,12 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php $this->need('siteTitle.php'); ?>
-
     <link rel="shortcut icon" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
     <link rel="bookmark" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
 
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.font.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/nprogress.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
-
+<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('material/material.blue.css'); ?><!--">-->
+<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/style.css'); ?><!--">-->
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/all.min.css'); ?>">
     <?php if (getOS() == 'mac'): ?>
         <style>
             .article-content,
