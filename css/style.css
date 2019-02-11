@@ -829,7 +829,7 @@ header {
     transition: all 0.2s;
 }
 
-.article-content a:hover {
+.article-content a:not([data-fancybox]):hover {
     color: #1976d2;
     /*padding-left: 4px;*/
     padding-left: 4px;

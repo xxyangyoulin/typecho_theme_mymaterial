@@ -154,7 +154,7 @@ var shareWeibo = function (title, url, pics) {
         + '&url=' + url
         + '&content=utf-8' +
         '&sourceUrl=' + url
-        + '&pic=' + (pics ||'');
+        + '&pic=' + (pics || '');
 
     window.open(share_str, 'newwindow', 'height=400,width=400,top=100,left=100');
 };
@@ -491,11 +491,23 @@ $(function () {
     })();
 
     function articleImage() {
-        /**zoom article image*/
-        $('.article-content img').not('.image-no-show, .image-no-show img').on('click', function () {
-            $('#show-image').css('opacity', '0.0').show();
-            $('#show-image .inner-flex').html($(this).clone());
-            $('#show-image').animate({'opacity': 1}, 200)
+        $('.article-content img').not('.image-no-show, .image-no-show img, a[data-fancybox="gallery"] img').each(function () {
+            var $t = $(this);
+            $t.wrap("<a data-fancybox='gallery' href='" + $t.attr('src') + "' data-caption='" + $t.attr('title') + "'></a>");
+            $t.attr('title', '').attr('alt', '')
+        });
+
+        $('[data-fancybox="gallery"]').fancybox({
+            loop: true,
+            buttons: [
+                "zoom",
+                // "share",
+                "slideShow",
+                "fullScreen",
+                // "download",
+                "thumbs",
+                "close"
+            ],
         });
     }
 

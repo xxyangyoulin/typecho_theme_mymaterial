@@ -12,9 +12,9 @@
     <link rel="shortcut icon" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
     <link rel="bookmark" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
 
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('material/material.blue.css'); ?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/style.css'); ?><!--">-->
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('js/fancybox/jquery.fancybox.min.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
     <?php if (getOS() == 'mac'): ?>
         <style>
             .article-content,
