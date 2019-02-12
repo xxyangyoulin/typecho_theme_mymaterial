@@ -42,7 +42,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
             <div class="article-content">
                 <!--友链输出-->
                 <?php if ($this->is('page', 'links')): ?>
-                    <ul class="links-ul">
+                    <ul class="links-ul image-no-show">
                         <?php Links_Plugin::output("SHOW_MD"); /**插件：links*/ ?>
                         <div class="clearfix"></div>
                     </ul>
@@ -59,7 +59,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 
                 <!--阅读输出-->
                 <?php if ($this->is('page', 'reading') && $this->options->doubanId): ?>
-                    <div class="douban-list ">
+                    <div class="douban-list image-no-show">
                        <?php $this->need('douban.php');?>
                     </div>
                 <?php endif; ?>

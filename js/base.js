@@ -490,16 +490,6 @@ $(function () {
         }
     };
 
-    (function () {
-        $('#show-image').on('click', function () {
-            var $t = $(this);
-            $t.animate({'opacity': 0}, 200, function () {
-                $t.find('.inner-flex').html('')
-                $t.hide();
-            })
-        })
-    })();
-
     function articleImage() {
         $('.article-content img').not('.image-no-show, .image-no-show img, a[data-fancybox="gallery"] img').each(function () {
             var $t = $(this);
