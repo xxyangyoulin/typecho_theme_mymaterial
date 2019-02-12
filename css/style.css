@@ -882,23 +882,31 @@ header {
     background: rgba(227, 242, 253, 1) !important;
 }
 
-
-.article-content img {
-    display: block;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    max-width: 100%;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.article-content img{
-
-}
-
 .article-content a img {
     display: unset;
 }
+
+.article-content a[data-fancybox=gallery] {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.article-content a[data-fancybox=gallery]:after {
+    content: '';
+    display: table;
+}
+
+.article-content a[data-fancybox=gallery] img {
+    display: block;
+    margin: 32px auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 
 .article-content blockquote {
     font-style: normal;
