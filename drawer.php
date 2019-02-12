@@ -159,28 +159,23 @@
 </div>
 
 <div class="right-drawer  close">
+    <div class="scroll scroll-bar">
+
     <button id="list-drawer-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
         <i class="material-icons">arrow_forward</i>
     </button>
 
     <ul>
-        <li class="yc">
-            <div class="bg"><span class="y">2019</span><span class="count">5篇</span></div>
-        </li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻</span></li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻的风景哦时代峰峻</span></li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻</span></li>
-        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
-
-
         <?php
         $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archives);
         $COUNT_TAG = 'YYL_TPX4869';
         $lastYear = 0;
         $tempHtml = '';
         $count = 0;
+        if(!$archives->have()){
+           echo  "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">最近没有文章！</span><span class=\"count\"></span></div></li>";
+        }
+
         while ($archives->next()) {
             $year_tmp = date('Y', $archives->created);
             $date = date('m.d', $archives->created);
@@ -195,4 +190,5 @@
         };
         echo str_replace($COUNT_TAG, $count.'篇', $tempHtml); ?>
     </ul>
+    </div>
 </div>

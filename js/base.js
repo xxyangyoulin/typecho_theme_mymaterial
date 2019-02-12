@@ -229,6 +229,7 @@ $(function () {
     function hideMask() {
         screenMask.fadeOut(200);
     }
+
     function showMask() {
         screenMask.fadeIn(200);
     }
@@ -264,6 +265,22 @@ $(function () {
                 showMask();
             }
         });
+        $('.right-drawer .c').on('click', function (e) {
+            $('.right-drawer').addClass('close');
+            hideMask();
+            var $t = $(this);
+
+            if ($t.hasClass('liji')) {
+                $t.removeClass('liji');
+                return;
+            }
+
+            $t.addClass('liji');
+            e.preventDefault();
+            setTimeout(function () {
+                $t.trigger('click')
+            }, 200)
+        })
     })();
 
     /*auto*/
