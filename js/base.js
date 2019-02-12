@@ -227,6 +227,8 @@ $(function () {
     }
 
     function hideMask() {
+        $('.right-drawer').addClass('close');
+        $('#drawer').removeClass(drawVisibleClass);
         screenMask.fadeOut(200);
     }
 
@@ -236,17 +238,12 @@ $(function () {
 
     (function () {
         screenMask.on('click', function () {
-            $('.right-drawer').addClass('close');
-            $('#drawer').removeClass(drawVisibleClass);
             hideMask();
         })
     })();
 
     $.closeDrawer = function () {
-        $drawer.removeClass(drawVisibleClass);
-        if ($('.right-drawer').hasClass('close')) {
-            hideMask();
-        }
+        hideMask();
     };
 
     function openDrawer() {
@@ -262,6 +259,7 @@ $(function () {
                 && !$('#drawer').hasClass(drawVisibleClass)) {
                 hideMask();
             } else {
+                $('#drawer').removeClass(drawVisibleClass);
                 showMask();
             }
         });

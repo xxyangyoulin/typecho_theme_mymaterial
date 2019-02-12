@@ -892,26 +892,13 @@ header {
     transition: all 0.3s;
 }
 
+.article-content img{
+
+}
+
 .article-content a img {
     display: unset;
 }
-
-.article-content img.show {
-    position: fixed;
-    cursor: pointer;
-    z-index: 9999;
-    margin: auto;
-    transition: all 0.3s;
-    width: auto;
-    max-width: 95%;
-    max-height: 95%;
-    height: auto;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0;
-}
-
 
 .article-content blockquote {
     font-style: normal;

@@ -14,7 +14,7 @@
         </div>
 
         <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--white"
-                id="close-drawer">
+                id="close-drawer" onclick="$.closeDrawer()">
             <i class="material-icons">clear_all</i>
         </button>
     </div>
