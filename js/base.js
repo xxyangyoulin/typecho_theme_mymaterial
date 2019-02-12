@@ -202,6 +202,7 @@ $(function () {
     var drawVisibleClass = 'is-visible';
     var drawerMenu = $('.menu-list');
     var menuSwitch = $('.menu-switch');
+    var screenMask = $('#screen-mask');
 
     $.showSnackbar = function (msg) {
         var snackbarContainer = document.querySelector('#demo-snackbar-example');
@@ -225,25 +226,55 @@ $(function () {
         return $mdl_content.scrollTop();
     }
 
+    function hideMask() {
+        screenMask.fadeOut(200);
+    }
+    function showMask() {
+        screenMask.fadeIn(200);
+    }
+
+    (function () {
+        screenMask.on('click', function () {
+            $('.right-drawer').addClass('close');
+            $('#drawer').removeClass(drawVisibleClass);
+            hideMask();
+        })
+    })();
+
     $.closeDrawer = function () {
         $drawer.removeClass(drawVisibleClass);
-        $('.mdl-layout__obfuscator').removeClass(drawVisibleClass)
+        if ($('.right-drawer').hasClass('close')) {
+            hideMask();
+        }
     };
 
     function openDrawer() {
         $drawer.addClass(drawVisibleClass);
-        $('.mdl-layout__obfuscator').addClass(drawVisibleClass)
+        showMask()
     }
 
-    /*auto*/
     (function () {
-        // $('.my-drawer-button, #drawer').mouseover(function () {
-        //     openDrawer();
-        // })
-        $('#drawer').mouseleave(function () {
-            $.closeDrawer();
-        })
+        $('#list-drawer-btn').on('click', function () {
+            $('.right-drawer').toggleClass('close');
+
+            if ($('.right-drawer').hasClass('close')
+                && !$('#drawer').hasClass(drawVisibleClass)) {
+                hideMask();
+            } else {
+                showMask();
+            }
+        });
     })();
+
+    /*auto*/
+    // (function () {
+    // $('.my-drawer-button, #drawer').mouseover(function () {
+    //     openDrawer();
+    // })
+    // $('#drawer').mouseleave(function () {
+    // $.closeDrawer();
+    // })
+    // })();
 
     function headerStatus() {
         $mdl_content.scroll(function () {

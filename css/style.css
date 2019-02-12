@@ -1709,10 +1709,10 @@ header {
     width: 100%;
     transition: all 0.2s;
     display: block;
-    border-radius: 16px;
+    border-radius: 20px;
     box-sizing: border-box;
     padding-left: 0 !important;
-    height: 32px;
+    height: 40px;
 }
 
 .links-ul a:hover,
@@ -1721,10 +1721,10 @@ header {
 }
 
 .links-ul img {
-    height: 32px;
+    height: 40px;
     margin: 0;
-    width: 32px;
-    border-radius: 16px;
+    width: 40px;
+    border-radius: 20px;
 }
 
 .links-ul .name-w {
@@ -2095,10 +2095,126 @@ header {
     font-weight: bold;
 }
 
-.douban-list blockquote{
+.douban-list blockquote {
     margin-top: 32px;
 }
 
+/**********right-drawer**********/
+.right-drawer {
+    width: 280px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background-color: rgba(33, 33, 33, 1);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#list-drawer-btn {
+    position: absolute;
+    top: 50%;;
+    left: -20px;
+    transition: all 0.4s;
+    background-color: white;
+}
+
+.right-drawer.close {
+    right: -280px;
+}
+
+.right-drawer.close #list-drawer-btn {
+    transform: rotateZ(180deg);
+}
+
+
+.right-drawer.close #list-drawer-btn:hover {
+    background-color: #212121;
+    color: white;
+}
+
+.right-drawer ul {
+    color: rgba(255, 255, 255, 0.78);
+    padding: 1em;
+    list-style: none;
+    font-size: 15px;
+}
+
+.right-drawer li {
+    margin-top: 8px;
+}
+
+.right-drawer ul .yc {
+    padding: 12px 0;
+    margin-top: 12px;
+}
+
+.right-drawer ul .bg {
+    position: relative;
+    height: 100%;
+    background: white;
+    margin-right: 3%;
+    padding: 4px 16px 4px 8px;
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    border-radius: 2px;
+}
+
+.right-drawer ul .bg:after {
+    content: ' ';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 2px;
+    border-left: 5px dotted #212121;
+    right: -2px;
+}
+
+.right-drawer ul .y {
+    font-size: 22px;
+    color: black;
+}
+
+.right-drawer ul .count {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+    padding-left: 8px;
+}
+
+.right-drawer ul .dc {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right-drawer ul .d {
+    padding-right: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+.right-drawer ul .c {
+    color: inherit;
+}
+
+.right-drawer ul .c:hover {
+    color: #2196F3;
+}
+
+#screen-mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    background-color: rgba(0,0,0,0.5);
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
 
 /*头图高度*/
 @media (min-width: 840px) {
@@ -2163,6 +2279,10 @@ header {
         max-width: 100% !important;
     }
 
+    .mdl-layout__drawer {
+        width: 240px;
+    }
+
     .head-card-left {
         height: 300px;
         margin: -56px 0 0 0;
@@ -2198,6 +2318,7 @@ header {
     .douban-list .info-wrap span {
         font-size: 12px;
     }
+
     .douban-list .info-wrap span:first-of-type {
         font-size: 14px;
         font-weight: bold;

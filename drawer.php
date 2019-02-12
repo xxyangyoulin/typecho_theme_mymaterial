@@ -3,7 +3,7 @@
          style="background-image: url('<?php if ($this->options->drawerImageUrl): $this->options->drawerImageUrl(); else:$this->options->themeUrl('image/drawer.jpg'); endif; ?>');">
 
         <div class="drawer-avator zoom-avator avatar-shadow">
-        <?php echo $this->author->gravatar(50); ?>
+            <?php echo $this->author->gravatar(50); ?>
         </div>
 
         <div class="author">
@@ -14,7 +14,7 @@
         </div>
 
         <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--white"
-                id="close-drawer" onclick="$.closeDrawer()">
+                id="close-drawer">
             <i class="material-icons">clear_all</i>
         </button>
     </div>
@@ -156,4 +156,43 @@
             <li><a class="close-drawer" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
         </ul>
     </div>
+</div>
+
+<div class="right-drawer  close">
+    <button id="list-drawer-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+        <i class="material-icons">arrow_forward</i>
+    </button>
+
+    <ul>
+        <li class="yc">
+            <div class="bg"><span class="y">2019</span><span class="count">5篇</span></div>
+        </li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻</span></li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻的风景哦时代峰峻</span></li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻的风景哦时代峰峻</span></li>
+        <li class="dc"><span class="d">01.12</span><span class="c">的风景哦时代峰峻</span></li>
+
+
+        <?php
+        $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archives);
+        $COUNT_TAG = 'YYL_TPX4869';
+        $lastYear = 0;
+        $tempHtml = '';
+        $count = 0;
+        while ($archives->next()) {
+            $year_tmp = date('Y', $archives->created);
+            $date = date('m.d', $archives->created);
+            if ($year_tmp != $lastYear) {
+                echo str_replace($COUNT_TAG, $count.'篇', $tempHtml);
+                $count = 0;
+                $lastYear = $year_tmp;
+                $tempHtml = "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">{$year_tmp}</span><span class=\"count\">{$COUNT_TAG}</span></div></li>";
+            }
+            $count++;
+            $tempHtml .= "<li class=\"dc\"><span class=\"d\">{$date}</span><a href='{$archives->permalink}' class=\"c\">{$archives->title}</a></li>";
+        };
+        echo str_replace($COUNT_TAG, $count.'篇', $tempHtml); ?>
+    </ul>
 </div>

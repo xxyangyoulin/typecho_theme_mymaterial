@@ -77,10 +77,7 @@
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
 </div><!--snackbar-->
-
-<div id="show-image" style="">
-    <div class="inner-flex"></div>
-</div>
+<div id="screen-mask"></div>
 </body>
 
 <script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
