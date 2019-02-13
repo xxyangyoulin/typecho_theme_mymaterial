@@ -155,10 +155,7 @@
                     </button>
                 </div>
 
-                <button class="btn-comment-sel"
-                        data-chevereto-pup-trigger data-target="#comment-user-text">
-                    <i class="material-icons">image</i>插入图片
-                </button>
+
 
             </form><!--comment-input-form-->
 
