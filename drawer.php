@@ -188,7 +188,7 @@
             $count++;
             $tempHtml .= "<li class=\"dc\"><span class=\"d\">{$date}</span><a href='{$archives->permalink}' class=\"c\">{$archives->title}</a></li>";
         };
-        echo str_replace($COUNT_TAG, $count.'篇', $tempHtml); ?>
+        echo str_replace($COUNT_TAG, $count.'篇', $tempHtml); $this->destory('Widget_Contents_Post_Recent');?>
     </ul>
     </div>
 </div>
