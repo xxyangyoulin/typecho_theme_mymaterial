@@ -309,7 +309,10 @@
                 state: pjax.state,
                 previousState: previousState
             })
-            context.html(container.contents)
+
+            //yyl:直接填充html
+            // context.html(container.contents)
+            context.html(data);
 
             // FF bug: Won't autofocus fields that are inserted via JS.
             // This behavior is incorrect. So if theres no current focus, autofocus
@@ -363,7 +366,9 @@
         if (xhr.readyState > 0) {
             if (options.push && !options.replace) {
                 // Cache current container element before replacing it
-                cachePush(pjax.state.id, [options.container, cloneContents(context)])
+                //yyl:返回时候的js执行问题
+                // cachePush(pjax.state.id, [options.container, cloneContents(context)])
+                cachePush(pjax.state.id, [options.container, context.html()])
 
                 window.history.pushState(null, "", options.requestUrl)
             }

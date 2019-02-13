@@ -599,6 +599,28 @@ $(function () {
         }
     }
 
+    $.iamgeUpload = function () {
+        return;
+        var btn = $('#btn-image-upload');
+        if (btn.length && btn.find('script').length == 0) {
+            alert('初始化');
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = btn.data('src');
+            script.async = true;
+
+            var url = document.createAttribute("data-url");
+            url.nodeValue = btn.data('url');
+            script.setAttributeNode(url);
+
+            var auto = document.createAttribute("data-auto-insert");
+            auto.nodeValue = btn.data('auto-insert');
+            script.setAttributeNode(auto);
+
+            $('#comment-form').append(script);
+        }
+    };
+
     /**index button 按钮事件*/
     (function () {
         $('#index-button').on('click', function (e) {
@@ -955,6 +977,7 @@ $(function () {
 
 $.commentsAjax = function () {
     restNoPjaxClass();
+    $.iamgeUpload();
     $.doingSubmit = false;/*提交控制重置*/
 
     $('#comment-form').submit(function (event) {

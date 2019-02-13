@@ -904,6 +904,7 @@ header {
 
 .comment-content.markdown a[data-fancybox=gallery] img {
     margin: 16px 16px 16px 0;
+    max-width: 95%;
 }
 
 .markdown blockquote {

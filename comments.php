@@ -133,15 +133,6 @@
                 <?php endif; ?>
 
                 <div class="input-group">
-                    <!--                     <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label"-->
-                    <!--                          style="width: 100%;margin-right: 8px">-->
-                    <!--                         <input class="mdl-textfield__input" type="text" name="text"-->
-                    <!--                                id="comment-user-text" value="-->
-                    <?php //$this->remember('text'); ?><!--">-->
-                    <!--                         <label class="mdl-textfield__label" for="comment-user-text">-->
-                    <?php //_e('内容'); ?><!--</label>-->
-                    <!--                     </div>-->
-
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                          style="width: 100%;margin-right: 8px">
                         <label class="mdl-textfield__label" for="comment-user-text"><?php _e('内容*'); ?></label>
@@ -154,14 +145,9 @@
                         <i class="material-icons">check</i>
                     </button>
                 </div>
-
-                <button class="btn-comment-sel"
-                        data-chevereto-pup-trigger data-target="#comment-user-text">
-                    <i class="material-icons">image</i>插入图片
-                </button>
-
             </form><!--comment-input-form-->
 
+            <div id="upload-image-position"></div>
         </div>
     <?php else: ?>
         <h4><?php _e('评论已关闭'); ?></h4>
