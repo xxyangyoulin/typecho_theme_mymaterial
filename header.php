@@ -19,7 +19,7 @@
 <!--    <script async src="http://tu.yangyoulin.com/sdk/pup.js" data-url="http://tu.yangyoulin.com/upload"-->
 <!--            data-auto-insert="markdown-embed-medium" data-observe='#comment-user-text'-->
 <!--            data-sibling="#upload-image-position"></script>-->
-    <script async src="http://tu.yangyoulin.com/sdk/pup.js" data-url="http://tu.yangyoulin.com/upload"
+    <script async src="https://tu.yangyoulin.com/sdk/pup.js" data-url="https://tu.yangyoulin.com/upload"
             data-auto-insert="markdown-embed-medium" data-sibling="#upload-image-position" data-observe='#comment-user-text'
             data-palette="clear"></script>
     <?php if (getOS() == 'mac'): ?>
