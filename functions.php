@@ -341,20 +341,6 @@ class MyEdit
                 } else {
                     $('.url-slug').after('<button data-chevereto-pup-trigger class="btn btn-xs" style="margin-right: 5px" data-target="#md-content-tag">🌁 插入图片</button>');
                 }
-
-                var mct = $('#md-content-tag');
-                mct.bind('input', function () {
-                    // var val = mct.val();
-                    // if (val) {
-                    //     val = val + '\n';
-                    //     if ($('.editormd-markdown-textarea').length > 0) {
-                    //         postEditormd.focus(true);
-                    //     } else {
-                    //         $('textarea#text').val(val).focus();
-                    //     }
-                    //     mct.val('')
-                    // }
-                })
             })
         </script>
         <?php
