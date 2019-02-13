@@ -26,7 +26,7 @@
     ?>">
         <div id="<?php $comments->theId(); ?>">
             <div class="comment-author">
-                <a target="_blank" class="ds-avatar comment-avatar-w" href="<?php $comments->url(); ?>">
+                <a target="_blank" class="ds-avatar comment-avatar-w image-no-show" href="<?php $comments->url(); ?>">
                     <?php $comments->gravatar(100, ''); ?>
                 </a>
                 <div class="author-time-w">
@@ -50,7 +50,7 @@
 
             </div>
 
-            <div class="comment-content ">
+            <div class="comment-content markdown">
                 <?php getCommentReply($comments->parent) ?>
                 <?php $comments->content(); ?>
 
@@ -144,9 +144,9 @@
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                          style="width: 100%;margin-right: 8px">
-                                <textarea class="mdl-textfield__input" type="text" name="text" style="resize: none;"
-                                          rows="3" id="comment-user-text"><?php $this->remember('text'); ?></textarea>
                         <label class="mdl-textfield__label" for="comment-user-text"><?php _e('内容*'); ?></label>
+                        <textarea class="mdl-textfield__input" type="text" name="text" style="resize: none;"
+                                  rows="3" id="comment-user-text"><?php $this->remember('text'); ?></textarea>
                     </div>
 
                     <button type="submit" class="submit mdl-button mdl-js-button mdl-button--fab hover--margin-top-1px hover-shadow--6dp
@@ -154,11 +154,14 @@
                         <i class="material-icons">check</i>
                     </button>
                 </div>
-                <div style="padding-right: 48px;">
-                    <?php $comments->smilies(); ?>
-                </div>
+
+                <button class="btn-comment-sel"
+                        data-chevereto-pup-trigger data-target="#comment-user-text">
+                    <i class="material-icons">image</i>插入图片
+                </button>
 
             </form><!--comment-input-form-->
+
         </div>
     <?php else: ?>
         <h4><?php _e('评论已关闭'); ?></h4>

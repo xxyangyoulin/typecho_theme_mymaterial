@@ -779,17 +779,17 @@ header {
     font-weight: 400;
 }
 
-.article-content p:last-child {
+.markdown p:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.article-content h1,
-.article-content h2,
-.article-content h3,
-.article-content h4,
-.article-content h5,
-.article-content h6 {
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
     font-size: 25px;
     font-weight: 600;
     line-height: 35px;
@@ -797,12 +797,12 @@ header {
     position: relative;
 }
 
-.article-content > h1:hover:before,
-.article-content > h2:hover:before,
-.article-content > h3:hover:before,
-.article-content > h4:hover:before,
-.article-content > h5:hover:before,
-.article-content > h6:hover:before {
+.markdown > h1:hover:before,
+.markdown > h2:hover:before,
+.markdown > h3:hover:before,
+.markdown > h4:hover:before,
+.markdown > h5:hover:before,
+.markdown > h6:hover:before {
     content: '#';
     width: 16px;
     position: absolute;
@@ -814,14 +814,14 @@ header {
     color: #0D5796;
 }
 
-.article-content hr {
+.markdown hr {
     background-color: transparent;
     margin: 16px 0;
     border-top: dashed #bbdefb 2px;
 }
 
-.article-content li > code,
-.article-content p code {
+.markdown li > code,
+.markdown p code {
     padding: 1px 3px;
     margin: 0 2px;
     border-radius: 3px;
@@ -829,7 +829,7 @@ header {
     color: #2196F3;
 }
 
-.article-content a {
+.markdown a {
     color: #2196f3;
     text-decoration: none;
     -webkit-transition: all 0.2s;
@@ -838,19 +838,17 @@ header {
     transition: all 0.2s;
 }
 
-.article-content a:not([data-fancybox]):hover {
+.markdown a:not([data-fancybox]):hover {
     color: #1976d2;
-    /*padding-left: 4px;*/
-    padding-left: 4px;
 }
 
-.article-content .table-wrap {
+.markdown .table-wrap {
     overflow-x: auto;
     max-width: 100%;
     text-align: center;
 }
 
-.article-content table {
+.markdown table {
     border: 1px solid #42a5f5;
     border-collapse: collapse;
     width: 100%;
@@ -859,56 +857,56 @@ header {
     empty-cells: show;
 }
 
-.article-content table thead th {
+.markdown table thead th {
     background-color: #42a5f5;
     color: white;
 }
 
-.article-content table thead th,
-.article-content table td {
+.markdown table thead th,
+.markdown table td {
     padding: 10px 12px;
 }
 
-.article-content table td {
+.markdown table td {
     border: 1px solid #dedede;
     text-align: left;
 }
 
-.article-content table tbody tr:nth-child(2n) {
+.markdown table tbody tr:nth-child(2n) {
     background: rgba(227, 242, 253, 0.5);
 }
 
-.article-content table tr:hover {
+.markdown table tr:hover {
     background: rgba(227, 242, 253, 1) !important;
 }
 
-.article-content a img {
-    display: unset;
-}
-
-.article-content a[data-fancybox=gallery] {
+.markdown a[data-fancybox=gallery] {
     max-width: 100%;
     margin: 0 auto;
     display: block;
 }
 
-.article-content a[data-fancybox=gallery]:after {
+.markdown a[data-fancybox=gallery]:after {
     content: '';
     display: table;
 }
 
-.article-content a[data-fancybox=gallery] img {
+
+.markdown a[data-fancybox=gallery] img {
     display: block;
-    margin: 32px auto;
+    margin: 24px auto;
     max-width: 100%;
     box-sizing: border-box;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12)
 }
 
+.comment-content.markdown a[data-fancybox=gallery] img {
+    margin: 16px 16px 16px 0;
+}
 
-.article-content blockquote {
+.markdown blockquote {
     font-style: normal;
     margin-left: 0px;
     margin-right: 0;
@@ -917,7 +915,7 @@ header {
     color: rgba(0, 0, 0, 0.54);
 }
 
-.article-content blockquote:before, .article-content blockquote:after {
+.markdown blockquote:before, .article-content blockquote:after {
     content: none;
 }
 
@@ -2202,6 +2200,36 @@ header {
 
 .right-drawer ul .c:hover {
     color: #2196F3;
+}
+
+/*upload image*/
+.btn-comment-sel {
+    border: 1px solid rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #424242;
+    background: transparent;
+    border-radius: 2px;
+    height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+    max-width: max-content;
+    transition: all 0.15s;
+    outline: none;
+    font-weight: 400;
+}
+
+.btn-comment-sel:hover,
+.btn-comment-sel:active {
+    color: white;
+    background-color: #30AE60;
+    border-color: #30AE60;
+}
+
+.btn-comment-sel .material-icons {
+    margin-right: 4px;
+    font-size: 18px
 }
 
 #screen-mask {

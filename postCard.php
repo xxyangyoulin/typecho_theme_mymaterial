@@ -26,7 +26,7 @@
     </div>
 
     <div class="mdl-card__supporting-text">
-        <div class="article-content">
+        <div class="article-content markdown">
             <?php $this->simpleContent() ?>
         </div>
     </div>

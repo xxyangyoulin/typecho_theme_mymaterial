@@ -536,8 +536,8 @@ $(function () {
         }
     };
 
-    function articleImage() {
-        $('.article-content img').not('.image-no-show, .image-no-show img, a[data-fancybox="gallery"] img').each(function () {
+    $.articleImage = function () {
+        $('.post-card img').not('.image-no-show, .image-no-show img, a[data-fancybox="gallery"] img').each(function () {
             var $t = $(this);
             $t.wrap("<a data-fancybox='gallery' href='" + $t.attr('src') + "' data-caption='" + $t.attr('title') + "'></a>");
             $t.attr('title', '').attr('alt', '')
@@ -661,7 +661,7 @@ $(function () {
                     done($('#tag-no-more').length);
 
                     articleContentReplace();
-                    articleImage();
+                    $.articleImage();
                 }
             })
         });
@@ -745,7 +745,7 @@ $(function () {
     $.afterPjax = function () {
         articleContentReplace();
         articleTitleTree();
-        articleImage();
+        $.articleImage();
         $.postNear();
         initLoadMore();
         $.pageNav();
@@ -999,6 +999,7 @@ $.commentsAjax = function () {
                     || isReply) {//是回复
                     $('#comments').html($('#comments', data).html());
                     reUpgradePageDem();/*评论区的内容全部替换了,所以刷洗一下MDL输入框组件*/
+                    $.articleImage();
                     $.pageNav();
                     $.commentsAjax();
 

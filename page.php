@@ -39,7 +39,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
                 </div>
             </div>
 
-            <div class="article-content">
+            <div class="article-content markdown">
                 <!--友链输出-->
                 <?php if ($this->is('page', 'links')): ?>
                     <ul class="links-ul image-no-show">
