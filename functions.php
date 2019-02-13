@@ -339,7 +339,7 @@ class MyEdit
                     $('#wmd-image-button').after(
                         '<li class="wmd-button"  data-chevereto-pup-trigger data-target="#md-content-tag" style="padding-top:4px;"">🌁</li>');
                 } else {
-                    $('.url-slug').after('<button data-chevereto-pup-trigger class="btn btn-xs" data-target="#md-content-tag">🌁 插入图片</button>');
+                    $('.url-slug').after('<button data-chevereto-pup-trigger class="btn btn-xs" style="margin-right: 5px" data-target="#md-content-tag">🌁 插入图片</button>');
                 }
 
                 var mct = $('#md-content-tag');
