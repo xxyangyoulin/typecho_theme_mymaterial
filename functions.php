@@ -319,5 +319,45 @@ class MyMaterial
     }
 }
 
+Typecho_Plugin::factory('admin/write-page.php')->bottom = array('MyEdit', 'uploadImage');
+Typecho_Plugin::factory('admin/write-post.php')->bottom = array('MyEdit', 'uploadImage');
 
+class MyEdit
+{
+    function uploadImage($obj)
+    {
+        ?>
+
+        <script async src="https://tu.yangyoulin.com/sdk/pup.js" data-url="https://tu.yangyoulin.com/upload"
+                data-auto-insert="0"
+                data-palette="clear"></script>
+        <script>
+            $(function () {
+                $('.url-slug').after('<textarea id="md-content-tag" style="width: 0px;height: 0px;margin:0;padding:0;display: none"></textarea>');
+
+                if ($('#wmd-image-button').length > 0) {
+                    $('#wmd-image-button').after(
+                        '<li class="wmd-button"  data-chevereto-pup-trigger data-target="#md-content-tag" style="padding-top:4px;"">🌁</li>');
+                } else {
+                    $('.url-slug').after('<button data-chevereto-pup-trigger class="btn btn-xs" data-target="#md-content-tag">🌁 插入图片</button>');
+                }
+
+                var mct = $('#md-content-tag');
+                mct.bind('input', function () {
+                    // var val = mct.val();
+                    // if (val) {
+                    //     val = val + '\n';
+                    //     if ($('.editormd-markdown-textarea').length > 0) {
+                    //         postEditormd.focus(true);
+                    //     } else {
+                    //         $('textarea#text').val(val).focus();
+                    //     }
+                    //     mct.val('')
+                    // }
+                })
+            })
+        </script>
+        <?php
+    }
+}
 

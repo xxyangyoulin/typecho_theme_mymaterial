@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('js/fancybox/jquery.fancybox.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
 
-<!--    <script async src="http://tu.yangyoulin.com/sdk/pup.js" data-url="http://tu.yangyoulin.com/upload"-->
-<!--            data-auto-insert="markdown-embed-medium" data-observe='#comment-user-text'-->
-<!--            data-sibling="#upload-image-position"></script>-->
     <script async src="https://tu.yangyoulin.com/sdk/pup.js" data-url="https://tu.yangyoulin.com/upload"
             data-auto-insert="markdown-embed-medium" data-sibling="#upload-image-position" data-observe='#comment-user-text'
             data-palette="clear"></script>
