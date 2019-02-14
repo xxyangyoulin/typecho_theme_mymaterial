@@ -337,9 +337,15 @@ class MyEdit
 
                 if ($('#wmd-image-button').length > 0) {
                     $('#wmd-image-button').after(
-                        '<li class="wmd-button"  data-chevereto-pup-trigger data-target="#md-content-tag" style="padding-top:4px;"">🌁</li>');
+                        '<li class="wmd-button"  data-chevereto-pup-trigger data-target="#md-content-tag" style="padding-top:4px;">🌁</li>');
                 } else {
-                    $('.url-slug').after('<button data-chevereto-pup-trigger class="btn btn-xs" style="margin-right: 5px" data-target="#md-content-tag">🌁 插入图片</button>');
+                    var html = "<div data-chevereto-pup-trigger " +
+                        "data-target=\"#md-content-tag\" " +
+                        "style='width: 40px;height:40px;background-color: white;position: fixed;bottom:20px;left:20px;border-radius: 20px;" +
+                        "display:flex;align-items: center;justify-content: center;" +
+                        " box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);" +
+                        "cursor: pointer;\n'>🌁</div>";
+                    $('body').append(html)
                 }
             })
         </script>
