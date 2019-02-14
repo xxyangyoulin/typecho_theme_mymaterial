@@ -132,18 +132,6 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
         </div><!--标签云-->
     <?php endif; ?>
 
-    <?php if ($this->options->ftVisitor): ?>
-        <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
-             mdl-cell--12-col font-ant">
-            <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
-                <h2 class="mdl-card__title-text sidebar-card-title">访客</h2>
-            </div>
-            <div data-src="<?php $this->options->ftVisitor(); ?>" class="maps-w" style="height: auto;width: 100%">
-                <script type="text/javascript" src="<?php $this->options->ftVisitor(); ?>" async="async"></script>
-            </div>
-        </div><!--访客-->
-    <?php endif; ?>
-
     <?php $RSSList = RSSList($this->options->RSSList);
     require $this->getThemeDir() . 'lib/lastRSS.php';
     date_default_timezone_set('PRC');
@@ -177,4 +165,16 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
             </div>
         </div><!--RSS-->
     <?php endforeach; ?>
+
+    <?php if ($this->options->ftVisitor): ?>
+        <div id="revolvermaps" class="translation-all-3 mdl-card mdl-cell mdl-cell--4-col hover-shadow--3dp shadow--1dp translation-all-3
+             mdl-cell--12-col font-ant">
+            <div class="mdl-card__title" style="border-bottom: 1px solid gainsboro">
+                <h2 class="mdl-card__title-text sidebar-card-title">访客</h2>
+            </div>
+            <div data-src="<?php $this->options->ftVisitor(); ?>" class="maps-w" style="height: auto;width: 100%">
+                <script type="text/javascript" src="<?php $this->options->ftVisitor(); ?>" async="async"></script>
+            </div>
+        </div><!--访客-->
+    <?php endif; ?>
 </div>
