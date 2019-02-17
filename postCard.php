@@ -12,7 +12,7 @@
     <?php $postThumb = getPostThumb($this);
     if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
     <?php if ($postThumb): ?>
-    <div class="mdl-card__title has-image">
+    <div class="mdl-card__title has-image image-no-show">
     <a href="<?php $this->permalink() ?>" class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
     <?php else: ?>
     <div class="mdl-card__title">

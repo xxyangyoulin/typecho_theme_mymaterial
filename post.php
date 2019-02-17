@@ -15,15 +15,14 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
         <?php $postThumb = getPostThumb($this);
         if (!$postThumb):$postThumb = $this->fields->card_image; endif; ?>
         <?php if ($postThumb): ?>
-        <div class="mdl-card__title has-image">
+        <div class="mdl-card__title has-image image-no-show">
             <a class="has-image-img"><img alt="" src="<?php echo $postThumb; ?>"></a>
             <?php else: ?>
             <div class="mdl-card__title">
                 <?php endif; ?>
             <div class="card-text-wrapper inner-a-color-inherit">
                 <h2 class="mdl-card__title-text mdl-typography--font-bold">
-                    <a class="a-none anim-line"
-                       href="<?php $this->permalink() ?>"><?php $this->title() ?>
+                    <a class="a-none"><?php $this->title() ?>
                     </a>
                 </h2>
                 <div class="post-meta2">
