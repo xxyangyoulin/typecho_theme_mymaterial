@@ -27,8 +27,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
         <div class="mdl-card__supporting-text color-text-block-primary">
             <div class="card-text-wrapper" style="margin: 0 0 16px 0;padding: 0;">
                 <h2 class="mdl-card__title-text mdl-typography--font-bold">
-                    <a class="a-none anim-line"
-                       href="<?php $this->permalink() ?>"><?php $this->title() ?>
+                    <a class="a-none"><?php $this->title() ?>
                     </a>
                 </h2>
                 <div class="post-meta2">
