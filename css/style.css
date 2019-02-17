@@ -2122,11 +2122,13 @@ header {
 }
 
 .right-drawer.close {
-    right: -280px;
+    right: -281px;
 }
 
 .right-drawer.close #list-drawer-btn {
     transform: rotateZ(180deg);
+    color: rgba(0,0,0,0.5);
+
 }
 
 
