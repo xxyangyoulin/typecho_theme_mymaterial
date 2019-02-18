@@ -853,7 +853,7 @@ header {
     border-collapse: collapse;
     width: 100%;
     max-width: 900px;
-    margin: 20px 0;
+    margin: 8px 0 12px 0;
     empty-cells: show;
 }
 
