@@ -158,37 +158,40 @@
     </div>
 </div>
 
-<div class="right-drawer  close">
-    <div class="scroll scroll-bar">
+<?php if (!empty($this->options->homeCard) && in_array('showAllList', $this->options->homeCard)): ?>
+    <div class="right-drawer  close">
+        <div class="scroll scroll-bar">
 
-    <button id="list-drawer-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-        <i class="material-icons">arrow_forward</i>
-    </button>
+            <button id="list-drawer-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                <i class="material-icons">arrow_forward</i>
+            </button>
 
-    <ul>
-        <?php
-        $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archives);
-        $COUNT_TAG = 'YYL_TPX4869';
-        $lastYear = 0;
-        $tempHtml = '';
-        $count = 0;
-        if(!$archives->have()){
-           echo  "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">最近没有文章！</span><span class=\"count\"></span></div></li>";
-        }
-
-        while ($archives->next()) {
-            $year_tmp = date('Y', $archives->created);
-            $date = date('m.d', $archives->created);
-            if ($year_tmp != $lastYear) {
-                echo str_replace($COUNT_TAG, $count.'篇', $tempHtml);
+            <ul>
+                <?php
+                $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archives);
+                $COUNT_TAG = 'YYL_TPX4869';
+                $lastYear = 0;
+                $tempHtml = '';
                 $count = 0;
-                $lastYear = $year_tmp;
-                $tempHtml = "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">{$year_tmp}</span><span class=\"count\">{$COUNT_TAG}</span></div></li>";
-            }
-            $count++;
-            $tempHtml .= "<li class=\"dc\"><span class=\"d\">{$date}</span><a href='{$archives->permalink}' class=\"c\">{$archives->title}</a></li>";
-        };
-        echo str_replace($COUNT_TAG, $count.'篇', $tempHtml); $this->destory('Widget_Contents_Post_Recent');?>
-    </ul>
+                if (!$archives->have()) {
+                    echo "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">最近没有文章！</span><span class=\"count\"></span></div></li>";
+                }
+
+                while ($archives->next()) {
+                    $year_tmp = date('Y', $archives->created);
+                    $date = date('m.d', $archives->created);
+                    if ($year_tmp != $lastYear) {
+                        echo str_replace($COUNT_TAG, $count . '篇', $tempHtml);
+                        $count = 0;
+                        $lastYear = $year_tmp;
+                        $tempHtml = "<li class=\"yc\"><div class=\"bg\"><span class=\"y\">{$year_tmp}</span><span class=\"count\">{$COUNT_TAG}</span></div></li>";
+                    }
+                    $count++;
+                    $tempHtml .= "<li class=\"dc\"><span class=\"d\">{$date}</span><a href='{$archives->permalink}' class=\"c\">{$archives->title}</a></li>";
+                };
+                echo str_replace($COUNT_TAG, $count . '篇', $tempHtml);
+                $this->destory('Widget_Contents_Post_Recent'); ?>
+            </ul>
+        </div>
     </div>
-</div>
+<?php endif; ?>
