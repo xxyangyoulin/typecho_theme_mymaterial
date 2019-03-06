@@ -91,7 +91,7 @@ function themeFields($layout)
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('card_image',
         NULL, NULL,
         _t('文章顶部图片'),
-        _t('在这里填入一个图片URL地址, 以在文章标题后加上背景图片<br>注意：<span style="color: red">Markdown格式下，推荐直接在文章第一行插入图片</span>。'));
+        _t('在这里填入一个图片URL地址, 以在文章标题后加上背景图片<br>注意：<span style="color: red">Markdown格式下，直接在文章第一行插入图片的方法在某些情况下报错，已废弃</span>。'));
     $layout->addItem($logoUrl);
 }
 
@@ -270,8 +270,8 @@ overflow: auto;background-color: black;color: gainsboro;height: 100%;width: 100%
 
 /**插件式操作*/
 //Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('MyMaterial', 'excerptEx'); //这个接口会被其他插件覆盖
-Typecho_Plugin::factory('Widget_Archive')->___allContent = array('MyMaterial', 'allContent');
-Typecho_Plugin::factory('Widget_Archive')->___simpleContent = array('MyMaterial', 'simpleContent');
+//Typecho_Plugin::factory('Widget_Archive')->___allContent = array('MyMaterial', 'allContent');
+//Typecho_Plugin::factory('Widget_Archive')->___simpleContent = array('MyMaterial', 'simpleContent');
 
 class MyMaterial
 {
@@ -282,23 +282,23 @@ class MyMaterial
      * @param bool $more
      * @return string
      */
-    function simpleContent($obj, $more = false)
-    {
-        $content = trim($obj->excerpt);
-        $content = delStartWith($content, '<p>');
-        $content = trim($content);
-
-        if (strpos($content, '<img') === 0) {
-            $content = preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
-            $content = trim($content);
-            $content = delStartWith($content, '</p>');
-            $content = delStartWith($content, '<br>');
-        } else {
-            $content = trim($obj->excerpt);
-        }
-
-        return false == $more ? $content : $content . "<p class=\"more\"><a href=\"{$obj->permalink}\" title=\"{$obj->title}\">{$more}</a></p>";
-    }
+//    function simpleContent($obj, $more = false)
+//    {
+//        $content = trim($obj->excerpt);
+//        $content = delStartWith($content, '<p>');
+//        $content = trim($content);
+//
+//        if (strpos($content, '<img') === 0) {
+/*            $content = preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);*/
+//            $content = trim($content);
+//            $content = delStartWith($content, '</p>');
+//            $content = delStartWith($content, '<br>');
+//        } else {
+//            $content = trim($obj->excerpt);
+//        }
+//
+//        return false == $more ? $content : $content . "<p class=\"more\"><a href=\"{$obj->permalink}\" title=\"{$obj->title}\">{$more}</a></p>";
+//    }
 
     /**
      * 文章全部内容
@@ -306,17 +306,17 @@ class MyMaterial
      * @param $obj
      * @return string|string[]|null
      */
-    function allContent($obj)
-    {
-        $content = trim($obj->content);
-        $content = delStartWith($content, '<p>');
-        $content = trim($content);
-
-        if (strpos($content, '<img') === 0) {
-            return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);
-        }
-        return $obj->content;
-    }
+//    function excerptEx($content)
+//    {
+//        $content = trim($content);
+//        $content = delStartWith($content, '<p>');
+//        $content = trim($content);
+//
+//        if (strpos($content, '<img') === 0) {
+/*            return preg_replace("/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", '', $content, 1);*/
+//        }
+//        return $obj->content;
+//    }
 }
 
 

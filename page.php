@@ -63,7 +63,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
                     </div>
                 <?php endif; ?>
 
-                <?php $this->allContent(); ?>
+                <?php $this->content(); ?>
             </div>
 
             <div class="tag-wrapper">

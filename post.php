@@ -46,7 +46,7 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
 
         <div class="mdl-card__supporting-text color-text-block-primary ">
             <div class="article-content markdown" id="article-content">
-                <?php $this->allContent() ?>
+                <?php $this->content() ?>
             </div>
             <div class="tag-wrapper">
                 <?php foreach ($this->tags as $tag): ?>
