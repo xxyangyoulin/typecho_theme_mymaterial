@@ -4,7 +4,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form)
 {
     $homeType = new Typecho_Widget_Helper_Form_Element_Radio('homeType',
-        array('type1' => '简洁模式', 'type2' => '一般模式'), array('type2'), _t('首页风格'));
+        array('type1' => '简洁模式', 'type2' => '一般模式'), 'type2', _t('首页风格'));
     $form->addInput($homeType);
 
     $homeCard = new Typecho_Widget_Helper_Form_Element_Checkbox('homeCard',
