@@ -32,13 +32,20 @@
 
 ![Typecho My Material](https://yangyoulin.com/usr/uploads/2019/02/4031308670.png)
 
-音乐播放面板
+## 用到的插件
+- 留言墙：[Avatars](http://www.yzmb.me/archives/net/avatars-for-typecho)
+- 代码高亮： [CodeHighlighter-for-Typecho](https://github.com/Copterfly/CodeHighlighter-for-Typecho "CodeHighlighter-for-Typecho")
+- 文章索引： [MenuTree](https://github.com/mnnyang/MenuTree)
+- 友链：[Links](http://www.imhan.com/archives/typecho_links_20141214)
 
-![背景音乐](https://yangyoulin.com/usr/uploads/2019/01/1629028829.png)
+直接打包下载（修改了部分插件）：[插件.zip](https://yangyoulin.com/usr/uploads/2019/03/2156462267.zip)
+
 
 
 ## 注意
 1. 评论成功却没有显示: 尝试关闭评论的垃圾保护机制.
+2. 下载解压之后，重命名为`typecho_theme_mymaterial`.
+
 
 > Email: xxyangyoulin@gmail.com  
 > Blog: yangyoulin.com
