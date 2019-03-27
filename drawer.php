@@ -145,15 +145,15 @@
             <hr class="menu-divider"/>
 
             <?php if ($this->user->hasLogin()): ?>
-                <li><a class="close-drawer" target="_blank"
+                <li><a class="close-drawer no-pjax" target="_blank"
                        href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?>
                         (<?php $this->user->screenName(); ?>)</a></li>
-                <li><a class="close-drawer" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
+                <li><a class="close-drawer no-pjax" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
             <?php else: ?>
-                <li><a class="close-drawer"
+                <li><a class="close-drawer no-pjax"
                        href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
             <?php endif; ?>
-            <li><a class="close-drawer" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
+            <li><a class="close-drawer no-pjax" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
         </ul>
     </div>
 </div>
