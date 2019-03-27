@@ -8,6 +8,7 @@
 
 
 ## 更新日志
+- 2019.03.27 radio报错的问题.
 - 2019.03.06 主题在某些情况下报错的问题.
 - 2019.02.11 归档分类加载更多的BUG.
 - 2019.02.10 添加豆瓣书单。
@@ -26,7 +27,8 @@
 4. 支持文章头图
 5. 自定义首页界面
 6. 背景音乐（网易云id或者直接填音乐URL）
-7. ...
+7. 豆瓣图书（API暂时不可用了，豆瓣貌似关闭了API）
+8. ...
 
 ![Typecho My Material](https://yangyoulin.com/usr/uploads/2019/02/4031308670.png)
 
@@ -37,15 +39,6 @@
 
 ## 注意
 1. 评论成功却没有显示: 尝试关闭评论的垃圾保护机制.
-
-
-
-## 赞助
-
-如果你喜欢该主题, 欢迎支持我修复和升级
-
-
-![weixin](https://yangyoulin.com/usr/uploads/2019/01/1794058393.png)
 
 > Email: xxyangyoulin@gmail.com  
 > Blog: yangyoulin.com
