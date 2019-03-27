@@ -153,7 +153,7 @@
                 <li><a class="close-drawer"
                        href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
             <?php endif; ?>
-            <li><a class="close-drawer" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
+            <li><a class="close-drawer" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
         </ul>
     </div>
 </div>

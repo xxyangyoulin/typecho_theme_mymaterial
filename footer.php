@@ -95,7 +95,7 @@
         <?php endif; ?>
 
         // $.pjax.defaults.maxCacheLength = 0;
-        $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
+        $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_block"], .no-pjax, .comment-reply a, .cancel-comment-reply-link)', {
             container: '#page-content',
             // fragment: '#page-content',
             timeout: 10000
