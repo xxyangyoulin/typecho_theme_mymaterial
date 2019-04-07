@@ -10,7 +10,7 @@
                    class="mdl-button mdl-js-button mdl-button--icon" id="ft-github">
                     <img src="<?php $this->options->themeUrl('image/icon/github.png'); ?>">
                 </a>
-                <span class="mdl-tooltip mdl-tooltip--top" for="ft-github">Github</span>
+                <label class="mdl-tooltip mdl-tooltip--top" for="ft-github">Github</label>
             <?php endif; ?>
 
             <?php if ($this->options->ftQQ): ?>
@@ -19,7 +19,7 @@
                    class="mdl-button mdl-js-button mdl-button--icon" id="ft-qq">
                     <img src="<?php $this->options->themeUrl('image/icon/qq.png'); ?>">
                 </a>
-                <span class="mdl-tooltip mdl-tooltip--top" for="ft-qq">QQ</span>
+                <label class="mdl-tooltip mdl-tooltip--top" for="ft-qq">QQ</label>
             <?php endif; ?>
 
             <?php if ($this->options->ftWeibo): ?>
@@ -27,16 +27,15 @@
                    class="mdl-button mdl-js-button mdl-button--icon" id="ft-Weibo">
                     <img src="<?php $this->options->themeUrl('image/icon/weibo.png'); ?>">
                 </a>
-                <span class="mdl-tooltip mdl-tooltip--top" for="ft-Weibo">Weibo</span>
+                <label class="mdl-tooltip mdl-tooltip--top" for="ft-Weibo">Weibo</label>
             <?php endif; ?>
 
             <?php if ($this->options->ftEmail): ?>
-                <a href="" target="_self"
-                   onclick="window.open('mailto:<?php echo urlencode($this->options->Email) ?>','_self'); return false;"
+                <a href="mailto:<?php $this->options->ftEmail(); ?>" target="_blank"
                    class="mdl-button mdl-js-button mdl-button--icon" id="ft-email">
                     <img src="<?php $this->options->themeUrl('image/icon/mail.png'); ?>">
                 </a>
-                <span class="mdl-tooltip mdl-tooltip--top" for="ft-email">Email</span>
+                <label class="mdl-tooltip mdl-tooltip--top" for="ft-email">Email</label>
             <?php endif; ?>
             <!--TODO 如果你需要其他图标, 可以到这下载: https://www.iconfont.cn/-->
         </div>
