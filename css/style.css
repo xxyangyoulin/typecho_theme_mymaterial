@@ -1092,6 +1092,7 @@ header {
     -webkit-transform: translateX(-290px);
     transform: translateX(-290px);
     border: none;
+    z-index: 11111;
 }
 
 #close-drawer {
@@ -1562,6 +1563,11 @@ header {
 
 .comment-recent li img {
     border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    overflow: hidden;
 }
 
 .avatar-shadow img {
@@ -2356,6 +2362,9 @@ header {
         font-weight: bold;
     }
 
+    #list-drawer-btn{
+        display: none;
+    }
 }
 
 @media (max-width: 400px) {
