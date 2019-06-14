@@ -35,6 +35,10 @@
     font-feature-settings: 'liga';
 }
 
+.mdl-layout{
+    -webkit-overflow-scrolling: auto!important;
+}
+
 /* Make clicks pass-through */
 #nprogress {
     pointer-events: none;
