@@ -4,9 +4,8 @@
 基本实现了全局pjax加载..links插件支持..代码高亮插件pjax支持…背景音乐...如果你喜欢我非常高兴😄。
 
 预览:   
-[小酌一杯](https://yangyoulin.com)   
 [Edwinpan's Blog](https://edwinpan.cn/)     
-[说明文档](https://yangyoulin.com/index.php/archives/20.html)  
+[说明文档](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/)  
 
 
 
