@@ -150,11 +150,11 @@ href="{permalink}">{title}<div class="sidebar-item-desc">{description}</div></a>
                 } else {
                     $rss->cache_time = 3600 * 6; // six hour
                 }
-
                 $rss->date_format = 'Y-m-d H:i';
                 $rss->CDATA = 'strip';
+                $rss->stripHTML=false;
 
-                if ($rs = $rss->get($item['url'])) {
+                if ($rs = $rss->Get($item['url'])) {
                     foreach ($rs['items'] as $value) {
                         echo "<a href='{$value['link']}'>{$value['pubDate']}</a> : ";
                         echo $value['description'];
