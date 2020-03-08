@@ -42,7 +42,11 @@ if ($treeMenu == '<div class="index-menu"><ul class="index-menu-list"></ul></div
                 <!--友链输出-->
                 <?php if ($this->is('page', 'links')): ?>
                     <ul class="links-ul image-no-show">
-                        <?php Links_Plugin::output("SHOW_MD"); /**插件：links*/ ?>
+                        <?php Links_Plugin::output("<li><a class=\"mdl-shadow--2dp\" href=\"{url}\" 
+target=\"_block\" title=\"{title}\" tabindex=\"0\"><div class=\"name-w\">
+                                <img src=\"{image}\" alt=\"{name}\">
+                                <div class=\"name\">{name}</div></div></a>
+                                </li>"); /**插件：links*/ ?>
                         <div class="clearfix"></div>
                     </ul>
                 <?php endif; ?>

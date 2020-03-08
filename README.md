@@ -5,7 +5,10 @@
 
 预览:   
 [Edwinpan's Blog](https://edwinpan.cn/)     
-[说明文档](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/)  
+[小酌一杯](http://typecho.yangyoulin.com/)  
+说明文档：  
+[说明文档](http://typecho.yangyoulin.com/index.php/archives/5/)
+[备用](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/)  
 
 
 
@@ -33,8 +36,10 @@
 7. 豆瓣图书（API暂时不可用了，豆瓣貌似关闭了API）
 8. ...
 
-![Typecho My Material](https://yangyoulin.com/usr/uploads/2019/02/4031308670.png)
 
+![Typecho My Material](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/4031308670.png)
+  
+![player](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/3876021703.png)
 ## 用到的插件
 - 留言墙：[Avatars](http://www.yzmb.me/archives/net/avatars-for-typecho)
 - 代码高亮： [CodeHighlighter-for-Typecho](https://github.com/Copterfly/CodeHighlighter-for-Typecho "CodeHighlighter-for-Typecho")
