@@ -13,6 +13,7 @@
 
 
 ## 更新日志
+- 2020-03-10 音乐播放器独立为插件。
 - 2019.06.14 解决-webkit-overflow-scrolling:touch导致ios上的index-z失效问题.
 - 2019.03.27 radio报错的问题.
 - 2019.03.06 主题在某些情况下报错的问题.
@@ -29,11 +30,11 @@
   使用其他的需要在pjax:end回调中加入对应的代码高亮渲染函数.
 2. 友链插件: Links  
   添加了一个Links友链样式
-3. 目录生成: MenuTree(我的修改版)
+3. 目录生成: MenuTree(修改版)
 4. 支持文章头图
 5. 自定义首页界面
 6. 背景音乐（网易云id或者直接填音乐URL）
-7. 豆瓣图书（API暂时不可用了，豆瓣貌似关闭了API）
+7. ~~豆瓣图书（API暂时不可用了，豆瓣貌似关闭了API）~~
 8. ...
 
 
@@ -41,18 +42,20 @@
   
 ![player](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/3876021703.png)
 ## 用到的插件
+- 音乐播放器：[MaterialPlayer](https://github.com/mnnyang/typecho_plugin_material_player)
 - 留言墙：[Avatars](http://www.yzmb.me/archives/net/avatars-for-typecho)
 - 代码高亮： [CodeHighlighter-for-Typecho](https://github.com/Copterfly/CodeHighlighter-for-Typecho "CodeHighlighter-for-Typecho")
 - 文章索引： [MenuTree](https://github.com/mnnyang/MenuTree)
 - 友链：[Links](http://www.imhan.com/archives/typecho_links_20141214)
 
-直接打包下载（修改了部分插件）：[插件.zip](https://yangyoulin.com/usr/uploads/2019/03/2156462267.zip)
+~~直接打包下载（修改了部分插件）~~：[插件.zip](https://yangyoulin.com/usr/uploads/2019/03/2156462267.zip)
 
 
 
 ## 注意
 1. 评论成功却没有显示: 尝试关闭评论的垃圾保护机制.
-2. 下载解压之后，重命名为`typecho_theme_mymaterial`.
+2. 评论成功后没有跳转: 将最新的评论显示在前面即可.
+3. 下载解压之后，重命名为`typecho_theme_mymaterial`.
 
 
 > Email: xxyangyoulin@gmail.com  

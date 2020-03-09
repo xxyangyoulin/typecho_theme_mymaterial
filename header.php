@@ -9,14 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="referrer" content="no-referrer">
     <?php $this->need('siteTitle.php'); ?>
     <link rel="shortcut icon" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
     <link rel="bookmark" href="<?php $this->options->siteUrl() ?>favicon.ico"/>
 
     <link rel="stylesheet" href="<?php $this->options->themeUrl('material/material.blue.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('js/fancybox/jquery.fancybox.min.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.min.css'); ?>">
     <?php if (getOS() == 'mac'): ?>
         <style>
             .article-content,
@@ -75,46 +74,11 @@
                 </div>
             </div>
         </form>
-        <div id="music-panel">
-            <div class="music-panel-w">
-                <div class="list-panel">
-                    <ul>
-                        <?php $musicList = musicList($this->options->musicList);
-                        foreach ($musicList as $i => $item) {
-                            $html = "<li data-src=\"{$item['src']}\">";
-                            $html .= ($i + 1) . '. ' . $item['name'];
-
-                            if (!empty($item['singer'])) {
-                                $html .= " - " . $item['singer'];
-                            }
-
-                            $html .= "</li>";
-                            echo $html;
-                        } ?>
-                    </ul>
-                </div>
-                <div class="ctrl-group">
-                    <button id="music-album" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                class="material-icons">music_note</i>
-                    </button>
-                    <div class="hide-panel">
-                        <div class="ctrl-panel">
-                            <button id="music-volume" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                        class="material-icons">volume_up</i></button>
-                            <button id="music-list" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                        class="material-icons">playlist_play</i></button>
-                            <button id="music-prev" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                        class="material-icons">skip_previous</i></button>
-                            <button id="music-play" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                        class="material-icons">play_circle_filled</i></button>
-                            <button id="music-next" class=" mdl-button mdl-js-button mdl-button--icon"><i
-                                        class="material-icons">skip_next</i></button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <?php
+        if (class_exists("MaterialPlayer_Plugin")){
+            MaterialPlayer_Plugin::insert("margin-left:15px");
+        }
+        ?>
 
         <button class="mdl-button mdl-js-button mdl-button--icon no-pjax mdl-cell--hide-desktop mdl-cell--hide-tablet"
                 id="index-button" style="margin-left: 8px;">

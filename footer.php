@@ -85,7 +85,7 @@
 <script src="<?php $this->options->themeUrl('js/jquery.pjax.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('js/nprogress.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('js/fancybox/jquery.fancybox.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/base.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('js/base.min.js'); ?>"></script>
 <script>
 
     $(function () {

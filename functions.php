@@ -38,10 +38,10 @@ function themeConfig($form)
         array('ShowPages', 'ShowCategory', 'ShowArchive'), _t('抽屉显示'));
     $form->addInput($drawerBlock->multiMode());
 
-    $musicList = new Typecho_Widget_Helper_Form_Element_Textarea('musicList', NULL, NULL,
-        _t('背景音乐列表'),
-        _t('格式:<span style="color: darkred">歌曲url或者网易云id (空格)曲名 (空格)歌手,(歌手可省略, 逗号必须, 写完一条可以换一行)</span><br>例如:<br>448065 孤独な巡礼 川井憲次,<br>http://music.163.com/song/media/outer/url?id=2177197.mp3 Moon_River Audrey_Hepburn<br>没错就是这样😄,<i style="color: darkred">歌曲或者歌手名字有空格就用下划线代替吧,懒得适配了..</i> '));
-    $form->addInput($musicList);
+//    $musicList = new Typecho_Widget_Helper_Form_Element_Textarea('musicList', NULL, NULL,
+//        _t('背景音乐列表'),
+//        _t('格式:<span style="color: darkred">歌曲url或者网易云id (空格)曲名 (空格)歌手,(歌手可省略, 逗号必须, 写完一条可以换一行)</span><br>例如:<br>448065 孤独な巡礼 川井憲次,<br>http://music.163.com/song/media/outer/url?id=2177197.mp3 Moon_River Audrey_Hepburn<br>没错就是这样😄,<i style="color: darkred">歌曲或者歌手名字有空格就用下划线代替吧,懒得适配了..</i> '));
+//    $form->addInput($musicList);
 
     $musicCtrl = new Typecho_Widget_Helper_Form_Element_Checkbox('musicCtrl',
         array('auto' => _t('自动播放'),
