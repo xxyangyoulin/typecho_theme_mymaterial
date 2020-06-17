@@ -8,7 +8,7 @@
 [小酌一杯](http://typecho.yangyoulin.com/)  
 说明文档：  
 [说明文档](http://typecho.yangyoulin.com/index.php/archives/5/)
-[备用](https://yangyoulin.com/2019/07/05/typecho%E4%B8%BB%E9%A2%98%EF%BC%9AMy-Material/)  
+[备用](https://yangyoulin.com/archives/22.html)  
 
 
 
